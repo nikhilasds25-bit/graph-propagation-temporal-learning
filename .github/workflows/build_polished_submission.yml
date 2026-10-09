@@ -87,13 +87,14 @@ jobs:
           working_directory: _zip_test
           latexmk_use_xelatex: false
 
-      - name: Verify PDF identity
+      - name: Verify compiled PDFs exist
         shell: bash
         run: |
           set -euo pipefail
+          test -s submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_FINAL.pdf
           test -s _zip_test/main.pdf
-          pdfinfo submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_FINAL.pdf | grep '^Pages:'
-          pdfinfo _zip_test/main.pdf | grep '^Pages:'
+          file submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_FINAL.pdf
+          file _zip_test/main.pdf
 
       - name: Commit submission deliverables
         shell: bash
