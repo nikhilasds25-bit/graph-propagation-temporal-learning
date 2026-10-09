@@ -1,0 +1,112 @@
+name: Build polished submission
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/build_polished_submission.yml"
+      - "manuscript/main_authorship_polished.tex"
+      - "manuscript_integration/final_manuscript/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare polished manuscript
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _submission_build _overleaf_clean
+          cp -a manuscript_integration/final_manuscript _submission_build
+          cp manuscript/main_authorship_polished.tex _submission_build/main.tex
+          rm -f _submission_build/main.pdf _submission_build/main.aux _submission_build/main.bbl _submission_build/main.blg _submission_build/main.log _submission_build/main.out
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: _submission_build
+          latexmk_use_xelatex: false
+
+      - name: Build clean deliverables
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s _submission_build/main.pdf
+
+          mkdir -p submission
+          cp _submission_build/main.pdf submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_FINAL.pdf
+
+          mkdir -p _overleaf_clean/figures
+          cp _submission_build/main.tex _overleaf_clean/main.tex
+          cp _submission_build/references.bib _overleaf_clean/references.bib
+          cp _submission_build/evidence_numbers.tex _overleaf_clean/evidence_numbers.tex
+          cp _submission_build/analysis_populations_table.tex _overleaf_clean/analysis_populations_table.tex
+          cp _submission_build/temporal_reach_table.tex _overleaf_clean/temporal_reach_table.tex
+          cp _submission_build/simulation_results_table.tex _overleaf_clean/simulation_results_table.tex
+          cp _submission_build/forecasting_results_table.tex _overleaf_clean/forecasting_results_table.tex
+          cp -a _submission_build/figures/. _overleaf_clean/figures/
+
+          cat > _overleaf_clean/README.md <<'EOF'
+          # Overleaf submission package
+
+          Main file: main.tex
+
+          This package contains the authorship-polished manuscript source, bibliography,
+          supporting LaTeX tables, and all referenced figures. Upload the ZIP as a new
+          Overleaf project and compile main.tex.
+          EOF
+
+          (
+            cd _overleaf_clean
+            zip -qr ../submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_Overleaf_FINAL.zip .
+          )
+
+          sha256sum             submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_FINAL.pdf             submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_Overleaf_FINAL.zip             > submission/SHA256SUMS.txt
+
+      - name: Verify clean ZIP recompiles
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _zip_test
+          mkdir _zip_test
+          unzip -q submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_Overleaf_FINAL.zip -d _zip_test
+
+      - name: Compile clean ZIP source
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: _zip_test
+          latexmk_use_xelatex: false
+
+      - name: Verify PDF identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s _zip_test/main.pdf
+          pdfinfo submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_FINAL.pdf | grep '^Pages:'
+          pdfinfo _zip_test/main.pdf | grep '^Pages:'
+
+      - name: Commit submission deliverables
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_FINAL.pdf
+          git add -f submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_Overleaf_FINAL.zip
+          git add -f submission/SHA256SUMS.txt
+          if git diff --cached --quiet; then
+            echo "No deliverable changes to commit."
+          else
+            git commit -m "Build polished submission deliverables [skip ci]"
+            git push
+          fi
