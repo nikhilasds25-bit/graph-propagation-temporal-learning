@@ -100,8 +100,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "NIKHIL A S"
+          git config user.email "nikhilas.ds25@duk.ac.in"
           git add -f submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_FINAL.pdf
           git add -f submission/Nikhil_AS_Graph_Propagation_Temporal_Learning_Overleaf_FINAL.zip
           git add -f submission/SHA256SUMS.txt
