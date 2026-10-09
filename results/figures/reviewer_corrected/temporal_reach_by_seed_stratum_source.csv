@@ -1,0 +1,5 @@
+layer,direction,stratum,metric,zero_static_seeds,n,mean,sd,median,q25,q75,iqr,ci95_low,ci95_high,median_ci95_low,median_ci95_high
+pooled,layer_aware,random,temporal_reachable,200,500,3.41,10.188105564332357,1.0,0.0,3.0,3.0,2.56385,4.36405,1.0,1.0
+pooled,layer_aware,high_out_strength,temporal_reachable,0,500,60.076,71.06762581427463,40.0,25.75,65.25,39.5,54.12175,66.7225,38.0,43.0
+pooled,layer_aware,high_reverse_PageRank,temporal_reachable,0,500,49.82,81.46912320672259,23.0,10.0,54.25,44.25,43.025850000000005,57.424699999999994,19.0,27.0
+pooled,layer_aware,high_PageRank,temporal_reachable,395,500,2.814,17.888751181613415,0.0,0.0,0.0,0.0,1.5275,4.654399999999998,0.0,0.0

@@ -1,0 +1,4 @@
+seed_count,vmin,vmax,scale
+5,0.0,0.030000000000000006,independent per panel
+10,0.0,0.015000000000000003,independent per panel
+25,0.0,0.022,independent per panel

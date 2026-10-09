@@ -1,0 +1,1 @@
+Independent saved-output QA passed: raw label counts, ties, ratios, cohort accounting, temporal splits, all training scaler means, validation-only C selection, saved predictions/metrics, baseline references, bootstrap intervals, input hashes, Wilson intervals, overwrite protection. All five figures visually inspected; no dual axes; PNG metadata and SVG availability checked.

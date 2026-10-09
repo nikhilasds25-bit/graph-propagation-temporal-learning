@@ -1,0 +1,11 @@
+panel,rule,stage,count
+User population,exact,unique_tweet_users,58093
+User population,exact,matched_users,36614
+User population,exact,largest_WCC_nodes,17598
+User population,normalized,unique_tweet_users,58092
+User population,normalized,matched_users,36615
+User population,normalized,largest_WCC_nodes,17636
+Directed edge population,exact,induced_directed_edges,30774
+Directed edge population,exact,largest_WCC_edges,29715
+Directed edge population,normalized,induced_directed_edges,30889
+Directed edge population,normalized,largest_WCC_edges,29825

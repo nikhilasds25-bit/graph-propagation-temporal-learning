@@ -1,0 +1,6 @@
+Metric,Value
+weekly_user_label_records,77247
+ties_excluded,1500
+missing_historical_feature_user_weeks,59455
+prediction_ready_records,16292
+rolling_test_weeks,15

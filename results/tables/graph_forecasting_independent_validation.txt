@@ -1,0 +1,6 @@
+PASS: replayed every metric for 2850 saved seed/week/control predictions.
+PASS: training-only scalers and class weights, validation grid choice, fixed threshold, cohorts and seeds.
+PASS: own-week temporal cutoffs, latest sequence step, historical node identities and raw-event totals.
+PASS: all paired-week bootstrap intervals independently reproduced.
+PASS: five 400-DPI PNG/SVG figure pairs.
+PASS: all 665 protected prior files retain identical SHA-256 hashes.

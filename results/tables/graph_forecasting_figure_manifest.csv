@@ -1,0 +1,6 @@
+Figure,PNG,SVG,PNG_DPI
+A,results\figures\graph_forecasting_rolling_macro_f1.png,results\figures\graph_forecasting_rolling_macro_f1.svg,400
+B,results\figures\graph_forecasting_rolling_class_0_pr_auc.png,results\figures\graph_forecasting_rolling_class_0_pr_auc.svg,400
+C,results\figures\graph_forecasting_rolling_balanced_accuracy.png,results\figures\graph_forecasting_rolling_balanced_accuracy.svg,400
+D,results\figures\graph_forecasting_paired_forest.png,results\figures\graph_forecasting_paired_forest.svg,400
+E,results\figures\graph_forecasting_static_vs_temporal.png,results\figures\graph_forecasting_static_vs_temporal.svg,400

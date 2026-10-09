@@ -1,0 +1,225 @@
+from pathlib import Path
+import json
+import math
+
+import pandas as pd
+from PIL import Image, ImageDraw, ImageFont
+from textblob import TextBlob
+
+RANDOM_STATE = 42
+candidates = [Path.cwd().resolve(), Path.cwd().resolve().parent]
+PROJECT_ROOT = next((p for p in candidates if (p / 'data' / 'raw' / 'master_tweets.csv').exists()), None)
+if PROJECT_ROOT is None:
+    raise FileNotFoundError('Run this notebook from the project root or its notebooks directory.')
+
+RAW_PATH = PROJECT_ROOT / 'data' / 'raw' / 'master_tweets.csv'
+TABLES_DIR = PROJECT_ROOT / 'results' / 'tables'
+FIGURES_DIR = PROJECT_ROOT / 'results' / 'figures'
+TABLES_DIR.mkdir(parents=True, exist_ok=True)
+FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+
+# The raw file is only read. All derived columns live in this in-memory dataframe.
+tweets = pd.read_csv(RAW_PATH)
+print(f'Loaded {RAW_PATH.relative_to(PROJECT_ROOT)}: {len(tweets):,} tweets')
+
+def save_bar_chart(labels, values, title, filename, color=(55, 126, 184)):
+    width, height, margin = 1200, 680, 85
+    image = Image.new('RGB', (width, height), 'white')
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.load_default()
+    minimum = min(0, min(values)) if values else 0
+    maximum = max(0, max(values)) if values else 1
+    value_range = maximum - minimum or 1
+    plot_width, plot_height = width - 2 * margin, height - 2 * margin
+    draw.text((margin, 25), title, fill='black', font=font)
+    zero_y = int(height - margin - ((0 - minimum) / value_range) * (plot_height - 45))
+    draw.line((margin, zero_y, width-margin, zero_y), fill='black', width=2)
+    draw.line((margin, margin, margin, height-margin), fill='black', width=2)
+    slot = plot_width / max(len(values), 1)
+    bar_width = max(2, int(slot * 0.70))
+    for i, (label, value) in enumerate(zip(labels, values)):
+        x0 = int(margin + i * slot + (slot - bar_width) / 2)
+        x1 = x0 + bar_width
+        value_y = int(height - margin - ((value - minimum) / value_range) * (plot_height - 45))
+        draw.rectangle((x0, min(value_y, zero_y), x1, max(value_y, zero_y)), fill=color)
+        draw.text((x0, max(margin + 22, value_y - 15)), f'{value:.3g}', fill='black', font=font)
+        draw.text((x0, height - margin + 8), str(label)[:18], fill='black', font=font)
+    output = FIGURES_DIR / filename
+    image.save(output)
+    print(f'Saved figure: {output.relative_to(PROJECT_ROOT)}')
+
+def save_grouped_bars(labels, left_values, right_values, title, filename, left_label='Target 0', right_label='Target 1'):
+    width, height, margin = 1200, 680, 85
+    image = Image.new('RGB', (width, height), 'white')
+    draw, font = ImageDraw.Draw(image), ImageFont.load_default()
+    maximum = max(list(left_values) + list(right_values)) or 1
+    plot_width, plot_height = width - 2 * margin, height - 2 * margin
+    draw.text((margin, 25), title, fill='black', font=font)
+    draw.text((width - 270, 25), f'{left_label}=blue; {right_label}=orange', fill='black', font=font)
+    draw.line((margin, height-margin, width-margin, height-margin), fill='black', width=2)
+    draw.line((margin, margin, margin, height-margin), fill='black', width=2)
+    slot = plot_width / max(len(labels), 1)
+    bar_width = max(1, int(slot * 0.34))
+    for i, label in enumerate(labels):
+        center = margin + i * slot + slot / 2
+        for offset, value, color in [(-bar_width, left_values[i], (55,126,184)), (0, right_values[i], (255,127,0))]:
+            x0, y1 = int(center + offset), height - margin
+            y0 = int(y1 - (value / maximum) * (plot_height - 45))
+            draw.rectangle((x0, y0, x0 + bar_width, y1), fill=color)
+        if len(labels) <= 8:
+            draw.text((int(center - slot / 3), height - margin + 8), str(label), fill='black', font=font)
+    output = FIGURES_DIR / filename
+    image.save(output)
+    print(f'Saved figure: {output.relative_to(PROJECT_ROOT)}')
+
+
+target_counts = tweets['Target'].value_counts().sort_index()
+target_distribution = pd.DataFrame({'count': target_counts, 'percentage': target_counts / len(tweets) * 100})
+print(target_distribution.to_string(float_format=lambda value: f'{value:.2f}%'))
+
+# A fixed seed makes the human-review sample reproducible. Sampling is not a relabeling step.
+sample_columns = ['Target', 'Tweet', 'User', 'Date', 'Likes', 'Retweets']
+manual_sample = pd.concat([
+    tweets.loc[tweets['Target'] == target, sample_columns].sample(n=100, random_state=RANDOM_STATE)
+    for target in sorted(tweets['Target'].dropna().unique())
+], ignore_index=True).sort_values(['Target', 'Date']).reset_index(drop=True)
+manual_sample_path = TABLES_DIR / 'target_manual_inspection_sample.csv'
+manual_sample.to_csv(manual_sample_path, index=False)
+print(f'Saved {len(manual_sample):,} rows to {manual_sample_path.relative_to(PROJECT_ROOT)}')
+manual_sample
+
+# TextBlob supplies lexical polarity and subjectivity. Original Target values remain unchanged.
+sentiments = tweets['Tweet'].astype(str).map(lambda text: TextBlob(text).sentiment)
+tweets['sentiment_polarity'] = sentiments.map(lambda sentiment: sentiment.polarity).astype(float)
+tweets['sentiment_subjectivity'] = sentiments.map(lambda sentiment: sentiment.subjectivity).astype(float)
+print(tweets[['sentiment_polarity', 'sentiment_subjectivity']].describe().to_string())
+
+def polarity_category(value):
+    if value < 0:
+        return 'negative'
+    if value > 0:
+        return 'positive'
+    return 'neutral'
+
+tweets['polarity_category'] = tweets['sentiment_polarity'].map(polarity_category)
+summary_rows = []
+for target, group in tweets.groupby('Target', sort=True):
+    polarity = group['sentiment_polarity']
+    summary_rows.append({
+        'Target': target,
+        'tweet_count': int(len(group)),
+        'mean_polarity': polarity.mean(),
+        'median_polarity': polarity.median(),
+        'std_polarity': polarity.std(),
+        'negative_polarity_percentage': (polarity < 0).mean() * 100,
+        'neutral_polarity_percentage': (polarity == 0).mean() * 100,
+        'positive_polarity_percentage': (polarity > 0).mean() * 100
+    })
+sentiment_summary = pd.DataFrame(summary_rows)
+summary_path = TABLES_DIR / 'target_sentiment_summary.csv'
+sentiment_summary.to_csv(summary_path, index=False)
+print(sentiment_summary.to_string(index=False, float_format=lambda value: f'{value:.4f}'))
+print(f'Saved summary to {summary_path.relative_to(PROJECT_ROOT)}')
+
+# Compare distributions in shared bins so class differences are visually assessable.
+bins = 40
+edges_bins = [-1 + 2 * i / bins for i in range(bins + 1)]
+histogram_counts = {}
+for target, group in tweets.groupby('Target'):
+    categories = pd.cut(group['sentiment_polarity'], bins=edges_bins, include_lowest=True)
+    histogram_counts[target] = categories.value_counts(sort=False).tolist()
+histogram_labels = [f'{edges_bins[i]:.1f}' for i in range(bins)]
+save_grouped_bars(histogram_labels, histogram_counts[0.0], histogram_counts[1.0],
+                  'TextBlob polarity distribution by Target', 'target_sentiment_polarity_distribution.png')
+
+means = sentiment_summary.set_index('Target')['mean_polarity']
+save_bar_chart(['Target 0', 'Target 1'], [means[0.0], means[1.0]],
+               'Mean TextBlob polarity by Target', 'target_mean_polarity.png', color=(102, 166, 30))
+
+def save_boxplot(left, right, title, filename):
+    width, height, margin = 1000, 680, 100
+    image = Image.new('RGB', (width, height), 'white')
+    draw, font = ImageDraw.Draw(image), ImageFont.load_default()
+    draw.text((margin, 25), title, fill='black', font=font)
+    y_for = lambda value: int(height - margin - ((value + 1) / 2) * (height - 2 * margin))
+    draw.line((margin, y_for(-1), margin, y_for(1)), fill='black', width=2)
+    draw.line((margin, y_for(0), width-margin, y_for(0)), fill=(130,130,130), width=1)
+    for x, values, label, color in [(360, left, 'Target 0', (55,126,184)), (650, right, 'Target 1', (255,127,0))]:
+        q1, median, q3 = values.quantile([0.25, 0.5, 0.75])
+        low, high = values.min(), values.max()
+        draw.line((x, y_for(low), x, y_for(high)), fill='black', width=2)
+        draw.rectangle((x-55, y_for(q3), x+55, y_for(q1)), outline=color, width=4)
+        draw.line((x-55, y_for(median), x+55, y_for(median)), fill='black', width=2)
+        draw.text((x-35, height-margin+12), label, fill='black', font=font)
+    output = FIGURES_DIR / filename
+    image.save(output)
+    print(f'Saved figure: {output.relative_to(PROJECT_ROOT)}')
+
+save_boxplot(tweets.loc[tweets.Target == 0.0, 'sentiment_polarity'],
+             tweets.loc[tweets.Target == 1.0, 'sentiment_polarity'],
+             'TextBlob polarity boxplot by Target', 'target_polarity_boxplot.png')
+
+category_counts = pd.crosstab(tweets['polarity_category'], tweets['Target']).reindex(['negative', 'neutral', 'positive'], fill_value=0)
+save_grouped_bars(category_counts.index.tolist(), category_counts[0.0].tolist(), category_counts[1.0].tolist(),
+                  'TextBlob polarity-category distribution', 'target_polarity_category_distribution.png')
+
+# Mann-Whitney U is rank based, avoiding a normality assumption for polarity scores.
+# A normal approximation with tie correction is appropriate for these large samples.
+polarity_0 = tweets.loc[tweets.Target == 0.0, 'sentiment_polarity']
+polarity_1 = tweets.loc[tweets.Target == 1.0, 'sentiment_polarity']
+n0, n1 = len(polarity_0), len(polarity_1)
+combined = pd.concat([polarity_0, polarity_1], ignore_index=True)
+rank_sum_0 = combined.rank(method='average').iloc[:n0].sum()
+u_statistic = rank_sum_0 - n0 * (n0 + 1) / 2
+mean_u = n0 * n1 / 2
+tie_term = sum(count ** 3 - count for count in combined.value_counts().values)
+variance_u = n0 * n1 / 12 * ((n0 + n1 + 1) - tie_term / ((n0 + n1) * (n0 + n1 - 1)))
+continuity = 0.5 if u_statistic > mean_u else -0.5
+z_score = (u_statistic - mean_u - continuity) / math.sqrt(variance_u)
+p_value = math.erfc(abs(z_score) / math.sqrt(2))
+if p_value == 0.0:
+    # For extreme z scores, floating-point arithmetic underflows; report a tail approximation instead.
+    log10_p_approx = (math.log(math.sqrt(2 / math.pi)) - z_score ** 2 / 2 - math.log(abs(z_score))) / math.log(10)
+    p_value_display = f'approximately 10^{log10_p_approx:.1f} (normal-tail approximation)'
+else:
+    log10_p_approx = math.log10(p_value)
+    p_value_display = f'{p_value:.6g}'
+# Rank-biserial correlation: negative values indicate lower polarity ranks for Target 0.
+rank_biserial = 1 - (2 * u_statistic) / (n0 * n1)
+test_results = {'mann_whitney_u': float(u_statistic), 'z_score': float(z_score),
+                'two_sided_p_value': p_value_display, 'log10_p_value_approx': float(log10_p_approx),
+                'rank_biserial_correlation': float(rank_biserial)}
+print(json.dumps(test_results, indent=2))
+print('The test quantifies distributional difference; it does not prove that Target labels are semantically perfect.')
+
+# This is a descriptive cross-tabulation, not a forced one-to-one mapping.
+agreement_table = pd.crosstab(tweets['Target'], tweets['polarity_category']).reindex(columns=['negative', 'neutral', 'positive'], fill_value=0)
+agreement_percentages = agreement_table.div(agreement_table.sum(axis=1), axis=0) * 100
+print('Counts:\n' + agreement_table.to_string())
+print('\nRow percentages:\n' + agreement_percentages.to_string(float_format=lambda value: f'{value:.2f}%'))
+
+mean_0, mean_1 = means[0.0], means[1.0]
+neutral_0 = sentiment_summary.loc[sentiment_summary.Target == 0.0, 'neutral_polarity_percentage'].iloc[0]
+neutral_1 = sentiment_summary.loc[sentiment_summary.Target == 1.0, 'neutral_polarity_percentage'].iloc[0]
+direction_0 = 'more negative' if mean_0 < mean_1 else 'not more negative'
+direction_1 = 'more positive' if mean_1 > mean_0 else 'not more positive'
+interpretation = (
+    'The Target variable was interpreted as a binary information-orientation label, where Target 0 represents negative information and Target 1 represents positive information. '
+    'This interpretation was established through manual semantic inspection of sampled tweets and supported using automated sentiment-polarity analysis. '
+    'Because sentiment polarity and information orientation are not identical concepts, some disagreement between Target labels and automated polarity is expected.\n\n'
+    f'In this audit, Target 0 had a mean TextBlob polarity of {mean_0:.4f} and Target 1 had {mean_1:.4f}; therefore Target 0 was {direction_0} than Target 1 and Target 1 was {direction_1} than Target 0 in this lexical measure. '
+    f'Both classes contain overlap and ambiguous cases: neutral polarity accounted for {neutral_0:.2f}% of Target 0 and {neutral_1:.2f}% of Target 1. '
+    f'The Mann-Whitney comparison reports U={u_statistic:.0f}, p={p_value_display}, and rank-biserial correlation={rank_biserial:.4f}. '
+    'Statistical evidence supports a difference in polarity distributions but does not prove an official label definition or perfect semantic agreement. '
+    'Manual inspection remains important because context, sarcasm, topic framing, and information orientation may not be captured by automated polarity.'
+)
+print(interpretation)
+
+reproducibility_summary = {
+    'random_state': RANDOM_STATE,
+    'manual_sample_rows': int(len(manual_sample)),
+    'manual_sample_counts': {str(key): int(value) for key, value in manual_sample['Target'].value_counts().sort_index().items()},
+    'raw_data_modified': False,
+    'derived_tables': [str(manual_sample_path.relative_to(PROJECT_ROOT)), str(summary_path.relative_to(PROJECT_ROOT))]
+}
+print(json.dumps(reproducibility_summary, indent=2))

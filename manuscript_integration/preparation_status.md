@@ -1,0 +1,3 @@
+# Manuscript integration preparation
+
+Canonical tables have been typeset from saved results only. No experiment, model fit or analysis-output write was performed. The current manuscript source is required before authorship, bibliography, section integration, compilation and the final Overleaf ZIP can be completed. These files are integration fragments, not a substitute final manuscript. Input hashes are in canonical_input_hashes.json; all listed files were verified unchanged after preparation. The forecasting fragment preserves all saved cohorts and unavailable values; final placement/widths must be checked against the supplied manuscript class.

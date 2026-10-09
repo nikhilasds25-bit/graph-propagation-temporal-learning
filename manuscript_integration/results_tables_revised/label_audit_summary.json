@@ -1,0 +1,9 @@
+{
+  "agreement_target1_with_polarity_gt0": 0.9466869407567694,
+  "agreement_target1_with_polarity_ge0": 0.7137493420667875,
+  "n": 85495,
+  "mean_by_target": {
+    "0.0": -0.09780855290360696,
+    "1.0": 0.2650576155574774
+  }
+}

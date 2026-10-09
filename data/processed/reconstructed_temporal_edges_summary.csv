@@ -1,0 +1,27 @@
+Metric,Value,Definition
+tweet_rows,85495.0,Input tweet records; no row deduplication
+tweets_without_interactions,32435.0,No recoverable text interaction
+reconstructed_interactions,129604.0,One target event per input tweet
+mention_interactions,88564.0,Retweet > inferred reply > mention priority
+reply_inferred_interactions,41024.0,Retweet > inferred reply > mention priority
+retweet_interactions,16.0,Retweet > inferred reply > mention priority
+reconstructed_unique_edges,109219.0,"Distinct directed case-insensitive Source,Target pairs"
+supplied_unique_edges,109366.0,Distinct directed normalized network pairs
+unique_edge_overlap,109217.0,Size of intersection of directed pair sets
+precision_style_overlap,0.9999816881678096,Intersection / reconstructed unique pairs; supplied network is not ground truth
+coverage,0.9986376021798365,Intersection / supplied unique pairs
+jaccard_overlap,0.998619340209202,Intersection / union of unique directed pairs
+interaction_weighted_overlap,0.9999845683775193,Reconstructed events whose directed pair is supplied / all reconstructed events
+correlation_matched_n,109217.0,Finite aggregate Weight pairs; missing reconstructed counts set to zero only for supplied_zero_filled
+pearson_matched,0.982195523601284,"Count vs summed supplied Weight; descriptive association, not temporal validation"
+spearman_matched,0.9154650597793245,"Count vs summed supplied Weight; descriptive association, not temporal validation"
+correlation_supplied_zero_filled_n,109366.0,Finite aggregate Weight pairs; missing reconstructed counts set to zero only for supplied_zero_filled
+pearson_supplied_zero_filled,0.9817184751858774,"Count vs summed supplied Weight; descriptive association, not temporal validation"
+spearman_supplied_zero_filled,0.9085133953701461,"Count vs summed supplied Weight; descriptive association, not temporal validation"
+invalid_tweet_dates,0.0,Original Date retained; invalid dates excluded from weekly figure
+duplicate_tweet_records,0.0,"Repeated Date,User,Tweet rows retained because no tweet ID exists"
+self_interactions,157.0,Self mentions retained
+invalid_network_handle_endpoints,29.0,Nonstandard supplied identifiers retained for comparison; text extraction uses standard handles
+invalid_weights,0.0,Non-numeric weights excluded from correlations
+supplied_duplicate_normalized_pairs,77.0,Duplicate pair weights summed
+seed,42.0,Python and NumPy seeded; no random sampling used

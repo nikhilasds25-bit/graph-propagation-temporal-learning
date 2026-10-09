@@ -1,0 +1,154 @@
+from pathlib import Path
+import json
+import math
+
+import networkx as nx
+from networkx.algorithms.link_analysis.pagerank_alg import _pagerank_python
+import pandas as pd
+from PIL import Image, ImageDraw, ImageFont
+
+candidates=[Path.cwd().resolve(),Path.cwd().resolve().parent]
+PROJECT_ROOT=next((p for p in candidates if (p/'data'/'processed'/'full_overlap_induced_edges.csv').exists()),None)
+if PROJECT_ROOT is None:
+    raise FileNotFoundError('Run from the project root or its notebooks directory after Stage 4 outputs exist.')
+PROCESSED_DIR=PROJECT_ROOT/'data'/'processed'
+RAW_DIR=PROJECT_ROOT/'data'/'raw'
+FIGURES_DIR=PROJECT_ROOT/'results'/'figures'
+for directory in [PROCESSED_DIR,FIGURES_DIR]:
+    directory.mkdir(parents=True,exist_ok=True)
+
+# Reuse Stage 4's complete induced edge list and content/static feature table.
+full_edges=pd.read_csv(PROCESSED_DIR/'full_overlap_induced_edges.csv')
+full_features=pd.read_csv(PROCESSED_DIR/'diffusion_ready_node_features_full.csv')
+full_user_count=len(full_features)
+full_edge_count=len(full_edges)
+print(f'Loaded Stage 4 population: {full_user_count:,} users and {full_edge_count:,} induced edges')
+
+def save_bar_chart(labels,values,title,filename,color=(55,126,184)):
+    width,height,margin=1200,680,85
+    image=Image.new('RGB',(width,height),'white')
+    draw,font=ImageDraw.Draw(image),ImageFont.load_default()
+    maximum=max(values) if values else 1
+    draw.text((margin,25),title,fill='black',font=font)
+    draw.line((margin,height-margin,width-margin,height-margin),fill='black',width=2)
+    draw.line((margin,margin,margin,height-margin),fill='black',width=2)
+    slot=(width-2*margin)/max(len(values),1); bar_width=max(2,int(slot*.7))
+    for i,(label,value) in enumerate(zip(labels,values)):
+        x0=int(margin+i*slot+(slot-bar_width)/2); y0=int(height-margin-(value/maximum)*(height-2*margin-45)) if maximum else height-margin
+        draw.rectangle((x0,y0,x0+bar_width,height-margin),fill=color)
+        draw.text((x0,max(margin+22,y0-15)),f'{value:.3g}',fill='black',font=font)
+        draw.text((x0,height-margin+8),str(label)[:20],fill='black',font=font)
+    output=FIGURES_DIR/filename; image.save(output); print(f'Saved figure: {output.relative_to(PROJECT_ROOT)}')
+
+def save_histogram(values,title,filename,bins=40):
+    series=pd.Series(values).dropna().astype(float).map(math.log1p)
+    low,high=series.min(),series.max()
+    step=(high-low)/bins if high!=low else 1
+    counts=[0]*bins
+    for value in series: counts[min(int((value-low)/step),bins-1)] += 1
+    save_bar_chart([f'{low+i*step:.2f}' for i in range(bins)],counts,title,filename,color=(77,175,74))
+
+
+# Add every Stage 4 node before edges so the component search correctly retains the original isolated-node context.
+full_graph=nx.DiGraph()
+full_graph.add_nodes_from(full_features['node_id'].astype(str))
+full_graph.add_weighted_edges_from(full_edges[['Source','Target','Weight']].itertuples(index=False,name=None),weight='Weight')
+weak_components=list(nx.weakly_connected_components(full_graph))
+largest_wcc=max(weak_components,key=len)
+diffusion_users=set(largest_wcc)
+diffusion_edges=full_edges.loc[full_edges['Source'].isin(diffusion_users)&full_edges['Target'].isin(diffusion_users)].copy()
+G=nx.DiGraph(); G.add_nodes_from(sorted(diffusion_users)); G.add_weighted_edges_from(diffusion_edges[['Source','Target','Weight']].itertuples(index=False,name=None),weight='Weight')
+assert set(G.nodes())==diffusion_users
+assert nx.is_weakly_connected(G)
+print(f'Largest weak component includes all selected users: {nx.is_weakly_connected(G)}')
+print(f'Selected users: {G.number_of_nodes():,}; selected directed edges: {G.number_of_edges():,}')
+
+# The selected graph is weakly connected, not automatically strongly connected.
+strong_components=list(nx.strongly_connected_components(G))
+largest_scc_size=max(map(len,strong_components))
+connectivity_summary={'weakly_connected':nx.is_weakly_connected(G),'strongly_connected':nx.is_strongly_connected(G),'strong_component_count':len(strong_components),'largest_strong_component_size':largest_scc_size,'self_loops':len(list(nx.selfloop_edges(G)))}
+print(json.dumps(connectivity_summary,indent=2))
+print('Directed paths are not available between every ordered node pair: connectivity is through the weakly connected underlying graph, not full strong connectivity.')
+
+diffusion_edges.to_csv(PROCESSED_DIR/'diffusion_population_edges.csv',index=False)
+
+network_features=pd.DataFrame({'node_id':list(G.nodes())})
+network_features['in_degree']=network_features['node_id'].map(dict(G.in_degree())).astype(int)
+network_features['out_degree']=network_features['node_id'].map(dict(G.out_degree())).astype(int)
+network_features['degree']=network_features['in_degree']+network_features['out_degree']
+network_features['weighted_in_degree']=network_features['node_id'].map(dict(G.in_degree(weight='Weight'))).astype(float)
+network_features['weighted_out_degree']=network_features['node_id'].map(dict(G.out_degree(weight='Weight'))).astype(float)
+network_features['weighted_degree']=network_features['weighted_in_degree']+network_features['weighted_out_degree']
+# PageRank and trust are calculated for this connected population, not copied from full-graph rankings.
+pagerank=_pagerank_python(G,alpha=0.85,weight='Weight',max_iter=200,tol=1e-10)
+network_features['pagerank']=network_features['node_id'].map(pagerank).astype(float)
+def min_max(series):
+    low,high=series.min(),series.max()
+    return pd.Series(0.0,index=series.index) if low==high else (series-low)/(high-low)
+network_features['degree_norm']=min_max(network_features['degree'])
+network_features['pagerank_norm']=min_max(network_features['pagerank'])
+network_features['trust_score']=.6*network_features['degree_norm']+.4*network_features['pagerank_norm']
+assert ((network_features[['degree_norm','pagerank_norm','trust_score']]>=0)&(network_features[['degree_norm','pagerank_norm','trust_score']]<=1)).all().all()
+network_statistics=network_features[['in_degree','out_degree','weighted_degree','pagerank','trust_score']].describe().T
+print(network_statistics.to_string())
+save_histogram(network_features['degree'],'Diffusion-population degree distribution (log1p degree)','diffusion_population_degree_distribution.png')
+
+# Stage 4 already computed full-population tweet counts, label counts, and TextBlob aggregates.
+content_columns=['node_id','tweet_count','negative_tweet_count','positive_tweet_count','negative_ratio','positive_ratio','avg_polarity','avg_subjectivity']
+selected_content=full_features[content_columns].copy()
+diffusion_population=network_features.merge(selected_content,on='node_id',how='left')
+assert diffusion_population['tweet_count'].notna().all()
+def dominant_target(row):
+    if row['negative_tweet_count']>row['positive_tweet_count']: return 'Target 0'
+    if row['positive_tweet_count']>row['negative_tweet_count']: return 'Target 1'
+    return 'tie'
+diffusion_population['dominant_target']=diffusion_population.apply(dominant_target,axis=1)
+ordered=['node_id','tweet_count','negative_tweet_count','positive_tweet_count','negative_ratio','positive_ratio','dominant_target','avg_polarity','avg_subjectivity','in_degree','out_degree','degree','weighted_in_degree','weighted_out_degree','weighted_degree','pagerank','degree_norm','pagerank_norm','trust_score']
+diffusion_population=diffusion_population[ordered].sort_values('node_id').reset_index(drop=True)
+diffusion_population.to_csv(PROCESSED_DIR/'diffusion_population_users.csv',index=False)
+
+# Tweets are filtered only by membership in the complete selected component; labels retain their natural distribution.
+tweets=pd.read_csv(RAW_DIR/'master_tweets.csv')
+diffusion_tweets=tweets.loc[tweets['User'].isin(diffusion_users)].copy()
+diffusion_tweets.to_csv(PROCESSED_DIR/'diffusion_population_tweets.csv',index=False)
+target_counts=diffusion_tweets['Target'].value_counts().sort_index()
+content_summary={
+    'total_tweets':len(diffusion_tweets),
+    'target_0_count':int(target_counts.get(0.0,0)), 'target_0_pct':100*target_counts.get(0.0,0)/len(diffusion_tweets),
+    'target_1_count':int(target_counts.get(1.0,0)), 'target_1_pct':100*target_counts.get(1.0,0)/len(diffusion_tweets),
+    'users_target_0':int((diffusion_population['negative_tweet_count']>0).sum()),
+    'users_target_1':int((diffusion_population['positive_tweet_count']>0).sum()),
+    'users_both':int(((diffusion_population['negative_tweet_count']>0)&(diffusion_population['positive_tweet_count']>0)).sum()),
+    'users_only_target_0':int(((diffusion_population['negative_tweet_count']>0)&(diffusion_population['positive_tweet_count']==0)).sum()),
+    'users_only_target_1':int(((diffusion_population['negative_tweet_count']==0)&(diffusion_population['positive_tweet_count']>0)).sum())
+}
+print(json.dumps(content_summary,indent=2))
+save_bar_chart(['Target 0','Target 1'],[content_summary['target_0_count'],content_summary['target_1_count']],'Diffusion-population Target-label distribution','diffusion_population_target_distribution.png',color=(152,78,163))
+
+diffusion_tweets['Date_parsed']=pd.to_datetime(diffusion_tweets['Date'],utc=True,errors='coerce')
+if diffusion_tweets['Date_parsed'].isna().any(): raise ValueError('Unparseable tweet dates in selected population.')
+diffusion_tweets['month']=diffusion_tweets['Date_parsed'].dt.tz_localize(None).dt.to_period('M').astype(str)
+months=pd.period_range('2022-10','2023-03',freq='M').astype(str).tolist()
+monthly_total=diffusion_tweets.groupby('month').size().reindex(months,fill_value=0)
+monthly_labels=pd.crosstab(diffusion_tweets['month'],diffusion_tweets['Target']).reindex(index=months,columns=[0.0,1.0],fill_value=0)
+monthly_active=diffusion_tweets.groupby('month')['User'].nunique().reindex(months,fill_value=0)
+monthly_summary=pd.DataFrame({'total_tweets':monthly_total,'target_0_tweets':monthly_labels[0.0],'target_1_tweets':monthly_labels[1.0],'negative_percentage':100*monthly_labels[0.0]/monthly_total,'positive_percentage':100*monthly_labels[1.0]/monthly_total,'active_users':monthly_active}).fillna(0).reset_index().rename(columns={'month':'month'})
+print(monthly_summary.to_string(index=False,float_format=lambda value:f'{value:.2f}'))
+monthly_summary.to_csv(PROCESSED_DIR/'diffusion_population_monthly_summary.csv',index=False)
+save_bar_chart(months,monthly_total.astype(int).tolist(),'Diffusion-population monthly tweet activity','diffusion_population_monthly_activity.png',color=(228,26,28))
+
+remaining_users=full_user_count-G.number_of_nodes()
+save_bar_chart(['Full overlap','Largest WCC','Outside WCC'],[full_user_count,G.number_of_nodes(),remaining_users],'Full population versus connected diffusion population','diffusion_population_component_structure.png',color=(255,127,0))
+user_retention=100*G.number_of_nodes()/full_user_count
+edge_retention=100*G.number_of_edges()/full_edge_count
+date_range={'start':str(diffusion_tweets['Date_parsed'].min()),'end':str(diffusion_tweets['Date_parsed'].max())}
+manifest={
+    'full_population_users':full_user_count,'connected_population_users':G.number_of_nodes(),'full_induced_edges':full_edge_count,'connected_population_edges':G.number_of_edges(),
+    'user_retention_percentage':user_retention,'edge_retention_percentage':edge_retention,'density':nx.density(G),
+    'target_0_count':content_summary['target_0_count'],'target_1_count':content_summary['target_1_count'],'total_tweets':content_summary['total_tweets'],
+    'date_start_utc':date_range['start'],'date_end_utc':date_range['end'],'weak_component_count_full_population':len(weak_components),
+    'selected_population_weakly_connected':nx.is_weakly_connected(G),'selected_strong_component_count':len(strong_components),'largest_strong_component_size':largest_scc_size,'self_loops':connectivity_summary['self_loops']
+}
+pd.DataFrame([manifest]).to_csv(PROCESSED_DIR/'diffusion_population_manifest.csv',index=False)
+print(json.dumps(manifest,indent=2))
+print('\nResearch readiness: the complete largest weak component provides a natural connected population for graph propagation without arbitrary sampling, and it contains both Target labels. It represents the full set of users that can participate through weak network connectivity. The graph is not strongly connected, so directed reachability is asymmetric and simulations must respect edge direction. Edges are static because no interaction timestamps are available; monthly tweet features provide temporal context but do not make the edges temporal.')

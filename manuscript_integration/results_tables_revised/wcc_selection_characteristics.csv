@@ -1,0 +1,3 @@
+group,users,tweets,median_tweets_per_user,mean_target0_share,median_likes_per_tweet,median_retweets_per_tweet
+Inside WCC,17598,37115,1.0,0.5108605205262632,4.0,4.0
+Outside WCC,19016,23637,1.0,0.5066764412192307,3.0,4.0

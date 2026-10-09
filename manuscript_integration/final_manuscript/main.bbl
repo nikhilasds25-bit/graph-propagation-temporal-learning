@@ -1,0 +1,156 @@
+\begin{thebibliography}{22}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Brin and Page(1998)]{brin1998}
+Sergey Brin and Lawrence Page.
+\newblock The anatomy of a large-scale hypertextual web search engine.
+\newblock In \emph{Proceedings of the Seventh International World Wide Web
+  Conference}, pages 107--117, 1998.
+
+\bibitem[Budak et~al.(2011)Budak, Agrawal, and El~Abbadi]{budak2011}
+Ceren Budak, Divyakant Agrawal, and Amr El~Abbadi.
+\newblock Limiting the spread of misinformation in social networks.
+\newblock In \emph{Proceedings of the 20th International Conference on World
+  Wide Web}, 2011.
+\newblock \doi{10.1145/1963405.1963499}.
+
+\bibitem[Centola(2010)]{centola2010}
+Damon Centola.
+\newblock The spread of behavior in an online social network experiment.
+\newblock \emph{Science}, 329\penalty0 (5996):\penalty0 1194--1197, 2010.
+\newblock \doi{10.1126/science.1185231}.
+
+\bibitem[Clauset et~al.(2009)Clauset, Shalizi, and Newman]{clauset2009}
+Aaron Clauset, Cosma~Rohilla Shalizi, and M.~E.~J. Newman.
+\newblock Power-law distributions in empirical data.
+\newblock \emph{SIAM Review}, 51\penalty0 (4):\penalty0 661--703, 2009.
+\newblock \doi{10.1137/070710111}.
+
+\bibitem[Daley and Kendall(1964)]{daley1964}
+D.~J. Daley and D.~G. Kendall.
+\newblock Epidemics and rumours.
+\newblock \emph{Nature}, 204:\penalty0 1118, 1964.
+\newblock \doi{10.1038/2041118a0}.
+
+\bibitem[Hamilton et~al.(2017)Hamilton, Ying, and Leskovec]{hamilton2017}
+William~L. Hamilton, Rex Ying, and Jure Leskovec.
+\newblock Inductive representation learning on large graphs.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~30, pages 1024--1034, 2017.
+
+\bibitem[{Indian Political Tweet Engagement Dataset}(2026)]{kaggleipte}
+{Indian Political Tweet Engagement Dataset}.
+\newblock Indian political tweet engagement dataset.
+\newblock
+  \url{https://www.kaggle.com/datasets/mannattrivedi/indian-political-tweet-engagement-dataset},
+  2026.
+\newblock Accessed September 2026. The dataset card reports 85,154 posts; the
+  working CSV analyzed here contains 85,495 rows.
+
+\bibitem[Karrer and Newman(2010)]{karrer2010}
+Brian Karrer and M.~E.~J. Newman.
+\newblock Message passing approach for general epidemic models.
+\newblock \emph{Physical Review E}, 82:\penalty0 016101, 2010.
+\newblock \doi{10.1103/PhysRevE.82.016101}.
+
+\bibitem[Kempe et~al.(2003)Kempe, Kleinberg, and Tardos]{kempe2003}
+David Kempe, Jon Kleinberg, and {\'{E}}va Tardos.
+\newblock Maximizing the spread of influence through a social network.
+\newblock In \emph{Proceedings of the Ninth ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, pages 137--146, 2003.
+\newblock \doi{10.1145/956750.956769}.
+
+\bibitem[Kermack and McKendrick(1927)]{kermack1927}
+William~O. Kermack and A.~G. McKendrick.
+\newblock A contribution to the mathematical theory of epidemics.
+\newblock \emph{Proceedings of the Royal Society A}, 115\penalty0
+  (772):\penalty0 700--721, 1927.
+\newblock \doi{10.1098/rspa.1927.0118}.
+
+\bibitem[Kipf and Welling(2017)]{kipf2017}
+Thomas~N. Kipf and Max Welling.
+\newblock Semi-supervised classification with graph convolutional networks.
+\newblock In \emph{International Conference on Learning Representations}, 2017.
+
+\bibitem[Kumar et~al.(2019)Kumar, Zhang, and Leskovec]{kumar2019}
+Srijan Kumar, Xikun Zhang, and Jure Leskovec.
+\newblock Predicting dynamic embedding trajectory in temporal interaction
+  networks.
+\newblock In \emph{Proceedings of the 25th ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, pages 1269--1278, 2019.
+\newblock \doi{10.1145/3292500.3330895}.
+
+\bibitem[Liu et~al.(2016)Liu, Diao, Zhu, and Liu]{shir2016}
+Y.~Liu, S.-M. Diao, Y.-X. Zhu, and Q.~Liu.
+\newblock Shir competitive information diffusion model for online social media.
+\newblock \emph{Physica A: Statistical Mechanics and its Applications},
+  461:\penalty0 543--553, 2016.
+\newblock \doi{10.1016/j.physa.2016.06.080}.
+
+\bibitem[Loria(2018)]{textblob}
+Steven Loria.
+\newblock Textblob: Simplified text processing.
+\newblock \url{https://textblob.readthedocs.io/}, 2018.
+
+\bibitem[Lu et~al.(2024)Lu, Wang, and Wu]{lu2024}
+H.~Lu, Y.~Wang, and J.~Wu.
+\newblock An efficient competitive control mechanism for negative information
+  spread in online social networks.
+\newblock \emph{International Journal of Bifurcation and Chaos}, 34\penalty0
+  (14), 2024.
+\newblock \doi{10.1142/S0218127424501724}.
+
+\bibitem[Pareja et~al.(2020)Pareja, Domeniconi, Chen, Ma, Suzumura, Kanezashi,
+  Kaler, Schardl, and Leiserson]{pareja2020}
+Aldo Pareja, Giacomo Domeniconi, Jie Chen, Tengfei Ma, Toyotaro Suzumura,
+  Hiroki Kanezashi, Tim Kaler, Tao~B. Schardl, and Charles~E. Leiserson.
+\newblock Evolvegcn: Evolving graph convolutional networks for dynamic graphs.
+\newblock In \emph{Proceedings of the Thirty-Fourth AAAI Conference on
+  Artificial Intelligence}, pages 5363--5370, 2020.
+\newblock \doi{10.1609/AAAI.V34I04.5984}.
+
+\bibitem[Rossi et~al.(2020)Rossi, Chamberlain, Frasca, Eynard, Monti, and
+  Bronstein]{rossi2020}
+Emanuele Rossi, Ben Chamberlain, Fabrizio Frasca, Davide Eynard, Federico
+  Monti, and Michael Bronstein.
+\newblock Temporal graph networks for deep learning on dynamic graphs, 2020.
+\newblock arXiv:2006.10637.
+
+\bibitem[Sharma et~al.(2026)Sharma, Aishwaraya, Mondal, Boya, Soula, and
+  Muni]{sharma2026}
+Aman Sharma, Aishwaraya, Bapin Mondal, Bertrand Frederick Boui~A Boya, Yamina
+  Soula, and Sishu~Shankar Muni.
+\newblock Sentiment-aware competitive graph diffusion model for negative
+  information control in online social networks.
+\newblock \emph{Chaos, Solitons \& Fractals}, 209:\penalty0 118535, 2026.
+\newblock \doi{10.1016/j.chaos.2026.118535}.
+
+\bibitem[Traag et~al.(2019)Traag, Waltman, and van Eck]{traag2019}
+V.~A. Traag, L.~Waltman, and N.~J. van Eck.
+\newblock From louvain to leiden: Guaranteeing well-connected communities.
+\newblock \emph{Scientific Reports}, 9:\penalty0 5233, 2019.
+\newblock \doi{10.1038/s41598-019-41695-z}.
+
+\bibitem[Veli\v{c}kovi\'c et~al.(2018)Veli\v{c}kovi\'c, Cucurull, Casanova,
+  Romero, Li\`o, and Bengio]{velickovic2018}
+Petar Veli\v{c}kovi\'c, Guillem Cucurull, Arantxa Casanova, Adriana Romero,
+  Pietro Li\`o, and Yoshua Bengio.
+\newblock Graph attention networks.
+\newblock In \emph{International Conference on Learning Representations}, 2018.
+
+\bibitem[Vosoughi et~al.(2018)Vosoughi, Roy, and Aral]{vosoughi2018}
+Soroush Vosoughi, Deb Roy, and Sinan Aral.
+\newblock The spread of true and false news online.
+\newblock \emph{Science}, 359\penalty0 (6380):\penalty0 1146--1151, 2018.
+\newblock \doi{10.1126/science.aap9559}.
+
+\bibitem[Xu et~al.(2020)Xu, Ruan, Korpeoglu, Kumar, and Achan]{xu2020}
+Da~Xu, Chuanwei Ruan, Evren Korpeoglu, Sushant Kumar, and Kannan Achan.
+\newblock Inductive representation learning on temporal graphs.
+\newblock In \emph{International Conference on Learning Representations}, 2020.
+
+\end{thebibliography}

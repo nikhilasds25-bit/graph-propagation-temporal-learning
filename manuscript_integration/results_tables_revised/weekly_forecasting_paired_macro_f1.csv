@@ -1,0 +1,7 @@
+Comparison,Mean_Difference,CI_Lower,CI_Upper
+Reversed GAT - Persistence,-0.0453,-0.0551,-0.0349
+Reversed GAT - MLP,0.0421,0.0211,0.064
+Reversed GAT - matched feature-only,0.0231,0.0135,0.0342
+Temporal GCN - aligned GRU,0.002,-0.0033,0.0068
+Temporal GCN - best static graph,-0.0047,-0.0159,0.0069
+History + GAT - history + MLP,-0.0312,-0.0444,-0.0208

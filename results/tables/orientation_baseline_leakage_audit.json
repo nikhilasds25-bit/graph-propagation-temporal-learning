@@ -1,0 +1,39 @@
+{
+  "all_assertions_passed": true,
+  "features": [
+    "in_degree",
+    "out_degree",
+    "in_strength",
+    "out_strength",
+    "PageRank",
+    "reverse_PageRank"
+  ],
+  "feature_event_timestamps_strictly_before_label_week": true,
+  "exclusive_feature_cutoff_equals_label_monday": true,
+  "historical_node_membership_verified_from_prior_interactions": true,
+  "training_strictly_before_validation_and_test": true,
+  "scaler_training_only_sample_count_and_means_verified": true,
+  "hyperparameters_selected_by_validation_macro_f1_only": true,
+  "threshold_fixed_a_priori": 0.5,
+  "test_weeks_chronological_and_paired": true,
+  "no_duplicate_user_week_records": true,
+  "no_same_week_target_features": true,
+  "raw_and_existing_input_sha256_unchanged": true,
+  "input_hashes": {
+    "data\\processed\\reconstructed_temporal_edges.csv": "b8619e4544bc99e6d32ca198e6212784be86742625a166b12f15744a967c6f82",
+    "data\\processed\\weekly_temporal_node_features.csv": "76908e12f03525cb099f9ca13128440ceefd4b77dad84ea85d6d61075ba28ee2",
+    "data\\raw\\master_tweets.csv": "bb19437507a51f52b785223e41a282af29e4647c4588f2d9e660ce87f0ebb4a9",
+    "data\\raw\\network_edges.csv": "429eb1bda7bcc887cbd6e724d56cca114d5d92b1e7c2c4a7df1101e8294ed019",
+    "results\\tables\\weekly_temporal_graph_summary.csv": "0948deacaa71e0d637321e2d93f10f9d82f262cf4d8c361717a2823a3931cae9"
+  },
+  "seed": 42,
+  "minimum_training_weeks": 8,
+  "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "bootstrap_draws": 10000
+}

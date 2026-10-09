@@ -1,0 +1,17 @@
+{
+  "gamma": 0.25,
+  "rho_base_q": 1.1410611928717451,
+  "rho_neg_q": 0.9162578922346523,
+  "rho_pos_q": 0.7879882379480003,
+  "beta_c_base_linearized": 0.21909429709971734,
+  "beta_c_neg_linearized": 0.2728489458249331,
+  "beta_c_pos_linearized": 0.31726361887205934,
+  "phase_runs_per_cell": 40,
+  "competition_runs_per_cell": 20,
+  "competition_total_seed_fraction": 0.01,
+  "simulation_update": "synchronous transmissions from active nodes; recovery after exposure attempts; new infections activated for next step",
+  "seeds_count_in_final_size": true,
+  "edge_factor": "log1p(weight)/max(log1p(weight))",
+  "structural_influence": "0.6 rank(out-strength)+0.4 rank(reverse PageRank)",
+  "orientation_modifier": "0.5+0.5 user Target-class ratio; missing=0.5"
+}

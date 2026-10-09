@@ -1,0 +1,67 @@
+{
+  "features": [
+    "in_degree",
+    "out_degree",
+    "in_strength",
+    "out_strength",
+    "PageRank",
+    "reverse_PageRank",
+    "Previous_Label",
+    "Previous_Label_Available",
+    "Past_Class0_Rate",
+    "Past_Class1_Rate",
+    "Past_Label_Count",
+    "Weeks_Since_Last_Label"
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "grid": [
+    {
+      "hidden": 16,
+      "dropout": 0.0,
+      "lr": 0.001,
+      "weight_decay": 0.0,
+      "heads": 2
+    },
+    {
+      "hidden": 32,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "heads": 4
+    },
+    {
+      "hidden": 64,
+      "dropout": 0.5,
+      "lr": 0.0003,
+      "weight_decay": 0.0001,
+      "heads": 4
+    }
+  ],
+  "selection": "common MLP/reverse-GAT mean validation macro-F1, seed42",
+  "lr_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "threshold": 0.5,
+  "max_epochs": 30,
+  "patience": 4,
+  "fanout": 16,
+  "workers": 3,
+  "missing_rate": "training target-label prevalence",
+  "recency_cap": "max training observed label recency + 1",
+  "sensitivity": "held-out evaluation subset only; no refit"
+}

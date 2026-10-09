@@ -1,0 +1,3326 @@
+note: generating format "latex"
+(texputnote: downloading tectonic-format-latex.tex
+ (tectonic-format-latex.texnote: downloading xelatex.ini
+ (xelatex.ininote: downloading latex.ltx
+ (latex.ltxnote: downloading texsys.cfg
+ (texsys.cfg)
+./texsys.aux found
+
+
+\@currdir set to: ./.
+
+
+Assuming \openin and \input 
+have the same search path.
+
+
+Defining UNIX/DOS style filename parser.
+
+catcodes, registers, parameters,
+LaTeX2e <2021-11-15> patch level 1
+note: downloading expl3.ltx
+(expl3.ltxnote: downloading expl3-code.tex
+ (expl3-code.texnote: downloading cmr10.tfm
+note: downloading UnicodeData.txt
+note: downloading CaseFolding.txt
+note: downloading SpecialCasing.txt
+)) hacks, document commands, control, par, spacing,
+files, font encodings, lengths,note: downloading fonttext.cfg
+
+====================================
+
+Local config file fonttext.cfg used
+
+====================================
+(fonttext.cfgnote: downloading fonttext.ltx
+ (fonttext.ltx
+=== Don't modify this file, use a .cfg file instead ===
+
+note: downloading omlenc.def
+(omlenc.def)note: downloading omsenc.def
+ (omsenc.def)note: downloading ot1enc.def
+ (ot1enc.def)note: downloading t1enc.def
+ (t1enc.def)note: downloading ts1enc.def
+ (ts1enc.def)note: downloading tuenc.def
+ (tuenc.def)note: downloading tulmr.fd
+
+(tulmr.fd)note: downloading tulmss.fd
+ (tulmss.fd)note: downloading tulmtt.fd
+ (tulmtt.fd)note: downloading ts1lmr.fd
+ (ts1lmr.fd)note: downloading t1cmr.fd
+ (t1cmr.fd)note: downloading ot1cmr.fd
+ (ot1cmr.fd)note: downloading ot1cmss.fd
+
+(ot1cmss.fd)note: downloading ot1cmtt.fd
+ (ot1cmtt.fd)))note: downloading fontmath.cfg
+
+====================================
+
+Local config file fontmath.cfg used
+
+====================================
+(fontmath.cfgnote: downloading fontmath.ltx
+ (fontmath.ltx
+=== Don't modify this file, use a .cfg file instead ===
+
+note: downloading omlcmm.fd
+(omlcmm.fd)note: downloading omscmsy.fd
+ (omscmsy.fd)note: downloading omxcmex.fd
+ (omxcmex.fd)note: downloading ucmr.fd
+ (ucmr.fd)))note: downloading preload.cfg
+
+====================================
+
+Local config file preload.cfg used
+
+=====================================
+(preload.cfgnote: downloading preload.ltx
+ (preload.ltxnote: downloading cmex10.tfm
+note: downloading line10.tfm
+note: downloading linew10.tfm
+note: downloading lcircle10.tfm
+note: downloading lcirclew10.tfm
+note: downloading cmr5.tfm
+note: downloading cmr7.tfm
+note: downloading cmmi5.tfm
+note: downloading cmmi7.tfm
+note: downloading cmmi10.tfm
+note: downloading cmsy5.tfm
+note: downloading cmsy7.tfm
+note: downloading cmsy10.tfm
+)) page nos., x-ref, environments, center, verbatim,
+math definitions, boxes, title, sectioning, contents, floats, footnotes,
+index, bibliography,note: downloading atveryend.sty
+note: downloading atveryend-ltx.sty
+note: downloading atbegshi.sty
+note: downloading atbegshi-ltx.sty
+ output,  Unicode character data,note: downloading load-unicode-data.tex
+ (load-unicode-data 
+load-unicode-data.tex v1.15 (2021-09-15)
+Reading Unicode data
+# UnicodeData-14.0.0.txt
+# Modified 2021-09-15 11:00:00 GMT [JAW]
+)note: downloading hyphen.cfg
+
+===========================================
+Local configuration file hyphen.cfg used
+===========================================
+(hyphen.cfgnote: downloading xebabel.def
+ (xebabel.def)note: downloading language.dat
+note: downloading hyphen.tex
+ (hyphen.tex)note: downloading dumyhyph.tex
+ (dumyhyph.tex)note: downloading zerohyph.tex
+ (zerohyph.tex)note: downloading dehypht-x-2022-03-16.tex
+
+(dehypht-x-2022-03-16.tex
+dehyph-exptl: using a TeX engine with native UTF-8 support.note: downloading dehypht-x-2022-03-16.pat
+
+(dehypht-x-2022-03-16.pat
+German Hyphenation Patterns (Traditional Orthography) `dehypht-x' 2022-03-16 (W
+L)))note: downloading dehyphn-x-2022-03-16.tex
+ (dehyphn-x-2022-03-16.tex
+dehyph-exptl: using a TeX engine with native UTF-8 support.note: downloading dehyphn-x-2022-03-16.pat
+
+(dehyphn-x-2022-03-16.pat
+German Hyphenation Patterns (Reformed Orthography, 2006) `dehyphn-x' 2022-03-16
+ (WL)))note: downloading loadhyph-af.tex
+ (loadhyph-af.tex UTF-8 Afrikaans hyphenation patternsnote: downloading hyph-af.tex
+ (hyph-af.tex)note: downloading hyph-quote-af.tex
+
+(hyph-quote-af.tex))note: downloading loadhyph-grc.tex
+ (loadhyph-grc.tex
+UTF-8 Hyphenation patterns for Ancient Greeknote: downloading hyph-grc.tex
+ (hyph-grc.tex))note: downloading ibyhyph.tex
+ (ibyhyph.tex
+Greek hyphenation patterns for Ibycus encoding, v3.0) (zerohyph.tex)note: downloading loadhyph-hy.tex
+
+(loadhyph-hy.tex UTF-8 Armenian hyphenation patternsnote: downloading hyph-hy.tex
+ (hyph-hy.tex))note: downloading loadhyph-eu.tex
+
+(loadhyph-eu.tex UTF-8 Basque hyphenation patternsnote: downloading hyph-eu.tex
+ (hyph-eu.tex))note: downloading loadhyph-be.tex
+
+(loadhyph-be.tex UTF-8 Belarusian hyphenation patternsnote: downloading hyph-be.tex
+ (hyph-be.tex)note: downloading hyph-quote-be.tex
+
+(hyph-quote-be.tex))note: downloading loadhyph-bg.tex
+ (loadhyph-bg.tex UTF-8 Bulgarian hyphenation patternsnote: downloading hyph-bg.tex
+
+(hyph-bg.tex
+Bulgarian hyphenation patterns (options: --safe-morphology --standalone-tex, ve
+rsion 21 October 2017)))note: downloading loadhyph-ca.tex
+ (loadhyph-ca.tex UTF-8 Catalan hyphenation patternsnote: downloading hyph-ca.tex
+
+(hyph-ca.tex))note: downloading loadhyph-zh-latn-pinyin.tex
+ (loadhyph-zh-latn-pinyin.tex
+UTF-8 Pinyin Hyphenation Patterns (with tone markers) 2018-11-25 (WL)note: downloading hyph-zh-latn-pinyin.tex
+
+(hyph-zh-latn-pinyin.tex))note: downloading loadhyph-cu.tex
+ (loadhyph-cu.tex
+UTF-8 Church Slavonic hyphenation patternsnote: downloading hyph-cu.tex
+ (hyph-cu.tex))note: downloading loadhyph-cop.tex
+ (loadhyph-cop.tex
+UTF-8 Coptic hyphenation patternsnote: downloading hyph-cop.tex
+ (hyph-cop.tex))note: downloading loadhyph-hr.tex
+ (loadhyph-hr.tex
+UTF-8 Croatian hyphenation patternsnote: downloading hyph-hr.tex
+ (hyph-hr.tex))note: downloading loadhyph-cs.tex
+ (loadhyph-cs.tex
+UTF-8 Czech hyphenation patternsnote: downloading hyph-cs.tex
+ (hyph-cs.tex))note: downloading loadhyph-da.tex
+ (loadhyph-da.tex
+UTF-8 Danish hyphenation patternsnote: downloading hyph-da.tex
+ (hyph-da.tex))note: downloading loadhyph-nl.tex
+ (loadhyph-nl.tex
+UTF-8 Dutch hyphenation patternsnote: downloading hyph-nl.tex
+ (hyph-nl.tex))note: downloading loadhyph-en-gb.tex
+ (loadhyph-en-gb.tex
+ASCII Hyphenation patterns for British Englishnote: downloading hyph-en-gb.tex
+ (hyph-en-gb.tex))note: downloading loadhyph-en-us.tex
+
+(loadhyph-en-us.tex ASCII Hyphenation patterns for American Englishnote: downloading hyph-en-us.tex
+
+(hyph-en-us.tex))note: downloading loadhyph-eo.tex
+ (loadhyph-eo.tex UTF-8 Esperanto hyphenation patternsnote: downloading hyph-eo.tex
+
+(hyph-eo.tex))note: downloading loadhyph-et.tex
+ (loadhyph-et.tex UTF-8 Estonian hyphenation patternsnote: downloading hyph-et.tex
+
+(hyph-et.tex))note: downloading loadhyph-mul-ethi.tex
+ (loadhyph-mul-ethi.tex UTF-8 Pan-Ethiopic hyphenation patternsnote: downloading hyph-mul-ethi.tex
+
+(hyph-mul-ethi.tex)) (zerohyph.tex)note: downloading loadhyph-fi.tex
+ (loadhyph-fi.tex
+UTF-8 Finnish hyphenation patternsnote: downloading hyph-fi.tex
+ (hyph-fi.tex))note: downloading loadhyph-fi-x-school.tex
+ (loadhyph-fi-x-school.tex
+UTF-8 Finnish hyphenation patterns for schoolnote: downloading hyph-fi-x-school.tex
+ (hyph-fi-x-school.tex))note: downloading loadhyph-fr.tex
+
+(loadhyph-fr.tex UTF-8 French hyphenation patternsnote: downloading hyph-fr.tex
+ (hyph-fr.tex)note: downloading hyph-quote-fr.tex
+
+(hyph-quote-fr.tex))note: downloading loadhyph-fur.tex
+ (loadhyph-fur.tex UTF-8 Friulan hyphenation patternsnote: downloading hyph-fur.tex
+
+(hyph-fur.tex)note: downloading hyph-quote-fur.tex
+ (hyph-quote-fur.tex))note: downloading loadhyph-gl.tex
+ (loadhyph-gl.tex
+UTF-8 Galician hyphenation patternsnote: downloading hyph-gl.tex
+ (hyph-gl.tex))note: downloading loadhyph-ka.tex
+ (loadhyph-ka.tex
+UTF-8 Georgian hyphenation patternsnote: downloading hyph-ka.tex
+ (hyph-ka.tex))note: downloading loadhyph-de-1901.tex
+ (loadhyph-de-1901.tex
+UTF-8 German hyphenation patterns (traditional orthography)note: downloading hyph-de-1901.tex
+ (hyph-de-1901.tex
+German Hyphenation Patterns (Traditional Orthography) `dehypht-x' 2021-02-26 (W
+L)))note: downloading loadhyph-de-1996.tex
+ (loadhyph-de-1996.tex
+UTF-8 German hyphenation patterns (reformed orthography)note: downloading hyph-de-1996.tex
+ (hyph-de-1996.tex
+German Hyphenation Patterns (Reformed Orthography, 2006) `dehyphn-x' 2021-02-26
+ (WL)))note: downloading loadhyph-de-ch-1901.tex
+ (loadhyph-de-ch-1901.tex
+UTF-8 Swiss-German hyphenation patterns (traditional orthography)note: downloading hyph-de-ch-1901.tex
+
+(hyph-de-ch-1901.tex
+Swiss-German Hyphenation Patterns (Traditional Orthography) `dehyphts-x' 2021-0
+2-26 (WL)))note: downloading loadhyph-el-polyton.tex
+ (loadhyph-el-polyton.tex
+UTF-8 Hyphenation patterns for multi-accent (polytonic) Modern Greeknote: downloading hyph-el-polyton.tex
+
+(hyph-el-polyton.tex))note: downloading loadhyph-el-monoton.tex
+ (loadhyph-el-monoton.tex
+UTF-8 Hyphenation patterns for uni-accent (monotonic) Modern Greeknote: downloading hyph-el-monoton.tex
+
+(hyph-el-monoton.tex))note: downloading loadhyph-hu.tex
+ (loadhyph-hu.tex UTF-8 Hungarian hyphenation patternsnote: downloading hyph-hu.tex
+
+(hyph-hu.tex))note: downloading loadhyph-is.tex
+ (loadhyph-is.tex UTF-8 Icelandic hyphenation patternsnote: downloading hyph-is.tex
+
+(hyph-is.tex))note: downloading loadhyph-as.tex
+ (loadhyph-as.tex UTF-8 Assamese hyphenation patternsnote: downloading hyph-as.tex
+
+(hyph-as.tex))note: downloading loadhyph-bn.tex
+ (loadhyph-bn.tex UTF-8 Bengali hyphenation patternsnote: downloading hyph-bn.tex
+ (hyph-bn.tex
+))note: downloading loadhyph-gu.tex
+ (loadhyph-gu.tex UTF-8 Gujarati hyphenation patternsnote: downloading hyph-gu.tex
+ (hyph-gu.tex))note: downloading loadhyph-hi.tex
+
+(loadhyph-hi.tex UTF-8 Hindi hyphenation patternsnote: downloading hyph-hi.tex
+ (hyph-hi.tex))note: downloading loadhyph-kn.tex
+
+(loadhyph-kn.tex UTF-8 Kannada hyphenation patternsnote: downloading hyph-kn.tex
+ (hyph-kn.tex))note: downloading loadhyph-ml.tex
+
+(loadhyph-ml.tex UTF-8 Malayalam hyphenation patternsnote: downloading hyph-ml.tex
+ (hyph-ml.tex))note: downloading loadhyph-mr.tex
+
+(loadhyph-mr.tex UTF-8 Marathi hyphenation patternsnote: downloading hyph-mr.tex
+ (hyph-mr.tex))note: downloading loadhyph-or.tex
+
+(loadhyph-or.tex UTF-8 Oriya hyphenation patternsnote: downloading hyph-or.tex
+ (hyph-or.tex))note: downloading loadhyph-pi.tex
+
+(loadhyph-pi.tex UTF-8 Pali hyphenation patternsnote: downloading hyph-pi.tex
+ (hyph-pi.tex))note: downloading loadhyph-pa.tex
+
+(loadhyph-pa.tex UTF-8 Panjabi hyphenation patternsnote: downloading hyph-pa.tex
+ (hyph-pa.tex))note: downloading loadhyph-ta.tex
+
+(loadhyph-ta.tex UTF-8 Tamil hyphenation patternsnote: downloading hyph-ta.tex
+ (hyph-ta.tex))note: downloading loadhyph-te.tex
+
+(loadhyph-te.tex UTF-8 Telugu hyphenation patternsnote: downloading hyph-te.tex
+ (hyph-te.tex))note: downloading loadhyph-id.tex
+
+(loadhyph-id.tex ASCII Indonesian hyphenation patternsnote: downloading hyph-id.tex
+ (hyph-id.tex))note: downloading loadhyph-ia.tex
+
+(loadhyph-ia.tex ASCII Hyphenation patterns for Interlinguanote: downloading hyph-ia.tex
+ (hyph-ia.tex))note: downloading loadhyph-ga.tex
+
+(loadhyph-ga.tex UTF-8 Irish hyphenation patternsnote: downloading hyph-ga.tex
+ (hyph-ga.tex))note: downloading loadhyph-it.tex
+
+(loadhyph-it.tex UTF-8 Italian hyphenation patternsnote: downloading hyph-it.tex
+ (hyph-it.tex)note: downloading hyph-quote-it.tex
+
+(hyph-quote-it.tex))note: downloading loadhyph-kmr.tex
+ (loadhyph-kmr.tex UTF-8 Kurmanji hyphenation patternsnote: downloading hyph-kmr.tex
+
+(hyph-kmr.tex))note: downloading loadhyph-la-x-classic.tex
+ (loadhyph-la-x-classic.tex
+UTF-8 Classical Latin hyphenation patterns, v.2.0 2019-07-03note: downloading hyph-la-x-classic.tex
+
+(hyph-la-x-classic.tex))note: downloading loadhyph-la.tex
+ (loadhyph-la.tex UTF-8 Latin hyphenation patternsnote: downloading hyph-la.tex
+
+(hyph-la.tex))note: downloading loadhyph-la-x-liturgic.tex
+ (loadhyph-la-x-liturgic.tex
+UTF-8 Liturgical Latin hyphenation patternsnote: downloading hyph-la-x-liturgic.tex
+ (hyph-la-x-liturgic.tex))note: downloading loadhyph-lv.tex
+
+(loadhyph-lv.tex UTF-8 Latvian hyphenation patternsnote: downloading hyph-lv.tex
+ (hyph-lv.tex))note: downloading loadhyph-lt.tex
+
+(loadhyph-lt.tex UTF-8 Lithuanian hyphenation patternsnote: downloading hyph-lt.tex
+ (hyph-lt.tex))note: downloading loadhyph-mk.tex
+
+(loadhyph-mk.tex UTF-8 Macedonian hyphenation patternsnote: downloading hyph-mk.tex
+ (hyph-mk.tex))note: downloading loadhyph-mn-cyrl.tex
+
+(loadhyph-mn-cyrl.tex UTF-8 (New) Mongolian hyphenation patternsnote: downloading hyph-mn-cyrl.tex
+
+(hyph-mn-cyrl.tex))note: downloading loadhyph-mn-cyrl-x-lmc.tex
+ (loadhyph-mn-cyrl-x-lmc.tex
+UTF-8 Mongolian hyphenation patternsnote: downloading hyph-mn-cyrl-x-lmc.tex
+ (hyph-mn-cyrl-x-lmc.tex))note: downloading loadhyph-nb.tex
+ (loadhyph-nb.tex
+ UTF-8 Norwegian Bokmal hyphenation patternsnote: downloading hyph-nb.tex
+ (hyph-nb.texnote: downloading hyph-no.tex
+ (hyph-no.tex)))note: downloading loadhyph-nn.tex
+
+(loadhyph-nn.tex UTF-8 Norwegian Nynorsk hyphenation patternsnote: downloading hyph-nn.tex
+ (hyph-nn.tex
+(hyph-no.tex)))note: downloading loadhyph-oc.tex
+ (loadhyph-oc.tex UTF-8 Occitan hyphenation patternsnote: downloading hyph-oc.tex
+
+(hyph-oc.tex)note: downloading hyph-quote-oc.tex
+ (hyph-quote-oc.tex))note: downloading loadhyph-pms.tex
+ (loadhyph-pms.tex
+UTF-8 Piedmontese hyphenation patternsnote: downloading hyph-pms.tex
+ (hyph-pms.tex)note: downloading hyph-quote-pms.tex
+ (hyph-quote-pms.tex))note: downloading loadhyph-pl.tex
+
+(loadhyph-pl.tex UTF-8 Polish hyphenation patternsnote: downloading hyph-pl.tex
+ (hyph-pl.tex))note: downloading loadhyph-pt.tex
+
+(loadhyph-pt.tex UTF-8 Portuguese hyphenation patternsnote: downloading hyph-pt.tex
+ (hyph-pt.tex))note: downloading loadhyph-ro.tex
+
+(loadhyph-ro.tex UTF-8 Romanian hyphenation patternsnote: downloading hyph-ro.tex
+ (hyph-ro.tex))note: downloading loadhyph-rm.tex
+
+(loadhyph-rm.tex UTF-8 Romansh hyphenation patternsnote: downloading hyph-rm.tex
+ (hyph-rm.tex)note: downloading hyph-quote-rm.tex
+
+(hyph-quote-rm.tex))note: downloading loadhyph-ru.tex
+ (loadhyph-ru.tex UTF-8 Russian hyphenation patternsnote: downloading hyph-ru.tex
+
+(hyph-ru.tex))note: downloading loadhyph-sa.tex
+ (loadhyph-sa.tex UTF-8 Sanskrit hyphenation patternsnote: downloading hyph-sa.tex
+
+(hyph-sa.tex))note: downloading loadhyph-sr-latn.tex
+ (loadhyph-sr-latn.tex UTF-8 Serbian hyphenation patternsnote: downloading hyph-sh-latn.tex
+
+(hyph-sh-latn.tex)note: downloading hyph-sh-cyrl.tex
+ (hyph-sh-cyrl.tex))note: downloading loadhyph-sr-cyrl.tex
+ (loadhyph-sr-cyrl.tex
+UTF-8 Serbian hyphenation patterns (hyph-sh-latn.tex) (hyph-sh-cyrl.tex))note: downloading loadhyph-sk.tex
+
+(loadhyph-sk.tex UTF-8 Slovak hyphenation patternsnote: downloading hyph-sk.tex
+ (hyph-sk.tex))note: downloading loadhyph-sl.tex
+
+(loadhyph-sl.tex UTF-8 Slovenian hyphenation patternsnote: downloading hyph-sl.tex
+ (hyph-sl.tex))note: downloading loadhyph-es.tex
+
+(loadhyph-es.tex UTF-8 Spanish hyphenation patternsnote: downloading hyph-es.tex
+ (hyph-es.tex))note: downloading loadhyph-sv.tex
+
+(loadhyph-sv.tex UTF-8 Swedish hyphenation patternsnote: downloading hyph-sv.tex
+ (hyph-sv.tex))note: downloading loadhyph-th.tex
+
+(loadhyph-th.tex UTF-8 Thai hyphenation patternsnote: downloading hyph-th.tex
+ (hyph-th.tex))note: downloading loadhyph-tr.tex
+
+(loadhyph-tr.tex UTF-8 Turkish hyphenation patternsnote: downloading hyph-tr.tex
+ (hyph-tr.tex))note: downloading loadhyph-tk.tex
+
+(loadhyph-tk.tex UTF-8 Turkmen hyphenation patternsnote: downloading hyph-tk.tex
+ (hyph-tk.tex))note: downloading loadhyph-uk.tex
+
+(loadhyph-uk.tex UTF-8 Ukrainian hyphenation patternsnote: downloading hyph-uk.tex
+ (hyph-uk.tex)note: downloading hyph-quote-uk.tex
+
+(hyph-quote-uk.tex))note: downloading loadhyph-hsb.tex
+ (loadhyph-hsb.tex
+UTF-8 Upper Sorbian hyphenation patternsnote: downloading hyph-hsb.tex
+ (hyph-hsb.tex))note: downloading loadhyph-cy.tex
+ (loadhyph-cy.tex
+UTF-8 Welsh hyphenation patternsnote: downloading hyph-cy.tex
+ (hyph-cy.tex)))note: downloading latex2e-first-aid-for-external-files.ltx
+
+(latex2e-first-aid-for-external-files.ltx)
+ ) ) ) )
+Beginning to dump on file texput.fmt
+ (preloaded format=texput 0.0.0)
+88429 strings of total length 387256
+297567 memory locations dumped; current usage is 299&292789
+20858 multiletter control sequences
+\font\nullfont=nullfont
+\font\c__fp_exp_intarray=cmr10 at 0.00002pt
+\font\c__fp_trig_intarray=cmr10 at 0.00003pt
+\font\c_initex_cctab=cmr10 at 0.00005pt
+\font\c_other_cctab=cmr10 at 0.00006pt
+\font\c_str_cctab=cmr10 at 0.00008pt
+\font\g__regex_state_active_intarray=cmr10 at 0.00009pt
+\font\g__regex_thread_info_intarray=cmr10 at 0.0001pt
+\font\g__regex_submatch_prev_intarray=cmr10 at 0.00012pt
+\font\g__regex_submatch_begin_intarray=cmr10 at 0.00014pt
+\font\g__regex_submatch_end_intarray=cmr10 at 0.00015pt
+\font\g__regex_submatch_case_intarray=cmr10 at 0.00017pt
+\font\g__regex_balance_intarray=cmr10 at 0.00018pt
+\font\OMX/cmex/m/n/10=cmex10
+\font\tenln=line10
+\font\tenlnw=linew10
+\font\tencirc=lcircle10
+\font\tencircw=lcirclew10
+\font\OT1/cmr/m/n/5=cmr5
+\font\OT1/cmr/m/n/7=cmr7
+\font\OT1/cmr/m/n/10=cmr10
+\font\OML/cmm/m/it/5=cmmi5
+\font\OML/cmm/m/it/7=cmmi7
+\font\OML/cmm/m/it/10=cmmi10
+\font\OMS/cmsy/m/n/5=cmsy5
+\font\OMS/cmsy/m/n/7=cmsy7
+\font\OMS/cmsy/m/n/10=cmsy10
+\font\c_code_cctab=cmr10 at 0.0002pt
+\font\c_document_cctab=cmr10 at 0.00021pt
+469252 words of font info for 28 preloaded fonts
+1348 hyphenation exceptions
+Hyphenation trie of length 577275 has 9543 ops out of 35111
+  143 for language 86
+  110 for language 85
+  138 for language 84
+  7 for language 83
+  12 for language 82
+  53 for language 81
+  127 for language 80
+  195 for language 79
+  71 for language 78
+  248 for language 77
+  66 for language 76
+  66 for language 75
+  15 for language 74
+  119 for language 73
+  43 for language 72
+  58 for language 71
+  7 for language 70
+  194 for language 69
+  37 for language 68
+  23 for language 67
+  852 for language 66
+  852 for language 65
+  21 for language 64
+  38 for language 63
+  38 for language 62
+  77 for language 61
+  58 for language 60
+  206 for language 59
+  25 for language 58
+  316 for language 57
+  27 for language 56
+  37 for language 55
+  229 for language 54
+  38 for language 53
+  21 for language 52
+  6 for language 51
+  7 for language 50
+  6 for language 49
+  12 for language 48
+  6 for language 47
+  6 for language 46
+  8 for language 45
+  6 for language 44
+  6 for language 43
+  6 for language 42
+  6 for language 41
+  6 for language 40
+  147 for language 39
+  185 for language 38
+  20 for language 37
+  44 for language 36
+  420 for language 35
+  424 for language 34
+  432 for language 33
+  39 for language 32
+  76 for language 31
+  40 for language 30
+  89 for language 29
+  6 for language 28
+  31 for language 27
+  3 for language 25
+  113 for language 24
+  145 for language 23
+  377 for language 22
+  224 for language 21
+  265 for language 20
+  60 for language 19
+  63 for language 18
+  19 for language 17
+  15 for language 16
+  111 for language 15
+  3 for language 14
+  21 for language 13
+  54 for language 12
+  36 for language 11
+  5 for language 10
+  2 for language 9
+  148 for language 7
+  78 for language 6
+  137 for language 5
+  438 for language 4
+  442 for language 3
+  2 for language 1
+  181 for language 0
+No pages of output.
+Transcript written on texput.log.
+note: Running TeX ...
+(main.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24>note: downloading article.cls
+ (article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+note: downloading size11.clo
+(size11.clonote: downloading lmroman10-regular.otf
+Fontconfig error: Cannot load default config file: No such file: (null)
+note: downloading tex-text.tec
+))note: downloading geometry.sty
+ (geometry.stynote: downloading keyval.sty
+ (keyval.sty)note: downloading ifvtex.sty
+ (ifvtex.stynote: downloading iftex.sty
+ (iftex.sty)))note: downloading amsmath.sty
+ (amsmath.sty
+note: downloading amsopn.sty
+For additional information on amsmath, use the `?' option.
+note: downloading amstext.sty
+(amstext.stynote: downloading amsgen.sty
+ (amsgen.sty))note: downloading amsbsy.sty
+ (amsbsy.sty) (amsopn.sty))note: downloading amssymb.sty
+ (amssymb.stynote: downloading amsfonts.sty
+
+(amsfonts.sty))note: downloading graphicx.sty
+ (graphicx.stynote: downloading graphics.sty
+ (graphics.stynote: downloading trig.sty
+ (trig.sty)note: downloading graphics.cfg
+ (graphics.cfg)note: downloading xetex.def
+
+(xetex.def)))note: downloading booktabs.sty
+ (booktabs.sty)note: downloading array.sty
+ (array.sty)note: downloading tabularx.sty
+ (tabularx.sty)note: downloading longtable.sty
+ (longtable.sty)note: downloading pdflscape.sty
+
+(pdflscape.stynote: downloading lscape.sty
+ (lscape.sty) (atbegshi-ltx.sty))note: downloading float.sty
+ (float.sty)note: downloading subcaption.sty
+ (subcaption.stynote: downloading caption.sty
+
+(caption.stynote: downloading caption3.sty
+ (caption3.sty)note: downloading ltcaption.sty
+ (ltcaption.sty)))note: downloading xcolor.sty
+ (xcolor.stynote: downloading color.cfg
+ (color.cfg))note: downloading enumitem.sty
+
+(enumitem.sty)note: downloading microtype.sty
+ (microtype.stynote: downloading etoolbox.sty
+ (etoolbox.sty)note: downloading microtype-xetex.def
+ (microtype-xetex.def)note: downloading microtype.cfg
+
+(microtype.cfg))note: downloading url.sty
+ (url.sty)note: downloading hyperref.sty
+ (hyperref.stynote: downloading ltxcmds.sty
+ (ltxcmds.sty)note: downloading pdftexcmds.sty
+ (pdftexcmds.stynote: downloading infwarerr.sty
+
+(infwarerr.sty))note: downloading kvsetkeys.sty
+ (kvsetkeys.sty)note: downloading kvdefinekeys.sty
+ (kvdefinekeys.sty)note: downloading pdfescape.sty
+ (pdfescape.sty)note: downloading hycolor.sty
+
+(hycolor.sty)note: downloading letltxmacro.sty
+ (letltxmacro.sty)note: downloading auxhook.sty
+ (auxhook.sty)note: downloading kvoptions.sty
+ (kvoptions.sty)note: downloading pd1enc.def
+ (pd1enc.def)note: downloading intcalc.sty
+
+(intcalc.sty)note: downloading etexcmds.sty
+ (etexcmds.sty)note: downloading puenc.def
+ (puenc.def)note: downloading pzdr.tfm
+note: downloading bitset.sty
+ (bitset.stynote: downloading bigintcalc.sty
+ (bigintcalc.sty)))note: downloading hxetex.def
+
+(hxetex.defnote: downloading stringenc.sty
+ (stringenc.sty)note: downloading rerunfilecheck.sty
+ (rerunfilecheck.sty (atveryend-ltx.sty)note: downloading uniquecounter.sty
+
+(uniquecounter.sty)))note: downloading natbib.sty
+ (natbib.sty)note: downloading placeins.sty
+ (placeins.sty) (evidence_numbers)note: downloading l3backend-xetex.def
+
+(l3backend-xetex.def)
+No file main.aux.
+note: downloading ts1cmr.fd
+(ts1cmr.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+note: downloading mt-LatinModernRoman.cfg
+(mt-LatinModernRoman.cfg)note: downloading nameref.sty
+ (nameref.stynote: downloading refcount.sty
+ (refcount.sty)note: downloading gettitlestring.sty
+ (gettitlestring.sty))
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+note: downloading lmroman17-regular.otf
+note: downloading lmroman12-bold.otf
+note: downloading lmroman12-regular.otf
+note: downloading cmr12.tfm
+note: downloading mt-cmr.cfg
+(mt-cmr.cfg)note: downloading cmr8.tfm
+note: downloading cmr6.tfm
+note: downloading cmmi12.tfm
+note: downloading cmmi8.tfm
+note: downloading cmmi6.tfm
+note: downloading cmsy8.tfm
+note: downloading cmsy6.tfm
+note: downloading cmex8.tfm
+note: downloading cmex7.tfm
+note: downloading umsa.fd
+ (umsa.fd)note: downloading msam10.tfm
+note: downloading mt-msa.cfg
+ (mt-msa.cfg)note: downloading msam7.tfm
+note: downloading umsb.fd
+ (umsb.fd)note: downloading msbm10.tfm
+note: downloading mt-msb.cfg
+ (mt-msb.cfg)note: downloading msbm7.tfm
+note: downloading lmmono12-regular.otf
+note: downloading lmroman10-bold.otf
+ [1]
+
+Package natbib Warning: Citation `kermack1927' on page 2 undefined on input lin
+e 43.
+
+
+Package natbib Warning: Citation `daley1964' on page 2 undefined on input line 
+43.
+
+
+Package natbib Warning: Citation `kempe2003' on page 2 undefined on input line 
+43.
+
+
+Package natbib Warning: Citation `shir2016' on page 2 undefined on input line 4
+3.
+
+
+Package natbib Warning: Citation `budak2011' on page 2 undefined on input line 
+43.
+
+
+Package natbib Warning: Citation `lu2024' on page 2 undefined on input line 43.
+
+
+
+Package natbib Warning: Citation `karrer2010' on page 2 undefined on input line
+ 43.
+
+
+Package natbib Warning: Citation `sharma2026' on page 2 undefined on input line
+ 43.
+
+
+Package natbib Warning: Citation `vosoughi2018' on page 2 undefined on input li
+ne 45.
+
+
+Package natbib Warning: Citation `centola2010' on page 2 undefined on input lin
+e 45.
+
+
+Package natbib Warning: Citation `clauset2009' on page 2 undefined on input lin
+e 45.
+
+
+Package natbib Warning: Citation `brin1998' on page 2 undefined on input line 4
+5.
+
+
+Package natbib Warning: Citation `traag2019' on page 2 undefined on input line 
+45.
+
+
+Package natbib Warning: Citation `kipf2017' on page 2 undefined on input line 4
+7.
+
+
+Package natbib Warning: Citation `hamilton2017' on page 2 undefined on input li
+ne 47.
+
+
+Package natbib Warning: Citation `velickovic2018' on page 2 undefined on input 
+line 47.
+
+
+Package natbib Warning: Citation `pareja2020' on page 2 undefined on input line
+ 47.
+
+
+Package natbib Warning: Citation `xu2020' on page 2 undefined on input line 47.
+
+
+
+Package natbib Warning: Citation `rossi2020' on page 2 undefined on input line 
+47.
+
+
+Package natbib Warning: Citation `kumar2019' on page 2 undefined on input line 
+47.
+
+note: downloading lmmono10-regular.otf
+
+Package natbib Warning: Citation `kaggleipte' on page 2 undefined on input line
+ 51.
+
+
+LaTeX Warning: Reference `tab:dataaudit' on page 2 undefined on input line 51.
+
+note: downloading msam5.tfm
+note: downloading msbm5.tfm
+note: downloading lmroman9-regular.otf
+note: downloading lmmono9-regular.otf
+note: downloading cmr9.tfm
+note: downloading cmmi9.tfm
+note: downloading cmsy9.tfm
+note: downloading cmex9.tfm
+
+LaTeX Warning: Reference `tab:populations' on page 2 undefined on input line 77
+.
+
+
+LaTeX Warning: Reference `fig:funnel' on page 2 undefined on input line 77.
+
+(analysis_populations_table
+warning: analysis_populations_table:5: Underfull \hbox (badness 10000) in paragraph at lines 5--5
+Underfull \hbox (badness 10000) in paragraph at lines 5--5
+[]|\TU/lmr/m/n/10 Literal-matching
+
+warning: analysis_populations_table:5: Underfull \hbox (badness 10000) in paragraph at lines 5--5
+Underfull \hbox (badness 10000) in paragraph at lines 5--5
+[]|\TU/lmr/m/n/10 17,598 users;
+
+Underfull \hbox (badness 6001) in paragraph at lines 6--6
+warning: analysis_populations_table:6: Underfull \hbox (badness 6001) in paragraph at lines 6--6
+[]|\TU/lmr/m/n/10 Normalized match-
+
+warning: analysis_populations_table:6: Underfull \hbox (badness 10000) in paragraph at lines 6--6
+Underfull \hbox (badness 10000) in paragraph at lines 6--6
+[]|\TU/lmr/m/n/10 17,636 users;
+
+warning: analysis_populations_table:7: Underfull \hbox (badness 1502) in paragraph at lines 7--7
+Underfull \hbox (badness 1502) in paragraph at lines 7--7
+[]|\TU/lmr/m/n/10 Reconstructed tem-
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]|\TU/lmr/m/n/10 Typed interaction networks and time-
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 1152) in paragraph at lines 7--8
+Underfull \hbox (badness 1152) in paragraph at lines 7--8
+\TU/lmr/m/n/10 respecting reachability over reconstructed
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 6268) in paragraph at lines 8--8
+Underfull \hbox (badness 6268) in paragraph at lines 8--8
+[]|\TU/lmr/m/n/10 12,126 eligible
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 10000) in paragraph at lines 8--8
+Underfull \hbox (badness 10000) in paragraph at lines 8--8
+\TU/lmr/m/n/10 user-weeks;
+) [2] [3]
+
+LaTeX Warning: Reference `fig:layers' on page 4 undefined on input line 86.
+
+
+LaTeX Warning: Reference `fig:activity' on page 4 undefined on input line 91.
+
+[4]
+
+Package natbib Warning: Citation `textblob' on page 5 undefined on input line 9
+6.
+
+
+LaTeX Warning: Reference `fig:lexical' on page 5 undefined on input line 98.
+
+[5]
+
+LaTeX Warning: Reference `fig:bowtie' on page 6 undefined on input line 103.
+
+
+LaTeX Warning: Reference `fig:ccdf' on page 6 undefined on input line 106.
+
+
+Package natbib Warning: Citation `clauset2009' on page 6 undefined on input lin
+e 106.
+
+[6]
+
+LaTeX Warning: Reference `fig:mixing' on page 7 undefined on input line 113.
+
+
+LaTeX Warning: Reference `tab:mixing' on page 7 undefined on input line 116.
+
+
+LaTeX Warning: Reference `fig:mixnull' on page 7 undefined on input line 116.
+
+[7] [8]
+
+LaTeX Warning: Reference `tab:temporal' on page 9 undefined on input line 138.
+
+(temporal_reach_table
+warning: temporal_reach_table:5: Underfull \hbox (badness 10000) in paragraph at lines 4--5
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+[]|\TU/lmr/m/n/10 90.69% [88.22,
+
+warning: temporal_reach_table:6: Underfull \hbox (badness 10000) in paragraph at lines 5--6
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+[]|\TU/lmr/m/n/10 74.87% [72.57,
+
+warning: temporal_reach_table:7: Underfull \hbox (badness 10000) in paragraph at lines 6--7
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+[]|\TU/lmr/m/n/10 70.82% [68.06,
+
+warning: temporal_reach_table:8: Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]|\TU/lmr/m/n/10 86.17% [81.23,
+
+warning: temporal_reach_table:9: Underfull \hbox (badness 10000) in paragraph at lines 8--9
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+[]|\TU/lmr/m/n/10 86.47% [83.10,
+
+warning: temporal_reach_table:10: Underfull \hbox (badness 10000) in paragraph at lines 9--10
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+[]|\TU/lmr/m/n/10 52.38% [49.82,
+
+warning: temporal_reach_table:11: Underfull \hbox (badness 10000) in paragraph at lines 10--11
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+[]|\TU/lmr/m/n/10 61.77% [58.71,
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+[]|\TU/lmr/m/n/10 81.89% [75.70,
+warning: temporal_reach_table:12: Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+warning: temporal_reach_table:13: Underfull \hbox (badness 10000) in paragraph at lines 12--13
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+[]|\TU/lmr/m/n/10 92.13% [89.43,
+
+warning: temporal_reach_table:14: Underfull \hbox (badness 10000) in paragraph at lines 13--14
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+[]|\TU/lmr/m/n/10 69.52% [67.02,
+
+warning: temporal_reach_table:15: Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+[]|\TU/lmr/m/n/10 66.01% [63.34,
+
+warning: temporal_reach_table:16: Underfull \hbox (badness 10000) in paragraph at lines 15--16
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+[]|\TU/lmr/m/n/10 85.89% [81.69,
+)
+
+LaTeX Warning: Reference `fig:statictemporal' on page 9 undefined on input line
+ 140.
+
+
+LaTeX Warning: Reference `fig:temporalstrata' on page 9 undefined on input line
+ 140.
+
+
+LaTeX Warning: Reference `tab:temporal' on page 9 undefined on input line 140.
+
+
+LaTeX Warning: Reference `tab:temporal' on page 9 undefined on input line 142.
+
+
+LaTeX Warning: Reference `tab:temporal' on page 9 undefined on input line 142.
+
+[9] [10]
+
+LaTeX Warning: Reference `eq:transmission' on page 11 undefined on input line 1
+67.
+
+[11]
+
+LaTeX Warning: Reference `tab:spectral' on page 12 undefined on input line 184.
+
+
+
+LaTeX Warning: Reference `tab:simulation' on page 12 undefined on input line 19
+6.
+
+(simulation_results_table)
+
+LaTeX Warning: Reference `fig:amplification' on page 12 undefined on input line
+ 199.
+
+
+LaTeX Warning: Reference `fig:beta' on page 12 undefined on input line 199.
+
+
+LaTeX Warning: Reference `fig:sensitivity' on page 12 undefined on input line 1
+99.
+
+[12] [13]
+
+LaTeX Warning: Reference `fig:contested' on page 14 undefined on input line 207
+.
+
+[14]
+
+LaTeX Warning: Reference `fig:competition' on page 15 undefined on input line 2
+16.
+
+
+LaTeX Warning: Reference `eq:competition' on page 15 undefined on input line 21
+6.
+
+
+LaTeX Warning: Reference `fig:direction' on page 15 undefined on input line 223
+.
+
+[15]
+
+LaTeX Warning: Reference `tab:populations' on page 16 undefined on input line 2
+32.
+
+note: downloading lmroman10-italic.otf
+[16]
+
+LaTeX Warning: Reference `tab:forecasting' on page 17 undefined on input line 2
+42.
+
+
+LaTeX Warning: Reference `fig:forecast' on page 17 undefined on input line 244.
+
+
+(forecasting_results_table [17]
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.3420,
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.5000,
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.0000,
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.5201,
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.5000,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 12--13
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+\TU/lmr/m/n/10 [0.2488,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5282,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5293,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.0590,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5449,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 13--14
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+\TU/lmr/m/n/10 [0.4229,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.4651,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.5011,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.0036,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.5396,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.5045,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+\TU/lmr/m/n/10 [0.2490,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.4256,
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.4989,
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [-0.0020,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.5358,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.5032,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 15--16
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+\TU/lmr/m/n/10 [0.2492,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.4176,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.5005,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.0016,
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.5356,
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.5029,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 16--17
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+\TU/lmr/m/n/10 [0.2495,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.4647,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.4952,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [-0.0097,
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.5258,
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.4955,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 17--18
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+\TU/lmr/m/n/10 [0.2500,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.4501,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.4994,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [-0.0006,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.5316,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.5019,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 18--19
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
+\TU/lmr/m/n/10 [0.2497,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.4539,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.5030,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.0056,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.5388,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.5056,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 19--20
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+\TU/lmr/m/n/10 [0.2492,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.4856,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.5004,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.0005,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.5310,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 20--21
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.5029,
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\TU/lmr/m/n/10 [0.2591,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.4770,
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.5018,
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.0039,
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.5339,
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.5027,
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+\TU/lmr/m/n/10 [0.2492,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.4793,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.4982,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [-0.0038,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.5341,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.5008,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+\TU/lmr/m/n/10 [0.2496,
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 21--22
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 22--23
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 23--24
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5361,
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5413,
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.0833,
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5863,
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5624,
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+\TU/lmr/m/n/10 [0.2457,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5108,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5197,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.0405,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5489,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5262,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+\TU/lmr/m/n/10 [0.2517,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 24--25
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 25--26
+[]|\TU/lmr/m/n/10 History + Structural
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5413,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5453,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.0912,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5889,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5665,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+\TU/lmr/m/n/10 [0.2450,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5433,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5438,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.0875,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5861,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5569,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+\TU/lmr/m/n/10 [0.2452,
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5282,
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5293,
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.0590,
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5449,
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 27--28
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+\TU/lmr/m/n/10 [0.4229,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.4891,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.5028,
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.0057,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.5317,
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.5057,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+\TU/lmr/m/n/10 [0.2629,
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 3209) in paragraph at lines 29--29
+Underfull \hbox (badness 3209) in paragraph at lines 29--29
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5398,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5433,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.0870,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5928,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5665,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 29--30
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+\TU/lmr/m/n/10 [0.2450,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 3209) in paragraph at lines 30--30
+Underfull \hbox (badness 3209) in paragraph at lines 30--30
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5119,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5221,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.0453,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5537,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5289,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 30--31
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+\TU/lmr/m/n/10 [0.2518,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\TU/lmr/m/n/10 History + Structural
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 3209) in paragraph at lines 31--31
+Underfull \hbox (badness 3209) in paragraph at lines 31--31
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5441,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5464,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.0932,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5944,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5705,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 31--32
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+\TU/lmr/m/n/10 [0.2442,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 3209) in paragraph at lines 32--32
+Underfull \hbox (badness 3209) in paragraph at lines 32--32
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5456,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5466,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.0939,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5914,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5594,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 32--33
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+\TU/lmr/m/n/10 [0.2446,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 3209) in paragraph at lines 33--33
+Underfull \hbox (badness 3209) in paragraph at lines 33--33
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5358,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.0725,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5458,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 33--34
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\TU/lmr/m/n/10 [0.4415,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 3209) in paragraph at lines 34--34
+Underfull \hbox (badness 3209) in paragraph at lines 34--34
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.4868,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.5025,
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.0055,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.5343,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.5054,
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 34--35
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+\TU/lmr/m/n/10 [0.2642,
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\TU/lmr/m/n/10 GCN + GRU head
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\TU/lmr/m/n/10 GCN + GRU head
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\TU/lmr/m/n/10 (CI unavail-
+[18] [19] [20])
+
+LaTeX Warning: Reference `tab:forecasting' on page 21 undefined on input line 2
+47.
+
+
+LaTeX Warning: Reference `tab:forecasting' on page 21 undefined on input line 2
+47.
+
+[21]
+
+LaTeX Warning: Reference `tab:forecasting' on page 22 undefined on input line 2
+64.
+
+[22] [23]
+
+LaTeX Warning: Reference `tab:dataaudit' on page 24 undefined on input line 306
+.
+
+[24]
+No file main.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+[25] (main.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)
+Output written on main.xdv (25 pages, 573092 bytes).
+Transcript written on main.log.
+note: Running BibTeX on main.aux ...
+note: downloading plainnat.bst
+note: Rerunning TeX because bibtex was run ...
+(main.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(size11.clo)) (geometry.sty (keyval.sty) (ifvtex.sty (iftex.sty))) (amsmath.sty
+For additional information on amsmath, use the `?' option.
+(amstext.sty (amsgen.sty)) (amsbsy.sty) (amsopn.sty)) (amssymb.sty
+(amsfonts.sty)) (graphicx.sty (graphics.sty (trig.sty) (graphics.cfg)
+(xetex.def))) (booktabs.sty) (array.sty) (tabularx.sty) (longtable.sty)
+(pdflscape.sty (lscape.sty) (atbegshi-ltx.sty)) (float.sty) (subcaption.sty
+(caption.sty (caption3.sty) (ltcaption.sty))) (xcolor.sty (color.cfg))
+(enumitem.sty) (microtype.sty (etoolbox.sty) (microtype-xetex.def)
+(microtype.cfg)) (url.sty) (hyperref.sty (ltxcmds.sty) (pdftexcmds.sty
+(infwarerr.sty)) (kvsetkeys.sty) (kvdefinekeys.sty) (pdfescape.sty)
+(hycolor.sty) (letltxmacro.sty) (auxhook.sty) (kvoptions.sty) (pd1enc.def)
+(intcalc.sty) (etexcmds.sty) (puenc.def) (bitset.sty (bigintcalc.sty)))
+(hxetex.def (stringenc.sty) (rerunfilecheck.sty (atveryend-ltx.sty)
+(uniquecounter.sty))) (natbib.sty) (placeins.sty) (evidence_numbers)
+(l3backend-xetex.def) (main.aux) (ts1cmr.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+(mt-LatinModernRoman.cfg) (nameref.sty (refcount.sty) (gettitlestring.sty))
+(main.out) (main.out) (mt-cmr.cfg) (umsa.fd) (mt-msa.cfg) (umsb.fd) (mt-msb.cfg
+) [1]
+
+Package natbib Warning: Citation `kermack1927' on page 2 undefined on input lin
+e 43.
+
+
+Package natbib Warning: Citation `daley1964' on page 2 undefined on input line 
+43.
+
+
+Package natbib Warning: Citation `kempe2003' on page 2 undefined on input line 
+43.
+
+
+Package natbib Warning: Citation `shir2016' on page 2 undefined on input line 4
+3.
+
+
+Package natbib Warning: Citation `budak2011' on page 2 undefined on input line 
+43.
+
+
+Package natbib Warning: Citation `lu2024' on page 2 undefined on input line 43.
+
+
+
+Package natbib Warning: Citation `karrer2010' on page 2 undefined on input line
+ 43.
+
+
+Package natbib Warning: Citation `sharma2026' on page 2 undefined on input line
+ 43.
+
+
+Package natbib Warning: Citation `vosoughi2018' on page 2 undefined on input li
+ne 45.
+
+
+Package natbib Warning: Citation `centola2010' on page 2 undefined on input lin
+e 45.
+
+
+Package natbib Warning: Citation `clauset2009' on page 2 undefined on input lin
+e 45.
+
+
+Package natbib Warning: Citation `brin1998' on page 2 undefined on input line 4
+5.
+
+
+Package natbib Warning: Citation `traag2019' on page 2 undefined on input line 
+45.
+
+
+Package natbib Warning: Citation `kipf2017' on page 2 undefined on input line 4
+7.
+
+
+Package natbib Warning: Citation `hamilton2017' on page 2 undefined on input li
+ne 47.
+
+
+Package natbib Warning: Citation `velickovic2018' on page 2 undefined on input 
+line 47.
+
+
+Package natbib Warning: Citation `pareja2020' on page 2 undefined on input line
+ 47.
+
+
+Package natbib Warning: Citation `xu2020' on page 2 undefined on input line 47.
+
+
+
+Package natbib Warning: Citation `rossi2020' on page 2 undefined on input line 
+47.
+
+
+Package natbib Warning: Citation `kumar2019' on page 2 undefined on input line 
+47.
+
+
+Package natbib Warning: Citation `kaggleipte' on page 2 undefined on input line
+ 51.
+
+(analysis_populations_table
+warning: analysis_populations_table:5: Underfull \hbox (badness 10000) in paragraph at lines 5--5
+Underfull \hbox (badness 10000) in paragraph at lines 5--5
+[]|\TU/lmr/m/n/10 Literal-matching
+
+warning: analysis_populations_table:5: Underfull \hbox (badness 10000) in paragraph at lines 5--5
+Underfull \hbox (badness 10000) in paragraph at lines 5--5
+[]|\TU/lmr/m/n/10 17,598 users;
+
+warning: analysis_populations_table:6: Underfull \hbox (badness 6001) in paragraph at lines 6--6
+Underfull \hbox (badness 6001) in paragraph at lines 6--6
+[]|\TU/lmr/m/n/10 Normalized match-
+
+warning: analysis_populations_table:6: Underfull \hbox (badness 10000) in paragraph at lines 6--6
+Underfull \hbox (badness 10000) in paragraph at lines 6--6
+[]|\TU/lmr/m/n/10 17,636 users;
+
+warning: analysis_populations_table:7: Underfull \hbox (badness 1502) in paragraph at lines 7--7
+Underfull \hbox (badness 1502) in paragraph at lines 7--7
+[]|\TU/lmr/m/n/10 Reconstructed tem-
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]|\TU/lmr/m/n/10 Typed interaction networks and time-
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 1152) in paragraph at lines 7--8
+Underfull \hbox (badness 1152) in paragraph at lines 7--8
+\TU/lmr/m/n/10 respecting reachability over reconstructed
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 6268) in paragraph at lines 8--8
+Underfull \hbox (badness 6268) in paragraph at lines 8--8
+[]|\TU/lmr/m/n/10 12,126 eligible
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 10000) in paragraph at lines 8--8
+Underfull \hbox (badness 10000) in paragraph at lines 8--8
+\TU/lmr/m/n/10 user-weeks;
+) [2] [3] [4]
+
+Package natbib Warning: Citation `textblob' on page 5 undefined on input line 9
+6.
+
+[5]
+
+Package natbib Warning: Citation `clauset2009' on page 6 undefined on input lin
+e 106.
+
+[6] [7] [8] (temporal_reach_table
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+[]|\TU/lmr/m/n/10 90.69% [88.22,
+warning: temporal_reach_table:5: Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+warning: temporal_reach_table:6: Underfull \hbox (badness 10000) in paragraph at lines 5--6
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+[]|\TU/lmr/m/n/10 74.87% [72.57,
+
+warning: temporal_reach_table:7: Underfull \hbox (badness 10000) in paragraph at lines 6--7
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+[]|\TU/lmr/m/n/10 70.82% [68.06,
+
+warning: temporal_reach_table:8: Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]|\TU/lmr/m/n/10 86.17% [81.23,
+
+warning: temporal_reach_table:9: Underfull \hbox (badness 10000) in paragraph at lines 8--9
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+[]|\TU/lmr/m/n/10 86.47% [83.10,
+
+warning: temporal_reach_table:10: Underfull \hbox (badness 10000) in paragraph at lines 9--10
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+[]|\TU/lmr/m/n/10 52.38% [49.82,
+
+warning: temporal_reach_table:11: Underfull \hbox (badness 10000) in paragraph at lines 10--11
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+[]|\TU/lmr/m/n/10 61.77% [58.71,
+
+warning: temporal_reach_table:12: Underfull \hbox (badness 10000) in paragraph at lines 11--12
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+[]|\TU/lmr/m/n/10 81.89% [75.70,
+
+warning: temporal_reach_table:13: Underfull \hbox (badness 10000) in paragraph at lines 12--13
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+[]|\TU/lmr/m/n/10 92.13% [89.43,
+
+warning: temporal_reach_table:14: Underfull \hbox (badness 10000) in paragraph at lines 13--14
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+[]|\TU/lmr/m/n/10 69.52% [67.02,
+
+warning: temporal_reach_table:15: Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+[]|\TU/lmr/m/n/10 66.01% [63.34,
+
+warning: temporal_reach_table:16: Underfull \hbox (badness 10000) in paragraph at lines 15--16
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+[]|\TU/lmr/m/n/10 85.89% [81.69,
+) [9] [10] [11] (simulation_results_table) [12] [13] [14] [15] [16]
+(forecasting_results_table [17]
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.3420,
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.5000,
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.0000,
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.5201,
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.5000,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 12--13
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+\TU/lmr/m/n/10 [0.2488,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5282,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5293,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.0590,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5449,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 13--14
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+\TU/lmr/m/n/10 [0.4229,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.4651,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.5011,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.0036,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.5396,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.5045,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+\TU/lmr/m/n/10 [0.2490,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.4256,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.4989,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [-0.0020,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.5358,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.5032,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 15--16
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+\TU/lmr/m/n/10 [0.2492,
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.4176,
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.5005,
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.0016,
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.5356,
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.5029,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 16--17
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+\TU/lmr/m/n/10 [0.2495,
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.4647,
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.4952,
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [-0.0097,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.5258,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.4955,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 17--18
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+\TU/lmr/m/n/10 [0.2500,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.4501,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.4994,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [-0.0006,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.5316,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.5019,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 18--19
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
+\TU/lmr/m/n/10 [0.2497,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.4539,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.5030,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.0056,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.5388,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.5056,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 19--20
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+\TU/lmr/m/n/10 [0.2492,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.4856,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.5004,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.0005,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.5310,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.5029,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 20--21
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\TU/lmr/m/n/10 [0.2591,
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.4770,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.5018,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.0039,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.5339,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.5027,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 21--22
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+\TU/lmr/m/n/10 [0.2492,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.4793,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.4982,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [-0.0038,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.5341,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.5008,
+
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 22--23
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+\TU/lmr/m/n/10 [0.2496,
+
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5361,
+
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5413,
+
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.0833,
+
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5863,
+
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5624,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 23--24
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+\TU/lmr/m/n/10 [0.2457,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5108,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5197,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.0405,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5489,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5262,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 24--25
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+\TU/lmr/m/n/10 [0.2517,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\TU/lmr/m/n/10 History + Structural
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5413,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5453,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.0912,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5889,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5665,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 25--26
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+\TU/lmr/m/n/10 [0.2450,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5433,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5438,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.0875,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5861,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5569,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 26--27
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+\TU/lmr/m/n/10 [0.2452,
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5282,
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5293,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.0590,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5449,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 27--28
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+\TU/lmr/m/n/10 [0.4229,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.4891,
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.5028,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.0057,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.5317,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.5057,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 28--29
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+\TU/lmr/m/n/10 [0.2629,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 3209) in paragraph at lines 29--29
+Underfull \hbox (badness 3209) in paragraph at lines 29--29
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5398,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5433,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.0870,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5928,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5665,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 29--30
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+\TU/lmr/m/n/10 [0.2450,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 3209) in paragraph at lines 30--30
+Underfull \hbox (badness 3209) in paragraph at lines 30--30
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5119,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5221,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.0453,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5537,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5289,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 30--31
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+\TU/lmr/m/n/10 [0.2518,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\TU/lmr/m/n/10 History + Structural
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 3209) in paragraph at lines 31--31
+Underfull \hbox (badness 3209) in paragraph at lines 31--31
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5441,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5464,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.0932,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5944,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5705,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+\TU/lmr/m/n/10 [0.2442,
+
+Underfull \hbox (badness 3209) in paragraph at lines 32--32
+[]|\TU/lmr/m/n/10 History avail-
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5456,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5466,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.0939,
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 31--32
+warning: forecasting_results_table:32: Underfull \hbox (badness 3209) in paragraph at lines 32--32
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5914,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5594,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 32--33
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+\TU/lmr/m/n/10 [0.2446,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 3209) in paragraph at lines 33--33
+Underfull \hbox (badness 3209) in paragraph at lines 33--33
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5358,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5363,
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.0725,
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5458,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 33--34
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\TU/lmr/m/n/10 [0.4415,
+
+Underfull \hbox (badness 3209) in paragraph at lines 34--34
+[]|\TU/lmr/m/n/10 History avail-
+warning: forecasting_results_table:34: Underfull \hbox (badness 3209) in paragraph at lines 34--34
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.4868,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.5025,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.0055,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.5343,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.5054,
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 34--35
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+\TU/lmr/m/n/10 [0.2642,
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\TU/lmr/m/n/10 Monthly
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\TU/lmr/m/n/10 GCN + GRU head
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\TU/lmr/m/n/10 GCN + GRU head
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\TU/lmr/m/n/10 (CI unavail-
+[18] [19] [20]) [21] [22] [23] [24] (main.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 46--53
+warning: main.bbl:53: Underfull \hbox (badness 10000) in paragraph at lines 46--53
+[][][] [] [][][][][][] [] [][][] [] [][][][][][][][] [] [][][][][][][][][][][][
+][] [] [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][]$[]\TU/lmr/m/n/10.95 ,
+[25])
+
+Package natbib Warning: There were undefined citations.
+
+[26] (main.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+) )
+(see the transcript file for additional information)
+Output written on main.xdv (26 pages, 636652 bytes).
+Transcript written on main.log.
+note: Rerunning TeX because "main.aux" changed ...
+(main.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(size11.clo)) (geometry.sty (keyval.sty) (ifvtex.sty (iftex.sty))) (amsmath.sty
+For additional information on amsmath, use the `?' option.
+(amstext.sty (amsgen.sty)) (amsbsy.sty) (amsopn.sty)) (amssymb.sty
+(amsfonts.sty)) (graphicx.sty (graphics.sty (trig.sty) (graphics.cfg)
+(xetex.def))) (booktabs.sty) (array.sty) (tabularx.sty) (longtable.sty)
+(pdflscape.sty (lscape.sty) (atbegshi-ltx.sty)) (float.sty) (subcaption.sty
+(caption.sty (caption3.sty) (ltcaption.sty))) (xcolor.sty (color.cfg))
+(enumitem.sty) (microtype.sty (etoolbox.sty) (microtype-xetex.def)
+(microtype.cfg)) (url.sty) (hyperref.sty (ltxcmds.sty) (pdftexcmds.sty
+(infwarerr.sty)) (kvsetkeys.sty) (kvdefinekeys.sty) (pdfescape.sty)
+(hycolor.sty) (letltxmacro.sty) (auxhook.sty) (kvoptions.sty) (pd1enc.def)
+(intcalc.sty) (etexcmds.sty) (puenc.def) (bitset.sty (bigintcalc.sty)))
+(hxetex.def (stringenc.sty) (rerunfilecheck.sty (atveryend-ltx.sty)
+(uniquecounter.sty))) (natbib.sty) (placeins.sty) (evidence_numbers)
+(l3backend-xetex.def) (main.aux) (ts1cmr.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+(mt-LatinModernRoman.cfg) (nameref.sty (refcount.sty) (gettitlestring.sty))
+(main.out) (main.out) (mt-cmr.cfg) (umsa.fd) (mt-msa.cfg) (umsb.fd) (mt-msb.cfg
+) [1] (analysis_populations_table
+warning: analysis_populations_table:5: Underfull \hbox (badness 10000) in paragraph at lines 5--5
+Underfull \hbox (badness 10000) in paragraph at lines 5--5
+[]|\TU/lmr/m/n/10 Literal-matching
+
+warning: analysis_populations_table:5: Underfull \hbox (badness 10000) in paragraph at lines 5--5
+Underfull \hbox (badness 10000) in paragraph at lines 5--5
+[]|\TU/lmr/m/n/10 17,598 users;
+
+warning: analysis_populations_table:6: Underfull \hbox (badness 6001) in paragraph at lines 6--6
+Underfull \hbox (badness 6001) in paragraph at lines 6--6
+[]|\TU/lmr/m/n/10 Normalized match-
+
+warning: analysis_populations_table:6: Underfull \hbox (badness 10000) in paragraph at lines 6--6
+Underfull \hbox (badness 10000) in paragraph at lines 6--6
+[]|\TU/lmr/m/n/10 17,636 users;
+
+warning: analysis_populations_table:7: Underfull \hbox (badness 1502) in paragraph at lines 7--7
+Underfull \hbox (badness 1502) in paragraph at lines 7--7
+[]|\TU/lmr/m/n/10 Reconstructed tem-
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]|\TU/lmr/m/n/10 Typed interaction networks and time-
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 1152) in paragraph at lines 7--8
+Underfull \hbox (badness 1152) in paragraph at lines 7--8
+\TU/lmr/m/n/10 respecting reachability over reconstructed
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 6268) in paragraph at lines 8--8
+Underfull \hbox (badness 6268) in paragraph at lines 8--8
+[]|\TU/lmr/m/n/10 12,126 eligible
+
+warning: analysis_populations_table:8: Underfull \hbox (badness 10000) in paragraph at lines 8--8
+Underfull \hbox (badness 10000) in paragraph at lines 8--8
+\TU/lmr/m/n/10 user-weeks;
+) [2] [3] [4] [5] [6] [7] [8] (temporal_reach_table
+warning: temporal_reach_table:5: Underfull \hbox (badness 10000) in paragraph at lines 4--5
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+[]|\TU/lmr/m/n/10 90.69% [88.22,
+
+warning: temporal_reach_table:6: Underfull \hbox (badness 10000) in paragraph at lines 5--6
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+[]|\TU/lmr/m/n/10 74.87% [72.57,
+
+warning: temporal_reach_table:7: Underfull \hbox (badness 10000) in paragraph at lines 6--7
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+[]|\TU/lmr/m/n/10 70.82% [68.06,
+
+warning: temporal_reach_table:8: Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]|\TU/lmr/m/n/10 86.17% [81.23,
+
+warning: temporal_reach_table:9: Underfull \hbox (badness 10000) in paragraph at lines 8--9
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+[]|\TU/lmr/m/n/10 86.47% [83.10,
+
+warning: temporal_reach_table:10: Underfull \hbox (badness 10000) in paragraph at lines 9--10
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+[]|\TU/lmr/m/n/10 52.38% [49.82,
+
+warning: temporal_reach_table:11: Underfull \hbox (badness 10000) in paragraph at lines 10--11
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+[]|\TU/lmr/m/n/10 61.77% [58.71,
+
+warning: temporal_reach_table:12: Underfull \hbox (badness 10000) in paragraph at lines 11--12
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+[]|\TU/lmr/m/n/10 81.89% [75.70,
+
+warning: temporal_reach_table:13: Underfull \hbox (badness 10000) in paragraph at lines 12--13
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+[]|\TU/lmr/m/n/10 92.13% [89.43,
+
+warning: temporal_reach_table:14: Underfull \hbox (badness 10000) in paragraph at lines 13--14
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+[]|\TU/lmr/m/n/10 69.52% [67.02,
+
+warning: temporal_reach_table:15: Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+[]|\TU/lmr/m/n/10 66.01% [63.34,
+
+warning: temporal_reach_table:16: Underfull \hbox (badness 10000) in paragraph at lines 15--16
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+[]|\TU/lmr/m/n/10 85.89% [81.69,
+) [9] [10] [11] (simulation_results_table) [12] [13] [14] [15] [16]
+(forecasting_results_table [17]
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.3420,
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.5000,
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.0000,
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.5201,
+
+warning: forecasting_results_table:12: Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+\TU/lmr/m/n/10 [0.5000,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 12--13
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+\TU/lmr/m/n/10 [0.2488,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5282,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5293,
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.0590,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5449,
+
+warning: forecasting_results_table:13: Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 13--14
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+\TU/lmr/m/n/10 [0.4229,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.4651,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.5011,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.0036,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.5396,
+
+warning: forecasting_results_table:14: Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\TU/lmr/m/n/10 [0.5045,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+\TU/lmr/m/n/10 [0.2490,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.4256,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.4989,
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [-0.0020,
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.5358,
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+
+warning: forecasting_results_table:15: Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\TU/lmr/m/n/10 [0.5032,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 15--16
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+\TU/lmr/m/n/10 [0.2492,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.4176,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.5005,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.0016,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.5356,
+
+warning: forecasting_results_table:16: Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\TU/lmr/m/n/10 [0.5029,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 16--17
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+\TU/lmr/m/n/10 [0.2495,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.4647,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.4952,
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [-0.0097,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.5258,
+
+warning: forecasting_results_table:17: Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\TU/lmr/m/n/10 [0.4955,
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+\TU/lmr/m/n/10 [0.2500,
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.4501,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.4994,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [-0.0006,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.5316,
+
+warning: forecasting_results_table:18: Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\TU/lmr/m/n/10 [0.5019,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 18--19
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
+\TU/lmr/m/n/10 [0.2497,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.4539,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.5030,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.0056,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.5388,
+
+warning: forecasting_results_table:19: Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+\TU/lmr/m/n/10 [0.5056,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 19--20
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+\TU/lmr/m/n/10 [0.2492,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.4856,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.5004,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.0005,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.5310,
+
+warning: forecasting_results_table:20: Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\TU/lmr/m/n/10 [0.5029,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 20--21
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\TU/lmr/m/n/10 [0.2591,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.4770,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.5018,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.0039,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.5339,
+
+warning: forecasting_results_table:21: Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\TU/lmr/m/n/10 [0.5027,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 21--22
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+\TU/lmr/m/n/10 [0.2492,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.4793,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.4982,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [-0.0038,
+
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.5341,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\TU/lmr/m/n/10 [0.5008,
+warning: forecasting_results_table:22: Underfull \hbox (badness 10000) in paragraph at lines 22--22
+
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 22--23
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+\TU/lmr/m/n/10 [0.2496,
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5361,
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5413,
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.0833,
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5863,
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+
+warning: forecasting_results_table:23: Underfull \hbox (badness 10000) in paragraph at lines 23--23
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\TU/lmr/m/n/10 [0.5624,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 23--24
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+\TU/lmr/m/n/10 [0.2457,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5108,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5197,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.0405,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5489,
+
+warning: forecasting_results_table:24: Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\TU/lmr/m/n/10 [0.5262,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 24--25
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+\TU/lmr/m/n/10 [0.2517,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\TU/lmr/m/n/10 History + Structural
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5413,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5453,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.0912,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5889,
+
+warning: forecasting_results_table:25: Underfull \hbox (badness 10000) in paragraph at lines 25--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\TU/lmr/m/n/10 [0.5665,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 25--26
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+\TU/lmr/m/n/10 [0.2450,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5433,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5438,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.0875,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5861,
+
+warning: forecasting_results_table:26: Underfull \hbox (badness 10000) in paragraph at lines 26--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\TU/lmr/m/n/10 [0.5569,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 26--27
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+\TU/lmr/m/n/10 [0.2452,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5282,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5293,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.0590,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5449,
+
+warning: forecasting_results_table:27: Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 27--28
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+\TU/lmr/m/n/10 [0.4229,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.4891,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.5028,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.0057,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.5317,
+
+warning: forecasting_results_table:28: Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\TU/lmr/m/n/10 [0.5057,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 28--29
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+\TU/lmr/m/n/10 [0.2629,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 3209) in paragraph at lines 29--29
+Underfull \hbox (badness 3209) in paragraph at lines 29--29
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5398,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5433,
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.0870,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5928,
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+
+warning: forecasting_results_table:29: Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\TU/lmr/m/n/10 [0.5665,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 29--30
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+\TU/lmr/m/n/10 [0.2450,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 3209) in paragraph at lines 30--30
+Underfull \hbox (badness 3209) in paragraph at lines 30--30
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5119,
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5221,
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.0453,
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5537,
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+
+warning: forecasting_results_table:30: Underfull \hbox (badness 10000) in paragraph at lines 30--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\TU/lmr/m/n/10 [0.5289,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 30--31
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+\TU/lmr/m/n/10 [0.2518,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\TU/lmr/m/n/10 History + Structural
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 3209) in paragraph at lines 31--31
+Underfull \hbox (badness 3209) in paragraph at lines 31--31
+[]|\TU/lmr/m/n/10 History avail-
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5441,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5464,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.0932,
+
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5944,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\TU/lmr/m/n/10 [0.5705,
+warning: forecasting_results_table:31: Underfull \hbox (badness 10000) in paragraph at lines 31--31
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 31--32
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+\TU/lmr/m/n/10 [0.2442,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 3209) in paragraph at lines 32--32
+Underfull \hbox (badness 3209) in paragraph at lines 32--32
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5456,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5466,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.0939,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5914,
+
+warning: forecasting_results_table:32: Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/10 [0.5594,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 32--33
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+\TU/lmr/m/n/10 [0.2446,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 3209) in paragraph at lines 33--33
+Underfull \hbox (badness 3209) in paragraph at lines 33--33
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5358,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.0725,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5458,
+
+warning: forecasting_results_table:33: Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\TU/lmr/m/n/10 [0.5363,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 33--34
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\TU/lmr/m/n/10 [0.4415,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 3209) in paragraph at lines 34--34
+Underfull \hbox (badness 3209) in paragraph at lines 34--34
+[]|\TU/lmr/m/n/10 History avail-
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.4868,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.5025,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.0055,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.5343,
+
+warning: forecasting_results_table:34: Underfull \hbox (badness 10000) in paragraph at lines 34--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\TU/lmr/m/n/10 [0.5054,
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 34--35
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+\TU/lmr/m/n/10 [0.2642,
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\TU/lmr/m/n/10 (CI unavail-
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+warning: forecasting_results_table:35: Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\TU/lmr/m/n/10 GCN + GRU head
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:36: Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\TU/lmr/m/n/10 (CI unavail-
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\TU/lmr/m/n/10 (CI unavail-
+warning: forecasting_results_table:37: Underfull \hbox (badness 10000) in paragraph at lines 37--37
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\TU/lmr/m/n/10 GCN + GRU head
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\TU/lmr/m/n/10 Monthly
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\TU/lmr/m/n/10 node task;
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\TU/lmr/m/n/10 (CI unavail-
+
+warning: forecasting_results_table:38: Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\TU/lmr/m/n/10 (CI unavail-
+[18] [19] [20]) [21] [22] [23] [24] (main.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 46--53
+warning: main.bbl:53: Underfull \hbox (badness 10000) in paragraph at lines 46--53
+[][][] [] [][][][][][] [] [][][] [] [][][][][][][][] [] [][][][][][][][][][][][
+][] [] [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][]$[]\TU/lmr/m/n/10.95 ,
+[25]) [26] (main.aux) )
+(see the transcript file for additional information)
+Output written on main.xdv (26 pages, 639680 bytes).
+Transcript written on main.log.
+note: Running xdvipdfmx ...
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: downloading pdftex.map
+note: downloading kanjix.map
+note: downloading ckx.map
+note: downloading texglyphlist.txt
+note: downloading pdfglyphlist.txt
+note: downloading glyphlist.txt
+[1note: downloading cmsy10.pfb
+][2][3note: downloading cmmi10.pfb
+][4note: downloading cmr10.pfb
+][5note: downloading msbm10.pfb
+][6][7note: downloading cmmi8.pfb
+note: downloading cmex10.pfb
+][8note: downloading cmmi7.pfb
+note: downloading cmr8.pfb
+][9][10][11note: downloading cmsy8.pfb
+note: downloading cmmi6.pfb
+][12][13note: downloading cmr7.pfb
+][14][15][16][17][18][19][20][21][22][23][24][25][26]3880907 bytes written
+note: Writing `main.pdf` (3.7011213302612305 MiB)
+note: Writing `main.log` (36.138671875 KiB)
+note: Writing `main.out` (8.5048828125 KiB)
+note: Writing `main.bbl` (6.9619140625 KiB)
+note: Writing `main.blg` (194 B)
+note: Writing `main.aux` (24.28515625 KiB)

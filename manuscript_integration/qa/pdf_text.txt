@@ -1,0 +1,934 @@
+Graph-Based Information Propagation and Temporal
+Learning in a Directed Indian Political Twitter Network
+Nikhil A S
+MSc Data Science
+Digital University Kerala, Kerala, India
+nikhilas.ds25@duk.ac.in
+October 2026
+Abstract
+We examine directed interaction structure, hypothetical propagation, and weekly orientation
+forecastinginanIndianpoliticalTwitterdatasetcontaining85,495tweetsand109,443suppliednet-
+workrows. Literalmatchingyieldsalargestweaklyconnectedcomponentof17,598usersand29,715
+directed edges, but its largest strongly connected component contains only 17 users. Text-visible
+references reconstruct 129,604 timestamped events across 109,219 unique directed pairs. Temporal
+ordering further constrains reach: among 500 high-out-strength seeds, mean temporal/static reach
+is 74.87% in recorded interaction direction and 52.38% under a layer-aware directional sensitivity.
+These ratios vary by seed stratum. In a balanced 25-step simulation with 25 initial seeds per class,
+the full recorded-direction model produces only 0.2695 secondary adoptions per run, or 0.00539
+per initial seed. Only 0.05896% of non-seed nodes encounter competing exposure opportunities,
+with 0.0755 successful competition resolutions per run. Across 15 forecasting test weeks, graph-
+only balanced accuracy remains near 0.50; Persistence reaches 0.5403 and history-based models
+approximately 0.5535. Reversed graph attention does not improve over a matched history-plus-
+structuralMLP.Theevidencesupportsrestricteddirectedrecurrence, chronology-dependentreach,
+seed-dominated simulated spread, and modest predictive value from behavioral history; it does not
+establish causal contagion or broad graph-model superiority.
+1 Introduction
+Political discussion on social media involves recorded interactions, repeated user behavior, and po-
+tential exposure to information. These are related but distinct observations. A directed path can
+describe a possible structural connection without verifying transmission, and a user’s future dataset
+label may be predictable from prior behavior without revealing contagion. This study evaluates these
+distinctions in a directed Indian political Twitter network.
+The empirical graph is weakly connected but with only a very small strongly connected core (17
+users). Its binary tweet label is operational: throughout this paper, class 0 denotes Target 0 and
+class 1 denotes Target 1. Neither class is treated as verified political stance, misinformation, harmful
+content, or truth. The supplied edge table has no timestamps, so temporal analysis uses interactions
+reconstructed from visible text references. The recorded direction is tweet author → text-referenced
+account, whose interpretation as information flow requires caution.
+The study addresses three questions:
+RQ1: How do directed topology and interaction chronology restrict potential reach?
+RQ2: How much secondary adoption and direct competition occur under specified transmission,
+direction, and seed-allocation assumptions?
+1
+RQ3: Does graph aggregation improve weekly forecasting beyond structural features, Persistence,
+and historical orientation?
+We combine population audits, typed interaction reconstruction, time-respecting reachability, con-
+trolled stochastic simulations, and rolling-origin forecasting. The contribution is an empirical assess-
+ment of information boundaries and conditional model behavior. Forecasting and simulated adoption
+are evaluated separately; prediction performance is not evidence of observed propagation.
+2 Related Work and Positioning
+Epidemicandrumormodelsprovideformaldescriptionsofadoption,transmission,andcessation[5,10].
+Networkcascademodelsmaketransmissionconditionalongraphrelations[9],whilecompeting-process
+modelsand misinformation-limitation studies address multipleprocesseson a shared population [2, 13,
+15]. Message-passing formulations further relate transmissibility to network topology under explicit
+process assumptions [8]. Sentiment-aware competitive graph diffusion motivates the use of structural
+and orientation modifiers here [18]; the present parameterization is a hypothetical sensitivity study on
+a separate empirical dataset.
+Empirical research on news sharing and experimentally observed behavioral spread uses evidence
+beyond a binary operational label [3, 21]. The current data cannot support comparable truth classifi-
+cations or causal adoption claims. Likewise, heterogeneous degree distributions alone do not establish
+a power law [4]. PageRank and community methods summarize structural prominence and grouping
+rather than credibility or ideology [1, 19].
+GCN, GraphSAGE, and GAT aggregate neighborhood information using different mechanisms [6, 11,
+20]. Temporal methods include parameter evolution, time-aware attention, memory, and interaction-
+dependent embeddings [12, 16, 17, 22]. Our weekly Temporal GCN applies fixed graph-convolution
+weights followed by a GRU; it is a GRU-over-GCN model. Its feature-only aligned GRU supplies a
+controlfortemporalprocessingwithoutgraphaggregation. Comparisonsusestrictlypriorinformation,
+matched behavioral baselines, and uncertainty estimates rather than architectural complexity as a
+proxy for predictive value.
+3 Data, Provenance, and Population Construction
+3.1 Raw tables and provenance
+The working files are master_tweets.csv and network_edges.csv, attributed to the public Indian
+Political Tweet Engagement Dataset release [7]. The tweet table contains 85,495 rows with dates,
+users, text, engagement fields, and an operational Target label. The network file contains 109,443 raw
+Source–destination–Weight rows. The destination field is also named Target in the edge table; it is
+distinct from the tweet label. The source data card reports 85,154 posts, leaving an undocumented
+341-row difference from the analyzed file. Table 1 identifies the working data and matching counts.
+The Weight field is a relative recorded interaction weight with undocumented behavioral semantics.
+It is not assumed to be a native retweet count or a verified exposure measure. Observations span 15
+October 2022–29 March 2023, including partial boundary weeks.
+3.2 Matching and connected-population selection
+Literal matching uses exact identifier equality. Adding all 36,614 matched users before inducing edges
+retains isolates and yields 18,081 weak components. Of the 19,016 matched users outside the largest
+WCC, 17,375 are isolates; only 1,059 induced edges lie outside that WCC. Selection therefore removes
+2
+Table 1: Working data and literal matching audit. Network-file rows and graph pairs have distinct units.
+Quantity Count Unit or definition
+Working tweets 85,495 Tweet rows
+Tweet-table users 58,093 Literal identifiers
+Supplied network 109,443 Raw weighted rows
+Supplied network endpoints 60,532 Literal account identifiers
+Matched users 36,614 Literal intersection of sources
+Matched induced edges 30,774 Directed pairs
+Largest literal WCC 17,598 Users
+Largest literal WCC edges 29,715 Directed edges, including 44 loops
+Tweets from WCC users 37,115 Tweet rows
+SHA-256 checksums of the analyzed raw files:
+master_tweets.csv: bb19437507a51f52b785223e41a282af29e4647c4588f2d9e660ce87f0ebb4a9
+network_edges.csv: 429eb1bda7bcc887cbd6e724d56cca114d5d92b1e7c2c4a7df1101e8294ed019.
+many disconnected matched accounts. It does not establish that the retained population represents
+all political discussion.
+A separate matching sensitivity trims whitespace, removes one leading @, and casefolds identifiers.
+Its WCC contains 17,636 users and 29,825 directed edges. Network and simulation results retain
+the declared 17,598-user literal-matching cohort. The normalized WCC is reported as a matching
+sensitivity, and neither is substituted for the endpoint universe used in temporal analyses. Table 2
+makes these information boundaries explicit; Figure 1 separates user and edge counts.
+Table 2: Analysis populations and information boundaries
+Population Size Analysis and information boundary
+Literal-matching 17,598 users; Static network structure and propagation
+WCC 29,715 directed simulation. Seed-orientation eligibility uses
+edges observations through November 2022; the
+graph is a static full-period interaction
+comparator.
+Normalized 17,636 users; Matching sensitivity only; completed
+matching sensitivity 29,825 directed simulation and forecasting cohorts are not
+edges reassigned.
+Reconstructed 60,219accounts Typed interaction networks and
+temporal endpoints time-respecting reachability over
+reconstructed timestamped events; accounts
+need not belong to the literal-matching
+WCC.
+Weekly forecasting 12,126 eligible Fifteen test weeks, 19 December 2022–27
+user-weeks; March 2023. Non-tie weekly operational
+6,889 users labels and strictly earlier structural inputs;
+cold-start user-weeks excluded by eligibility.
+3.3 Reconstructing temporal interactions
+Interactions are extracted from visible text patterns: “RT @user” indicates a text-supported retweet,
+a leading handle indicates an inferred reply, and remaining handles indicate mentions. A target is
+counted once within a tweet, using retweet > inferred reply > mention priority. Case-insensitive
+handles are mapped to a deterministic display spelling. Inferred replies are a leading-handle heuristic;
+native reply and retweet metadata are unavailable.
+3
+Figure 1: User and directed-edge populations under literal and normalized matching, displayed in separate
+panels. These counts describe cohort selection; the normalized WCC is a matching sensitivity.
+The reconstruction yields 129,604 timestamped events across 109,219 unique directed pairs and 60,219
+endpointaccounts. Thesuppliedfilehas109,366uniquenormalizedpairs,ofwhich109,217overlapthe
+reconstruction. Thus pair coverage is 109,217/109,366 = 99.8638%, and precision-style reconstructed-
+pair overlap is 109,217/109,219 = 99.9982%. The raw-row count, 109,443, is not either denominator.
+High overlap supports correspondence between recorded relations; it does not validate chronology,
+interaction completeness, or true content-flow direction.
+The typed events comprise 16 retweets (14 pairs and 20 endpoints), 41,024 inferred replies, and 88,564
+mentions. Their recorded graphs contain respectively 38,562 inferred-reply pairs and 72,396 mention
+pairs; accounts and pairs can overlap across layers. Figure 2 shows their very different sizes, using
+logarithmic scales so the sparse retweet layer remains visible.
+Figure2: Typedreconstructedlayers: endpointaccounts,directedpairs,andtimestampedevents. Logarithmic
+axes retain visibility of the 16 text-supported retweets. “reply_inferred” denotes a text heuristic, not a native
+platform reply record. Counts are layer-specific and cannot be summed to obtain unique pooled accounts or
+pairs.
+Recorded reconstructed edges point from the author to the referenced account. A layer-aware direc-
+tional sensitivity reverses only retweet events, plausibly representing content transfer from the refer-
+enced source to the retweeting author. Mentions and inferred replies retain recorded direction under
+this convention because their content-flow direction is unverified. All-edge reversal is an additional
+sensitivity. None is treated as ground-truth information flow.
+Monday-start UTC grouping produces 25 non-empty weekly snapshots, beginning 10 October 2022
+4
+and ending 27 March 2023. Figure 3 displays tweet volume and Target-0 share on separate axes and
+panels. Forecastingfeatures use cumulativeinteractionsstrictly before the target Monday, rather than
+interactions observed within the target week.
+Figure 3: Weekly working-file tweet volume and Target-0 share in separate panels. Shaded boundary weeks
+are partial observation weeks. Class share uses tweets within each week; these descriptive summaries are not
+forecasting inputs.
+4 Orientation-Label Validation Check
+TextBlob polarity supplies a lexical consistency check, not a human reference standard [14]. The
+rule ⊮[polarity > 0], with exact zero assigned to the nonpositive class, agrees with Target for
+80,937/85,495 = 94.67% of rows. Target-0 row agreement is 41,977/43,000 = 97.62%; Target-1
+agreement is 38,960/42,495 = 91.68%.
+Target 0 contains 19,370 lexically negative, 22,607 zero-polarity, and 1,023 positive tweets. Target
+1 contains 843 negative, 2,692 zero-polarity, and 38,960 positive tweets. Figure 4 explicitly displays
+the large zero category. Agreement supports describing Target as an operational orientation label
+associated with a positive-versus-nonpositive lexical split. It does not establish the label-generation
+procedure, verified sentiment, harmfulness, or political homophily. English-oriented polarity can mis-
+characterize Hindi, Hinglish, sarcasm, and contextual stance. Multilingual human validation remains
+external/ongoing; no final annotation result is included here.
+5
+Figure 4: Full-data lexical check. Left: negative, exact-zero, and positive polarity proportions within each
+Target class. Right: nonzero polarity distributions, with zero excluded only from that panel and retained
+explicitly on the left. Agreement with polarity > 0 is 94.67%; lexical association does not validate political
+stance or content truth.
+5 Directed Network Structure
+The 17,598-user WCC has only 17 users in its largest SCC. Relative to that core, 172 users form the
+IN region, 78 form OUT, and 17,331 occupy other structure. IN can reach the core, OUT can be
+reached from it, and other structure is outside these three regions. Figure 5 makes the 17-node core
+visible rather than allowing the much larger other region to obscure it. Weak connectivity does not
+imply mutual directed reachability.
+Figure 5: Bow-tie regions of the literal-matching 17,598-user WCC. Logarithmic node-count scaling exposes
+the 17-node SCC alongside IN (172), OUT (78), and other structure (17,331). The decomposition is relative to
+the selected largest SCC.
+Figure 6 gives degree and weighted-strength complementary cumulative distributions. Heterogeneous
+tails describe concentration, but no fitted power-law comparison supports a scale-free claim [4]. Stan-
+dard PageRank summarizes incoming prominence, while reverse PageRank and out-strength offer
+6
+source-side structural rankings; none measures observed credibility.
+Figure 6: Degreeandweighted-strengthCCDFsinthe17,598-useranalysisWCC.Positivevaluesareshownon
+logarithmic axes. The curves are descriptive; no power-law fit or universal scale-free interpretation is asserted.
+5.1 Direction-aware structural influence
+e e
+The static simulation uses a structural prominence score H = 0.6d +0.4P , where d is min–max
+i i i i
+normalized total degree and P is min–max normalized weighted PageRank on the declared WCC.
+i
+It is a modeled structural modifier, not measured trust or causal influence. Temporal seed strata
+additionally use out-strength and reverse PageRank to examine directional reach. Reversing edges can
+change descendants and message neighborhoods even when the adjacency spectrum is unchanged.
+5.2 Orientation mixing and layer-wise permutation nulls
+For descriptive mixing, an account’s full-history orientation ratio is its Target-1 count divided by its
+total Target-0 plus Target-1 count. Accounts are grouped into Target-0 dominant, Target-1 dominant,
+or tie categories using a 0.5 boundary. Normalized account collisions aggregate class counts, and pairs
+lacking either endpoint’s ratio are excluded. Each unique directed pair contributes once to the mixing
+matrices in Figure 7. These labels describe the full observation window; they are not prior-time causal
+attributes.
+Figure7: Layer-wisemixingoffull-historyoperationalorientation. Rowsindicateauthorcategoryandcolumns
+referenced-account category; entries show row proportions and unique-pair counts. Pairs with missing endpoint
+ratios are excluded. The retweet matrix contains only nine orientation-labelled unique pairs.
+Spearman correlation ρ between endpoint ratios is compared with 2,000 degree/strength-stratified
+s
+7
+permutations per layer. Joint degree/strength quartile strata retain coarse structural variation; tied
+boundaries and small strata make these approximate controls. Global shuffles are a sensitivity, with
+Holm adjustment applied separately within each null family. Table 3 and Figure 8 report the primary
+stratified comparison.
+Table 3: Layer-wise orientation correlations under the degree/strength-stratified null (2,000 permutations per
+layer).
+Layer Observed ρ Two-sided p Holm-adjusted p
+s
+Text-supported retweet 0.611111 0.580210 0.677661
+Inferred reply 0.008978 0.338831 0.677661
+Mention 0.017800 0.099450 0.298351
+Figure 8: Observed endpoint-orientation Spearman correlations (points) and central 95% intervals of
+degree/strength-stratified permutation draws (bars). These bars are null-distribution intervals, not confidence
+intervals for observed correlations. No layer is supported after Holm correction.
+NoneofthethreecorrelationsissupportedafterHolmcorrectionunderthestratifiednull. Theretweet
+estimate rests on nine labelled pairs from only 16 events, so its apparent magnitude cannot support
+broad retweet behavior claims. One global retweet-null draw has undefined correlation; its inferential
+p and standardized statistic are consequently undefined, and finite-draw quantiles remain descriptive.
+The results do not establish political homophily.
+5.3 Time-respecting reachability
+A static directed path is not necessarily temporally usable: its constituent events must occur in non-
+decreasing timestamp order. For each seed, temporal traversal starts at the first valid timestamp of
+the analyzed layer, allows waiting at reached accounts, and closes equal-time paths. Earliest-arrival
+relaxationdeterminesreachabledescendants. Theseeditselfisexcludedfrombothstaticandtemporal
+descendant counts. The ratio is
+|Dtime|
+Rtime = i , |Dstatic| > 0. (1)
+i |Dstatic| i
+i
+Static sinks have undefined ratios, rather than zero retention. Static and temporal sets use the same
+layer, direction, and endpoint universe, keeping the ratio’s denominator consistent.
+8
+Analyses cover pooled recorded, layer-aware, and reversed graphs, together with recorded/reversed
+graphs for each typed layer. For each graph, up to 500 seeds are selected from each of four strata:
+random, high out-strength, high reverse PageRank, and high PageRank. The 20-account retweet layer
+uses all available accounts. Ranked strata can overlap. The 2,000 within-stratum bootstrap resamples
+describe uncertainty in sampled-seed means on this observed graph; they do not quantify uncertainty
+over a population of networks or generalize high-rank seeds to all accounts.
+Table 4 reports pooled ratios and static-sink counts. For the 500 high-out-strength seeds, mean
+retentionis0.7487353198inrecordeddirection(95%interval[0.7257221343,0.7711735446]), or74.87%.
+Under the layer-aware sensitivity it is 0.5237778023 ([0.4982491182,0.5495557165]), or 52.38%. These
+are stratum-specific means of individual ratios, not ratios of pooled totals. Figure 9 compares static
+Table 4: Temporal/static descendant ratio by seed stratum in the reconstructed endpoint universe. Ratios
+exclude static sinks; intervals are 95% seed-bootstrap intervals for the mean.
+Direction Stratum Defined ratios Static sinks Mean [95% CI]
+recorded random 296 204 90.69%
+[88.22, 93.08]%
+recorded high out-strength 500 0 74.87%
+[72.57, 77.12]%
+recorded high reverse 500 0 70.82%
+PageRank [68.06, 73.44]%
+recorded high PageRank 103 397 86.17%
+[81.23, 90.98]%
+layer-aware random 300 200 86.47%
+[83.10, 89.64]%
+layer-aware high out-strength 500 0 52.38%
+[49.82, 54.96]%
+layer-aware high reverse 500 0 61.77%
+PageRank [58.71, 64.77]%
+layer-aware high PageRank 105 395 81.89%
+[75.70, 87.64]%
+reversed random 212 288 92.13%
+[89.43, 94.74]%
+reversed high out-strength 500 0 69.52%
+[67.02, 72.06]%
+reversed high reverse 500 0 66.01%
+PageRank [63.34, 68.49]%
+reversed high PageRank 202 298 85.89%
+[81.69, 89.58]%
+and temporal descendants seed by seed; Figure 10 shows how recorded-direction temporal descendant
+counts differ across strata. Random and high-PageRank strata contain many static sinks, as Table 4
+records. Variation in sink frequency and reach makes a universal retention claim inappropriate. The
+stored hop statistic describes the witnesses retained by earliest-arrival relaxation. It is neither the
+maximum possible temporal walk nor a guarantee of the fewest-hop foremost path. Reach and arrival
+time follow the specified temporal definition; witness depth is a descriptive algorithm output. These
+reconstructed paths show text-visible interaction opportunities, not observed causal adoption.
+9
+Figure 9: Static versus time-respecting descendant counts in the 60,219-account reconstructed endpoint uni-
+verse, by direction. Each point represents a sampled seed, with overlapping strata possible. The equality line
+shows full static reach retention; temporal paths obey non-decreasing timestamps. Axes use a zero-compatible
+logarithmic presentation.
+Figure 10: Recorded-direction pooled temporal descendants by seed stratum: saved means with 95% seed-
+bootstrap intervals. This figure reports descendant counts, whereas Table 4 reports temporal/static ratios after
+excluding static sinks. Neither summary applies uniformly to all accounts.
+10
+6 Stochastic Propagation Model
+6.1 States and edge semantics
+Simulation takes place on the declared 17,598-user WCC, with susceptible state U, active states A
+0
+andA ,andabsorbingquiescentstateQ. Adoptionisexclusiveandirreversible: anodeadoptsatmost
+1
+one class and cannot be reinfected after quiescence. Recorded edges define hypothetical transmission
+opportunities. This static process is not constrained by event chronology and is not calibrated to
+observed adoption cascades.
+Recorded and all-reversed controls retain supplied pair weights. For the layer-aware control, each sup-
+pliedpair’sweightisallocatedinproportiontoitsreconstructedtyped-eventcounts: theretweetshare
+is reversed and the inferred-reply/mention shares remain recorded. The two model pairs lacking type
+evidence retain recorded direction. Aggregated weights are divided by the recorded model maximum,
+34, and clipped to one. This preserves a controlled weight reallocation within the WCC rather than
+substituting the full temporal event-count graph. Normalizing the saved model identifiers does not
+merge or enlarge the 17,598-node population.
+6.2 Edge and node modifiers
+(k)
+Letw¯ = min(w /34,1),r bethesavedhistoricalTarget-k tweetproportion,anda thesavedaggre-
+ij ij i i
+gate auxiliary polarity. Orientation and polarity use cumulative monthly features through November
+2022, without substituting full-period or lexical-audit values. Define
+h (0) = 1r (0) + 1 max(0,−a ), (2)
+i 2 i 2 i
+h (1) = 1r (1) + 1 max(0,a ). (3)
+i 2 i 2 i
+The full-model transmission probability from active source i to susceptible destination j is
+h (cid:16) (cid:17)(cid:16) (cid:17)i
+(cid:0) (cid:1)(cid:0) (cid:1)
+p (k) = clip β w¯ 1 + 1H 1 + 1P 1 + 1h (k) 1 + 1r (k) . (4)
+ij [0,1] k ij 2 2 i 2 2 i 2 2 i 2 2 j
+(k)
+The edge-only baseline uses p = clip (β w¯ ). Equation 4 includes structural prominence twice
+ij [0,1] k ij
+through distinct specified factors; this is a model assumption, not a fitted causal mechanism. Saved
+neutral auxiliary polarity values remain neutral. The November feature cutoff does not make the
+full-period static graph a prospectively available exposure network.
+6.3 Synchronous adoption and quiescence
+For active class-k neighbors of susceptible node j, aggregate exposure probability is
+Y
+E (k) = 1− (1−p (k) ). (5)
+j ij
+i:i∈A
+k
+The union probability is 1−(1−E (0) )(1−E (1) ). One Bernoulli draw determines whether j adopts.
+j j
+Conditional on adoption, if both aggregate exposures are positive, class 0 is selected with probability
+(0) (0) (1)
+E /(E +E ); a sole positive class is selected directly. This conditional resolution rule defines the
+j j j
+competition mechanism. Active nodes then enter Q with quiescence probability q after transmitting.
+Newly adopted nodes become active in the next step. The process stops at extinction or the finite
+horizon; active-at-horizon counts retain information about truncation.
+6.4 Seeds, configurations, and uncertainty
+Initialseednodesaresampledwithoutreplacementfromaccountswithapositivehistoricalproportion
+fortherelevantclass,withdisjointclassallocations. Theyaredistinctfrompseudorandomseeds,which
+11
+control simulation randomness. Eight configurations each use 2,000 paired runs in three directions,
+totaling48,000savedruns. Thebalancedfullconfigurationhas25seednodesperclass,β = β = 0.14,
+0 1
+q = 0.25, and a 25-step horizon. Edge-only transmission levels 0.05, 0.14, and 0.30, class-specific
+advantages (0.28 versus 0.14), and 40/10 versus 10/40 allocations supply conditional sensitivities.
+The random base is 42. Run-specific seed allocations and keyed uniforms by run, step, node, and
+channel supply common random numbers across configurations and directions. Means and saved 95%
+Monte Carlo t intervals quantify simulation variation conditional on the graph and parameters. They
+are not confidence intervals for real-world contagion rates. No equivalence margin or equivalence test
+is defined.
+7 Spectral Diagnostics, Sensitivity, and Competition Experiments
+7.1 Loop-sensitive spectral diagnostic
+For row-source weighted adjacency A, spectral radius is denoted ρ(A), distinct from Spearman ρ .
+s
+SCC-block decomposition gives ρ(A) = 20.000000 with loops and 9.0432080504 without loops. The
+loop-retaining radius is dominated by a singleton SCC self-loop; the loop-free dominant block has
+ten users, while the largest SCC has 17. Table 5 gives operator normalization and the associated
+diagnostic. The quantity q/ρ(A¯) is an unvalidated heuristic spectral diagnostic. The assumptions
+Table 5: Spectral diagnostic on the 17,598-user recorded WCC, using model weight normalization by 34 and
+quiescence probability q =0.25.
+Operator Edges ρ(A) ρ(A¯) q/ρ(A¯)
+Loops retained 29,715 20.000000 0.588235 0.425000
+Loops removed 29,671 9.043208 0.265977 0.939932
+neededtoestablishanepidemicthresholdforthisfinite-horizon,competitive,absorbingprocessarenot
+validated. Self-loops cannot create secondary new-user reach, yet materially alter the spectrum. All-
+edge reversal preserves the spectrum because transposition preserves eigenvalues; it need not preserve
+forward reach. The small recurrent core and loop sensitivity limit any population-wide interpretation.
+7.2 Secondary adoption and amplification
+Let Z and Z count ever-adopted non-seed nodes, excluding initial seeds by identity. Secondary
+0 1
+reach is Z + Z , and amplification is (Z + Z )/(s + s ), where s is the initial seed allocation.
+0 1 0 1 0 1 k
+Secondary reach fraction uses denominator 17,598−s −s . Seed-inclusive ever-adopted totals are not
+0 1
+amplification.
+Table 6 reports recorded-direction configurations. The balanced full model yields exactly 0.2695
+secondary adoptions per run (95% Monte Carlo CI [0.246461,0.292539]), and amplification 0.00539
+([0.00492923,0.00585077]). With 50 initial seeds, these results are strongly seed-dominated. The edge-
+only balanced configuration yields 2.5035 secondary adoptions ([2.423157,2.583843]), or 0.05007 per
+initial seed, showing how the specified modifiers suppress already limited simulated spread.
+Figure 11 displays the edge-only balanced amplification distribution and Figure 12 its transmission
+sensitivity. They are kept distinct from the full model. Figure 13 presents the saved smaller parameter
+grid using panel-specific amplification scales. That grid contains ten runs per cell, so it is descriptive
+andshouldnotbeassignedtheprecisionofthe2,000-runcomparisons. Noneofthesesettingsestimates
+real adoption probabilities.
+12
+Table 6: Recorded-direction secondary propagation on the 17,598-user WCC. Each row contains 2,000 runs
+with quiescence probability 0.25 and a 25-step horizon. Intervals quantify Monte Carlo uncertainty conditional
+on the graph and configuration.
+Configuration β /β Seeds 0/1 Secondary mean [95% Amplification
+0 1
+CI]
+Edge-only, low transmission 0.05 / 0.05 25 / 25 0.9090[0.8643,0.9537] 0.01818
+Edge-only, balanced 0.14 / 0.14 25 / 25 2.5035[2.4232,2.5838] 0.05007
+Edge-only, high transmission 0.30 / 0.30 25 / 25 5.1485[5.0183,5.2787] 0.10297
+Full, balanced 0.14 / 0.14 25 / 25 0.2695[0.2465,0.2925] 0.00539
+Full, Target-0 advantage 0.28 / 0.14 25 / 25 0.4185[0.3886,0.4484] 0.00837
+Full, Target-1 advantage 0.14 / 0.28 25 / 25 0.4260[0.3968,0.4552] 0.00852
+Full, asymmetric allocation 0.14 / 0.14 40 / 10 0.2735[0.2504,0.2966] 0.00547
+Full, asymmetric allocation 0.14 / 0.14 10 / 40 0.2705[0.2468,0.2942] 0.00541
+Figure 11: Amplification distributions for the edge-only balanced model (β =β =0.14, 25 initial seeds per
+0 1
+class, q = 0.25), with 2,000 runs per direction. Amplification is secondary adoptions per initial seed. Panel
+scales differ and are explicitly labelled. These distributions are not the full-modifier configuration.
+Figure 12: Edge-only balanced secondary adoption means versus symmetric transmission, with saved 95%
+Monte Carlo intervals and direction controls. Each cell has 2,000 runs, 50 initial seed nodes, quiescence proba-
+bility 0.25, and a 25-step horizon.
+13
+0.1
+0.25
+0.4
+0.05 0.1 0.14 0.2
+β0=β1
+ytilibaborp
+ecnecseiuQ
+5 seeds per class
+range 0 to 0.03
+0.1
+0.25
+0.4
+0.05 0.1 0.14 0.2
+β0=β1
+ytilibaborp
+ecnecseiuQ
+10 seeds per class
+range 0 to 0.015
+0.1
+0.25
+0.4
+0.05 0.1 0.14 0.2
+β0=β1
+ytilibaborp
+ecnecseiuQ
+25 seeds per class
+range 0 to 0.022
+0.030
+0.025
+0.020
+0.015
+0.010
+0.005
+0.000
+noitacfiilpma
+naeM
+0.0150
+0.0125
+0.0100
+0.0075
+0.0050
+0.0025
+0.0000
+noitacfiilpma
+naeM
+0.020
+0.015
+0.010
+0.005
+0.000
+noitacfiilpma
+naeM
+Figure 13: Savedfull-modelparametersensitivity: meansecondaryadoptionsperinitialseedacrosssymmetric
+transmissionandquiescenceprobability. Eachpanelusesitsownstatedcolorrangeandseedallocation(5,10,or
+25perclass). Thegridhastenrunspercellandsuppliesdescriptivesensitivityratherthancalibratedcontagion
+estimates.
+7.3 Actual competition intensity and non-seed outcomes
+A competing exposure opportunity occurs when a still-susceptible non-seed node is offered positive
+probabilitiesfrombothclassesbeforeadoption,potentiallyatdifferentsteps. Asuccessfulcompetition-
+resolution event is narrower: adoption occurs at a step where both aggregate probabilities are simul-
+taneously positive. These are model opportunities and resolutions, not observed Twitter contacts.
+In the full balanced recorded configuration, the mean fraction of non-seed nodes ever offered both
+classes is 0.05896398% (95% CI [0.05819555,0.05973242]%), with denominator 17,598−50 = 17,548.
+The mean actual resolution count is 0.0755 per run ([0.063503,0.087497]). Mean ever-both exposure
+count is 10.347, and mean exposed-union count is 71.8135. The saved mean contested fraction among
+exposed nodes is 14.6381%, a different denominator from the 0.05896% non-seed fraction. Figure 14
+reports the latter across recorded-direction configurations. These values support near-independent
+propagation under the tested parameterization, with rare direct competition across the non-seed pop-
+ulation.
+Figure 14: Recorded-direction mean ever-both exposure fraction over non-seed nodes, with 95% Monte Carlo
+intervals (2,000 runs per configuration). The denominator is 17,548 for the 50-seed configurations. Positive-
+probability exposure is not a successful adoption or a verified observed contact.
+Among the 468 runs with secondary adoption, the saved mean fraction of secondary adopters ever
+14
+offered both classes is 40.4024%. This conditional fraction concerns very few adoptions and is distinct
+from both the exposed-node and non-seed-population fractions. Rare competition at population scale
+does not imply that every realized secondary adoption is uncontested.
+The primary competition statistic is
+Z −Z
+0 1
+B = , Z +Z > 0. (6)
+0 1
+Z +Z
+0 1
+Runs with zero secondary adoption have undefined B, rather than a zero or tie value. The bal-
+anced full configuration has 1,532 such runs among 2,000; its defined-run mean is −0.015670 (95% CI
+[−0.104449,0.073110]; 468 defined runs). A near-zero mean does not establish equivalence of the two
+processes. The saved 5% mixed-close classification is a descriptive convention. Figure 15 contrasts
+Equation 6 with a seed-inclusive sensitivity; the latter can be dominated by initial allocation and is
+not the primary outcome.
+Figure 15: Full balanced recorded model: primary signed non-seed outcome (left) and seed-inclusive signed
+sensitivity (right). Zero-secondary runs are undefined and excluded from the primary histogram (1,532 runs);
+seed-inclusive outcomes are defined because initial seeds are present. The plotted symbols C and C denote
+0 1
+adoption counts, with secondary or total counts specified by panel.
+8 Component and Direction Controls
+Comparisons isolate edge-only from full-modifier configurations while maintaining the declared graph
+population and weight-normalization denominator. The resulting differences describe specified proba-
+bilityfactors; theydonotestablishthatprominenceoroperationalorientationcausesrealtransmission.
+Becausethefullmodelcompoundsseveralfactorsin[0.5,1], lowersecondaryreachrelativetotheedge-
+only baseline is consistent with its multiplicative construction.
+Figure 16 reports paired direction differences in secondary adoption. Keyed common random numbers
+couple runs across directions, and the same run’s eligible initial seed allocation is retained. Recorded
+and layer-aware behavior can be similar because only 16 text-supported retweet events contribute to
+typereallocation,butuncertaintycrossingzeroisnotanequivalenceresult. Fullreversalchangesoutgo-
+ing opportunity throughout the graph. Its effects are configuration-dependent, and neither orientation
+isavalidatedexposurenetwork. Asymmetrictransmissionand40/10versus10/40seedallocationsare
+sensitivity settings, not fitted effects of one class on another. Interpretation therefore concerns condi-
+tional secondary counts and opportunities. It does not support unconditional Target-class dominance
+or widespread competitive contagion.
+15
+Seeds 10 / 40; Layer-aware
+minus recorded
+Seeds 10 / 40; Reversed
+minus recorded
+Seeds 40 / 10; Layer-aware
+minus recorded
+Seeds 40 / 10; Reversed
+minus recorded
+Target-1 advantage; Layer-aware
+minus recorded
+Target-1 advantage; Reversed
+minus recorded
+Target-0 advantage; Layer-aware
+minus recorded
+Target-0 advantage; Reversed
+minus recorded
+Full, balanced; Layer-aware
+minus recorded
+Full, balanced; Reversed
+minus recorded
+Edge-only, beta 0.30; Layer-aware
+minus recorded
+Edge-only, beta 0.30; Reversed
+minus recorded
+Edge-only, beta 0.14; Layer-aware
+minus recorded
+Edge-only, beta 0.14; Reversed
+minus recorded
+Edge-only, beta 0.05; Layer-aware
+minus recorded
+Edge-only, beta 0.05; Reversed
+minus recorded
+−1.4 −1.2 −1.0 −0.8 −0.6 −0.4 −0.2 0.0 0.2
+Paired difference in secondary adoptions (95% Monte Carlo CI)
+Figure 16: Paireddifferencesinsecondaryadoptions: layer-awareminusrecordedandreversedminusrecorded,
+for each configuration. Bars are saved 95% Monte Carlo intervals over 2,000 paired runs. Zero is a difference
+reference; an interval containing zero does not demonstrate equivalence.
+16
+9 Leakage-Controlled Weekly Forecasting
+9.1 Prediction cohort and rolling-origin protocol
+WithineachMonday-startUTCweek,Target-0andTarget-1tweetcountsdetermineauser’sdominant
+operational label; ties are excluded. The saved label set contains 77,247 user-weeks, including 1,500
+ties. Retaining non-tie labels with strictly prior graph-feature rows yields 16,292 prediction records;
+59,455 non-tie label records lack required historical graph features. This eligibility excludes cold starts
+and accounts not yet present in reconstructed interaction history.
+Evaluation covers 12,126 eligible test user-weeks from 6,889 unique users over 15 test weeks, 19 De-
+cember 2022–27 March 2023 (Table 2). At each origin, the immediately preceding eligible week is
+used for validation and earlier eligible weeks for training, subject to an eight-week minimum training
+history. Scaling and class weights use training data; selection and early stopping use validation data.
+Target-week interactions and labels are excluded from predictive inputs. Repeated users across weeks
+are permitted because the task predicts future behavior of observed users rather than performance on
+unseen accounts.
+Six structural variables are available: prior in/out degree, in/out event strength, weighted PageRank,
+and reverse PageRank. History-aware models additionally use the latest prior label, its availability
+indicator, historical class proportions, prior label count, and elapsed weeks since that label. All
+are calculated strictly before the prediction week. Persistence predicts the last available non-tied
+prior label, with training-prevalence fallback; Majority uses the training class prevalence. Neural
+pseudorandom seeds are 42–51, distinct from graph seed nodes. Simple baselines use seed 42.
+9.2 Node-only and graph architectures
+Logistic Regression and the MLP use structural features without graph aggregation. The original
+GRU uses a direct six-feature GRU on strictly earlier structural-feature sequences with a separate
+six-candidate validation grid. The aligned GRU uses raw weekly structural-feature sequences through
+Linear(6,h), ReLU, GRU(h,h), dropout, and a binary head. It retains the graph experiment’s projec-
+tion, GRU head, historical cutoffs, scaling, validation grid, early stopping, and random-seed protocol,
+replacing graph aggregation with raw input sequences. These GRUs are distinct architectures and
+controls.
+Static GCN, GraphSAGE, and GAT aggregate prior interactionneighborhoods. Forward and reversed
+GAT use different message directions; incoming aggregation along recorded edges does not indepen-
+dently verify information flow. Temporal GCN applies weekly graph convolution, projection, and
+a GRU to node states with fixed convolutional parameters. It is not a parameter-evolving graph-
+convolution architecture. Matched feature-only and rewired controls assess aggregation under a com-
+mon information boundary, but sampling and tuning choices remain implementation-specific.
+9.3 Complete results and no-skill references
+Table 7 contains all saved reconciled rows: primary structural models, history-aware comparisons on
+all eligible weeks, the history-available sensitivity, and the separate monthly node task. Rows are not
+pooled across cohorts or tasks. Primary weekly rows use saved seed/week bootstrap intervals; history
+rows use saved ordinary bootstrap intervals over week means after averaging random seeds within
+weeks. The monthly rows have no saved intervals and are labelled accordingly. “NA” denotes an
+unavailable result, rather than zero.
+The no-skill balanced-accuracy and AUROC references are 0.50 and the MCC reference is zero. Class-
+0 average precision (AP) is compared with each test week’s class-0 prevalence, whose saved mean
+is 0.529224 (95% interval [0.520062,0.538087]) for the all-eligible cohort. A constant probability of
+0.5 gives Brier score 0.25; a prevalence-matched constant p has expected score p(1 − p) under that
+17
+prevalence. Macro-F1 has no universal 0.5 reference. Persistence supplies a behavioral comparator in
+Figure 17, alongside metric-specific chance/prevalence lines.
+9.4 Graph-only prediction and temporal controls
+Weekly graph-only balanced accuracy is close to chance: Static GCN reaches 0.501185, GraphSAGE
+0.505368,forwardGAT0.508390,reversedGAT0.505818,andTemporalGCN0.505134. AlignedGRU
+reaches 0.509146; structural Logistic Regression reaches 0.512093. These small descriptive deviations
+do not establish broad graph-model superiority. Persistence reaches balanced accuracy 0.540267 and
+macro-F1 0.539581, exceeding the descriptive means of the primary structural/graph models.
+ReversedGAT’smacro-F1meanis0.494267, comparedwith0.489591forTemporalGCNand0.487591
+foralignedGRU.Nominalpositivematchedfeature-controldifferencesinsomestructural-onlysettings
+aremodel-specific. Savedpairedcomparisonsdonotestablishatemporal-modeladvantageoveraligned
+GRU or the strongest static graph model. Different directions can favor different metrics, so there is
+no direction-independent best graph model.
+9.5 Incremental value beyond behavioral history
+History-only logistic reaches balanced accuracy 0.553480 and macro-F1 0.552903. History plus struc-
+tural MLP reaches balanced accuracy 0.553552 and macro-F1 0.549598. Their modest performance
+exceeds graph-only descriptive means, supporting historical behavior as the strongest available signal
+among the tested feature sets.
+Inference remains metric-specific. In saved predeclared paired comparisons, history-only logistic im-
+proves class-0 AP over Persistence by 0.040849 (Holm p = 0.0012207), but its macro-F1 difference
+of 0.013322 has Holm p = 0.15271. History plus structural MLP improves AP by 0.042654 (Holm
+p = 0.0012207), balanced accuracy by 0.013285, and MCC by 0.026808 (both Holm p = 0.0305176).
+Its macro-F1 difference of 0.010017 has Holm p = 0.0880127. Neither comparison establishes Holm-
+adjusted macro-F1 superiority over Persistence.
+With the same historical orientation and structural inputs, history plus reversed GAT reaches bal-
+anced accuracy 0.525525 and macro-F1 0.518369. Its paired macro-F1 difference from history plus
+structural MLP is d = −0.031228, with ordinary-bootstrap 95% interval [−0.0444,−0.0208], three-
+F1
+week moving-block interval [−0.0375,−0.0221], and four-week interval [−0.0372,−0.0232]. The saved
+Holm p is 0.0012207. AP, balanced accuracy, and MCC differences also favor the matched MLP under
+saved Holm tests. Paired model differences use d, separately from the simulation statistic B.
+Thehistory-availablecohortsensitivitygivesthesamequalitativeconclusionbutisreportedseparately
+becauseitseligibilitydiffers. ForwardGATisasecondarydirectioncontrol;itshigherdescriptivemean
+than reversed GAT does not establish a primary multiplicity-adjusted improvement over the matched
+MLP.Nobroadincrementalgraphbenefitisestablishedoncebehavioralhistoryandstructuralfeatures
+are supplied.
+9.6 Separate monthly node-task comparison
+Themonthlynode task inTable7 uses17,598 WCCnodes, a fixed graph, and a singleMarch2023 test
+period after February validation. Its March labels comprise 2,871 Target-0 and 14,727 Target-1 nodes.
+Anall-Target-1predictionattainsaccuracy0.836857butbalancedaccuracy0.5andmacro-F10.455592.
+Unweighted monthly model rows display this majority-like behavior. Training-class weighting and
+validation threshold selection yield balanced accuracy approximately 0.4978 for monthly GCN and
+0.5008 for the fixed-graph GCN plus GRU head. These monthly rows are task-specific comparisons,
+not additional weekly observations, and no saved confidence intervals support significance claims.
+18
+History-only logistic
+History + Structural MLP
+History + Reversed GAT
+History + Forward GAT
+Temporal GCN (GRU-over-GCN)
+Aligned GRU
+GAT reversed
+GAT forward
+GraphSAGE
+Static GCN
+Original GRU
+MLP
+Logistic Regression
+Persistence
+Chance / prevalence
+Majority Persistence mean
+0.50 0.51 0.52 0.53 0.54 0.55 0.56
+Balanced accuracy (saved 95% interval)
+History-only logistic
+History + Structural MLP
+History + Reversed GAT
+History + Forward GAT
+Temporal GCN (GRU-over-GCN)
+Aligned GRU
+GAT reversed
+GAT forward
+GraphSAGE
+Static GCN
+Original GRU
+MLP
+Logistic Regression
+Persistence
+Chance / prevalence
+Majority Persistence mean
+0.52 0.54 0.56 0.58 0.60
+Class-0 average precision (saved 95% interval)
+Figure 17: All-eligible weekly balanced accuracy and class-0 AP with saved 95% uncertainty intervals. Refer-
+encesmarkbalancedaccuracy0.5orclass-0prevalence,andthePersistencemean. Thefigurecombinesdisplayed
+models on a common eligible cohort; Table 7 separately identifies saved interval procedures and additional co-
+horts.
+19
+Table 7: Complete forecasting results with separate weekly cohorts and a monthly comparison task. Entries are saved means with 95% confidence intervals. No results
+are pooled across cohorts.
+Model Cohort Macro-F1 Balanced MCC Class-0 AP AUROC Brier score
+accuracy
+Majority Eligible weeks 0.3460 0.5000 0.0000 0.5292 0.5000 0.2492
+[0.3420, 0.3498] [0.5000, 0.5000] [0.0000, 0.0000] [0.5201, 0.5381] [0.5000, 0.5000] [0.2488, 0.2496]
+Persistence Eligible weeks 0.5396 0.5403 0.0810 0.5575 0.5469 0.4329
+[0.5282, 0.5498] [0.5293, 0.5502] [0.0590, 0.1009] [0.5449, 0.5688] [0.5363, 0.5573] [0.4229, 0.4430]
+Logistic Regression Eligible weeks 0.4742 0.5121 0.0285 0.5529 0.5136 0.2496
+[0.4651, 0.4828] [0.5011, 0.5215] [0.0036, 0.0504] [0.5396, 0.5668] [0.5045, 0.5223] [0.2490, 0.2502]
+MLP Eligible weeks 0.4522 0.5066 0.0157 0.5494 0.5119 0.2497
+[0.4256, 0.4764] [0.4989, 0.5142] [-0.0020, 0.0335] [0.5358, 0.5639] [0.5032, 0.5213] [0.2492, 0.2503]
+Original GRU Eligible weeks 0.4487 0.5055 0.0124 0.5464 0.5098 0.2501
+[0.4176, 0.4760] [0.5005, 0.5109] [0.0016, 0.0239] [0.5356, 0.5586] [0.5029, 0.5173] [0.2495, 0.2510]
+Static GCN Eligible weeks 0.4798 0.5012 0.0027 0.5379 0.5027 0.2506
+[0.4647, 0.4930] [0.4952, 0.5067] [-0.0097, 0.0140] [0.5258, 0.5498] [0.4955, 0.5095] [0.2500, 0.2514]
+GraphSAGE Eligible weeks 0.4665 0.5054 0.0132 0.5450 0.5089 0.2501
+[0.4501, 0.4817] [0.4994, 0.5112] [-0.0006, 0.0271] [0.5316, 0.5589] [0.5019, 0.5165] [0.2497, 0.2505]
+GAT forward Eligible weeks 0.4754 0.5084 0.0174 0.5503 0.5133 0.2497
+[0.4539, 0.4938] [0.5030, 0.5142] [0.0056, 0.0298] [0.5388, 0.5623] [0.5056, 0.5213] [0.2492, 0.2502]
+GAT reversed Eligible weeks 0.4943 0.5058 0.0118 0.5414 0.5087 0.2683
+[0.4856, 0.5011] [0.5004, 0.5106] [0.0005, 0.0219] [0.5310, 0.5514] [0.5029, 0.5141] [0.2591, 0.2803]
+Aligned GRU Eligible weeks 0.4876 0.5091 0.0196 0.5484 0.5113 0.2497
+[0.4770, 0.4976] [0.5018, 0.5167] [0.0039, 0.0360] [0.5339, 0.5638] [0.5027, 0.5211] [0.2492, 0.2502]
+Temporal GCN / Eligible weeks 0.4896 0.5051 0.0105 0.5458 0.5089 0.2500
+GRU-over-GCN [0.4793, 0.4998] [0.4982, 0.5123] [-0.0038, 0.0255] [0.5341, 0.5577] [0.5008, 0.5178] [0.2496, 0.2504]
+History + Forward Eligible weeks 0.5439 0.5486 0.0981 0.5962 0.5701 0.2464
+GAT [0.5361, 0.5521] [0.5413, 0.5565] [0.0833, 0.1139] [0.5863, 0.6058] [0.5624, 0.5780] [0.2457, 0.2472]
+History + Reversed Eligible weeks 0.5184 0.5255 0.0520 0.5624 0.5345 0.2559
+GAT [0.5108, 0.5260] [0.5197, 0.5316] [0.0405, 0.0639] [0.5489, 0.5758] [0.5262, 0.5433] [0.2517, 0.2608]
+History + Structural Eligible weeks 0.5496 0.5536 0.1078 0.6001 0.5757 0.2458
+MLP [0.5413, 0.5586] [0.5453, 0.5625] [0.0912, 0.1257] [0.5889, 0.6104] [0.5665, 0.5850] [0.2450, 0.2466]
+Continued on next page
+20
+Model Cohort Macro-F1 Balanced MCC Class-0 AP AUROC Brier score
+accuracy
+History-only logistic Eligible weeks 0.5529 0.5535 0.1069 0.5983 0.5677 0.2464
+[0.5433, 0.5635] [0.5438, 0.5640] [0.0875, 0.1281] [0.5861, 0.6088] [0.5569, 0.5787] [0.2452, 0.2475]
+Persistence Eligible weeks 0.5396 0.5403 0.0810 0.5575 0.5469 0.4329
+[0.5282, 0.5498] [0.5293, 0.5502] [0.0590, 0.1009] [0.5449, 0.5688] [0.5363, 0.5573] [0.4229, 0.4430]
+Reversed GAT (no Eligible weeks 0.4943 0.5058 0.0118 0.5414 0.5087 0.2683
+history) [0.4891, 0.4991] [0.5028, 0.5089] [0.0057, 0.0182] [0.5317, 0.5508] [0.5057, 0.5116] [0.2629, 0.2745]
+History + Forward History available 0.5485 0.5517 0.1040 0.6027 0.5748 0.2458
+GAT [0.5398, 0.5578] [0.5433, 0.5608] [0.0870, 0.1221] [0.5928, 0.6126] [0.5665, 0.5837] [0.2450, 0.2466]
+History + Reversed History available 0.5191 0.5278 0.0569 0.5666 0.5373 0.2564
+GAT [0.5119, 0.5266] [0.5221, 0.5334] [0.0453, 0.0681] [0.5537, 0.5799] [0.5289, 0.5462] [0.2518, 0.2617]
+History + Structural History available 0.5544 0.5566 0.1137 0.6059 0.5804 0.2451
+MLP [0.5441, 0.5648] [0.5464, 0.5669] [0.0932, 0.1343] [0.5944, 0.6172] [0.5705, 0.5903] [0.2442, 0.2460]
+History-only logistic History available 0.5553 0.5562 0.1136 0.6038 0.5716 0.2458
+[0.5456, 0.5656] [0.5466, 0.5666] [0.0939, 0.1347] [0.5914, 0.6150] [0.5594, 0.5837] [0.2446, 0.2471]
+Persistence History available 0.5467 0.5472 0.0942 0.5579 0.5472 0.4520
+[0.5358, 0.5573] [0.5363, 0.5579] [0.0725, 0.1156] [0.5458, 0.5696] [0.5363, 0.5579] [0.4415, 0.4628]
+Reversed GAT (no History available 0.4921 0.5057 0.0121 0.5437 0.5082 0.2700
+history) [0.4868, 0.4972] [0.5025, 0.5091] [0.0055, 0.0191] [0.5343, 0.5536] [0.5054, 0.5110] [0.2642, 0.2767]
+Monthly GCN Monthly node 0.4556 0.5000 NA NA NA NA
+task; unweighted (CI unavailable) (CI unavailable)
+GCN + GRU head Monthly node 0.4556 0.5000 NA NA NA NA
+(static graph) task; unweighted (CI unavailable) (CI unavailable)
+Monthly GCN Monthly node 0.4877 0.4978 NA NA NA NA
+task; (CI unavailable) (CI unavailable)
+class-balanced
+GCN + GRU head Monthly node 0.5000 0.5008 NA NA NA NA
+(static graph) task; (CI unavailable) (CI unavailable)
+class-balanced
+21
+10 Discussion
+10.1 Restricted directed recurrence despite a large WCC
+The 17,598-user WCC appears large, yet its largest SCC contains only 17 users and most accounts
+lie outside the core’s IN/OUT regions. WCC membership describes undirected connectedness, while
+directed recurrence describes a much narrower property. This difference restricts structural opportuni-
+tiesforsustainedcirculation. Itdoesnotprovethattopologyalonecausesorpreventsrealinformation
+spread.
+10.2 Chronology further restricts potential reach
+Textreconstructionsupplies129,604timestampedeventswhosepairoverlapwiththesuppliednetwork
+is high. Within this proxy, a static path can fail because interactions occur in an unusable order. The
+high-out-strength seed means retain 74.87% of static reach in recorded direction and 52.38% in the
+layer-aware sensitivity, with different results for other strata and undefined ratios for static sinks.
+Chronology therefore matters for reconstructed opportunity, while uncertain direction and incomplete
+visible references limit the interpretation as exposure.
+10.3 Tiny secondary spread and rare direct competition
+Under the balanced full parameterization, 50 initial seeds generate only 0.2695 secondary adoptions
+on average. The mean ever-both non-seed fraction is about 0.05896%, and successful competition
+resolutionsaverage0.0755perrun. Thesimulatedprocessesarenear-independentunderthesesettings,
+rather than a widespread competition for adopting nodes. Conditional sensitivity to transmission or
+seedimbalancedoesnotestablishreal-worldclassdominance. Seed-inclusivetotalsandundefinedzero-
+secondary outcomes must remain visible to avoid mistaking initialization for amplification or parity
+for equivalence.
+10.4 Diﬀicult weekly prediction with modest history signal
+Graph-only balanced accuracy remains near 0.50, whereas Persistence and history-based models pro-
+vide modest signal. Recent operational orientation is the most useful available information among the
+tested inputs. The history-plus-reversed-GAT model does not improve over its matched history-plus-
+structural MLP. This finding concerns the tested implementation, cohort, and information boundary;
+it is not a universal rejection of graph methods. The 15-week evaluation supports restrained model
+selection and metric-specific inference rather than claims that temporal complexity improves forecast-
+ing.
+11 Limitations
+1. Interaction direction is inferred from author/reference structure rather than verified exposure or
+content transmission. Native reply/retweet metadata are unavailable, and leading-handle inferred
+replies are not platform reply records.
+2. Only 16 text-supported retweet events are recovered. Their sparse topology and nine orientation-
+labelled pairs preclude broad retweet behavioral or mixing conclusions.
+3. Target is an operational dataset label. TextBlob consistency is not multilingual validation; exter-
+nal/ongoing human validation has no final result included here.
+22
+4. Time-respecting paths use reconstructed text-visible interactions. Missing handles, quotations,
+deleted content, and invisible interactions limit completeness. High pair overlap does not validate
+all recovered timestamps or causal paths.
+5. The normalized 17,636-user WCC is a matching sensitivity. The static WCC, full temporal end-
+point universe, and eligible user-week forecasting cohort have different denominators and selection
+mechanisms.
+6. Simulation is uncalibrated to observed adoption. The static full-period graph and November fea-
+ture cutoff do not define a prospective exposure process; finite-horizon results depend on specified
+probabilities and initial seed nodes.
+7. Secondary spread is extremely small in the tested balanced full setting, with many undefined non-
+seed outcomes. Rare direct competition limits substantive conclusions about competition, and no
+equivalence margin is justified.
+8. Spectral diagnostics are sensitive to self-loops and the tiny recurrent core. Process assumptions
+needed for an established epidemic threshold are unvalidated.
+9. Forecastingusesonly15testweeks,repeatedusers,andpotentiallydependentweeklyobservations.
+Bootstrap and moving-block intervals are approximate with this short series; there is no unseen-
+user or cross-network performance claim.
+10. Eligibility excludes cold-start user-weeks and users lacking prior reconstructed graph features.
+Results apply to the declared eligible cohort rather than all active users.
+11. Neighborhood sampling, direction choices, tuning, and distinct GRU sequence constructions limit
+architectural attribution. A fixed-weight GRU-over-GCN does not test parameter evolution.
+12. One empirical dataset is studied, with undocumented source-card discrepancy and Weight seman-
+tics. External validity and causal contagion are not established.
+12 Ethics, Data Governance, and Dual Use
+Political tweet text and account handles can be sensitive despite public availability. Results are
+reported as aggregate structural and operational-label patterns without assigning private attributes,
+ideology, credibility, or causal influence to named individuals. The submission does not redistribute
+raw tweet text. Access to underlying account-derived metadata should follow applicable platform
+terms and governance requirements; the data-source attribution is not a redistribution licence.
+The uncalibrated simulation does not justify targeting users or suppressing content. Any future
+intervention research would require verified exposure semantics, independent label validation, and as-
+sessment of disparate effects across communities. Aggregate uncertainty and limited external validity
+should be retained when interpreting these analyses.
+13 Reproducibility
+The project contains reproducibility_package/ with archived scripts, configuration, recorded
+software versions and environment specification, fixed pseudorandom seeds, input/output SHA-256
+records, and analysis assumptions. Its table and figure manifests link derived tables and figure source
+data stored in results/tables/ and results/figures/reviewer_corrected/. These linked files
+are part of the local evidence record; the manifests alone do not embed every result file. Known
+missing package-version or acquisition details are documented rather than invented.
+Literal/normalized matching rules, typed direction assumptions, temporal traversal definitions, sim-
+ulator parameters, and forecasting information boundaries are recorded explicitly. The simulation
+23
+uses random base 42 and 2,000 paired runs per configuration/direction; temporal summaries use 2,000
+seed resamples; neural forecasting uses random seeds 42–51. The saved forecasting table preserves
+cohort-specific inference procedures rather than pooling summaries. Derived numerical tables and
+figure source CSVs used in this manuscript are included as supporting evidence, with provenance and
+a manuscript input/output manifest. No model retraining is needed to typeset these saved results.
+The clean manuscript archive contains source, bibliography, referenced figures, and supporting de-
+rived evidence. It is a typesetting package and does not by itself establish executable reproducibility.
+Raw tweet text is excluded. No public repository, DOI for this project’s artifacts, or redistribution
+licence is claimed. Authoritative input hashes appear in Table 1, and the local reproducibility package
+documents the additional input requirements.
+14 Conclusion
+The directed Indian political Twitter network has a large weak component but a 17-user strongly con-
+nected core. Reconstructed interaction chronology further restricts reach relative to static paths, with
+seed-stratumanddirectionalsensitivity. Underthetestedbalancedfullsimulation,secondaryadoption
+istinyandactualcompetitionisrare; initialseedcountsshouldnotbeinterpretedascascadeamplifica-
+tion. Weekly graph-only forecasting is near chance, while Persistence and historical orientation supply
+modest signal. Reversed graph attention does not improve over the matched history-plus-structural
+MLP. These conditional findings support careful separation of topology, reconstructed opportunity,
+simulated adoption, and prediction, without claiming causal contagion, class dominance, or broad
+graph-model superiority.
+Author Contributions
+Nikhil A S conducted the study design, data analysis, modeling, interpretation, visualization, and
+manuscript preparation.
+Funding
+No external funding was received for this study.
+Competing Interests
+The author declares no competing interests.
+References
+[1] Sergey Brin and Lawrence Page. The anatomy of a large-scale hypertextual web search engine. In Proceed-
+ings of the Seventh International World Wide Web Conference, pages 107–117, 1998.
+[2] Ceren Budak, Divyakant Agrawal, and Amr El Abbadi. Limiting the spread of misinformation in social
+networks. In Proceedings of the 20th International Conference on World Wide Web, 2011. doi: 10.1145/
+1963405.1963499.
+[3] Damon Centola. The spread of behavior in an online social network experiment. Science, 329(5996):
+1194–1197, 2010. doi: 10.1126/science.1185231.
+[4] Aaron Clauset, Cosma Rohilla Shalizi, and M. E. J. Newman. Power-law distributions in empirical data.
+SIAM Review, 51(4):661–703, 2009. doi: 10.1137/070710111.
+[5] D. J. Daley and D. G. Kendall. Epidemics and rumours. Nature, 204:1118, 1964. doi: 10.1038/2041118a0.
+24
+[6] William L. Hamilton, Rex Ying, and Jure Leskovec. Inductive representation learning on large graphs. In
+Advances in Neural Information Processing Systems, volume 30, pages 1024–1034, 2017.
+[7] Indian Political Tweet Engagement Dataset. Indian political tweet engagement dataset. https://
+www.kaggle.com/datasets/mannattrivedi/indian-political-tweet-engagement-dataset, 2026. Ac-
+cessed September 2026. The dataset card reports 85,154 posts; the working CSV analyzed here contains
+85,495 rows.
+[8] Brian Karrer and M. E. J. Newman. Message passing approach for general epidemic models. Physical
+Review E, 82:016101, 2010. doi: 10.1103/PhysRevE.82.016101.
+[9] DavidKempe,JonKleinberg,andÉvaTardos. Maximizingthespreadofinfluencethroughasocialnetwork.
+In Proceedings of the Ninth ACM SIGKDD International Conference on Knowledge Discovery and Data
+Mining, pages 137–146, 2003. doi: 10.1145/956750.956769.
+[10] William O. Kermack and A. G. McKendrick. A contribution to the mathematical theory of epidemics.
+Proceedings of the Royal Society A, 115(772):700–721, 1927. doi: 10.1098/rspa.1927.0118.
+[11] Thomas N. Kipf and Max Welling. Semi-supervised classification with graph convolutional networks. In
+International Conference on Learning Representations, 2017.
+[12] Srijan Kumar, Xikun Zhang, and Jure Leskovec. Predicting dynamic embedding trajectory in temporal
+interaction networks. In Proceedings of the 25th ACM SIGKDD International Conference on Knowledge
+Discovery and Data Mining, pages 1269–1278, 2019. doi: 10.1145/3292500.3330895.
+[13] Y. Liu, S.-M. Diao, Y.-X. Zhu, and Q. Liu. Shir competitive information diffusion model for online social
+media. Physica A: Statistical Mechanics and its Applications, 461:543–553, 2016. doi: 10.1016/j.physa.
+2016.06.080.
+[14] Steven Loria. Textblob: Simplified text processing. https://textblob.readthedocs.io/, 2018.
+[15] H. Lu, Y. Wang, and J. Wu. An eﬀicient competitive control mechanism for negative information spread
+in online social networks. International Journal of Bifurcation and Chaos, 34(14), 2024. doi: 10.1142/
+S0218127424501724.
+[16] Aldo Pareja, Giacomo Domeniconi, Jie Chen, Tengfei Ma, Toyotaro Suzumura, Hiroki Kanezashi, Tim
+Kaler, Tao B. Schardl, and Charles E. Leiserson. Evolvegcn: Evolving graph convolutional networks for
+dynamic graphs. In Proceedings of the Thirty-Fourth AAAI Conference on Artificial Intelligence, pages
+5363–5370, 2020. doi: 10.1609/AAAI.V34I04.5984.
+[17] EmanueleRossi,BenChamberlain,FabrizioFrasca,DavideEynard,FedericoMonti,andMichaelBronstein.
+Temporal graph networks for deep learning on dynamic graphs, 2020. arXiv:2006.10637.
+[18] Aman Sharma, Aishwaraya, Bapin Mondal, Bertrand Frederick Boui A Boya, Yamina Soula, and
+Sishu Shankar Muni. Sentiment-aware competitive graph diffusion model for negative information control
+in online social networks. Chaos, Solitons & Fractals, 209:118535, 2026. doi: 10.1016/j.chaos.2026.118535.
+[19] V. A. Traag, L. Waltman, and N. J. van Eck. From louvain to leiden: Guaranteeing well-connected
+communities. Scientific Reports, 9:5233, 2019. doi: 10.1038/s41598-019-41695-z.
+[20] Petar Veličković, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Liò, and Yoshua Bengio.
+Graph attention networks. In International Conference on Learning Representations, 2018.
+[21] Soroush Vosoughi, Deb Roy, and Sinan Aral. The spread of true and false news online. Science, 359(6380):
+1146–1151, 2018. doi: 10.1126/science.aap9559.
+[22] Da Xu, Chuanwei Ruan, Evren Korpeoglu, Sushant Kumar, and Kannan Achan. Inductive representation
+learning on temporal graphs. In International Conference on Learning Representations, 2020.
+25

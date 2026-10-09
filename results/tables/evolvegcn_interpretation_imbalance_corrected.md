@@ -1,0 +1,12 @@
+## Interpretation
+
+This corrected Stage 8 experiment preserves the original chronological setup: training uses the existing January-target training period, February 2023 is validation, and March 2023 is held out for one final test evaluation. Stage 7, raw datasets, and temporal feature construction were not changed.
+
+- The previous all-positive result was a majority-class collapse caused by class imbalance: March 2023 contains 2871 negative samples (16.31%) and 14727 positive samples (83.69%), and the fixed 0.5 decision rule yielded zero negative recall and F1.
+- Both the static GCN and EvolveGCN-style models use the same training principle: balanced class weights computed from training labels only.
+- Each model selects its classification threshold on February validation using validation macro F1. That threshold is frozen before evaluating March; March labels are not used for training, threshold selection, or model selection.
+- Corrected March 2023 metrics are saved in `stage8_model_comparison_imbalance_corrected.csv`; the full validation/test metrics are saved in `evolvegcn_metrics_imbalance_corrected.csv`.
+- GCN baseline March metrics: {'threshold': 0.48726534843444824, 'accuracy': 0.7858279349926128, 'balanced_accuracy': 0.4978330093951647, 'negative_precision': 0.15514592933947774, 'negative_recall': 0.07035876001393243, 'negative_f1': 0.09681284447639588, 'positive_precision': 0.8362174766813942, 'positive_recall': 0.9253072587763971, 'positive_f1': 0.8785094929568384, 'macro_f1': 0.48766116871661713, 'weighted_f1': 0.7509807352691836, 'pr_auc': 0.8370823125386617, 'tn': 202, 'fp': 2669, 'fn': 1100, 'tp': 13627}
+- EvolveGCN-style March metrics: {'threshold': 0.5187827944755554, 'accuracy': 0.7466189339697693, 'balanced_accuracy': 0.5007650205527433, 'negative_precision': 0.16469594594594594, 'negative_recall': 0.13584117032392895, 'negative_f1': 0.1488833746898263, 'positive_precision': 0.8370978332239002, 'positive_recall': 0.8656888707815577, 'positive_f1': 0.8511533197583202, 'macro_f1': 0.5000183472240732, 'weighted_f1': 0.7365825155594541, 'pr_auc': 0.8364300907683695, 'tn': 390, 'fp': 2481, 'fn': 1978, 'tp': 12749}
+- Any improvement claim must be based on these held-out March metrics; the imbalance correction alone is not evidence of improvement.
+- The output remains predictive modeling of observed activity, not causal evidence that negative information spreads more quickly.

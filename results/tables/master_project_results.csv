@@ -1,0 +1,34 @@
+stage,experiment,model_configuration,metric,value,interpretation_context
+Stage 7,baseline_negative_only,negative-only baseline,final_negative_cascade_size_mean,26.6,Mean final negative cascade size across 30 runs
+Stage 7,baseline_negative_only,negative-only baseline,final_positive_cascade_size_mean,0.0,Positive cascade remained absent in negative-only baseline
+Stage 7,baseline_positive_only,positive-only baseline,final_positive_cascade_size_mean,26.033333333333335,Mean final positive cascade size across 30 runs
+Stage 7,baseline_positive_only,positive-only baseline,final_negative_cascade_size_mean,0.0,Negative cascade remained absent in positive-only baseline
+Stage 7,full_competitive_random,full competitive random,final_negative_cascade_size_mean,25.066666666666666,Primary competitive configuration showed near-balanced negative propagation
+Stage 7,full_competitive_random,full competitive random,final_positive_cascade_size_mean,25.133333333333333,Primary competitive configuration showed near-balanced positive propagation
+Stage 7,full_competitive_random,full competitive random,competitive_outcome_mixed_close,30,All 30 runs were mixed_close
+Stage 7,full_high_trust_negative,full competitive high_trust,final_negative_cascade_size_mean,25.166666666666668,Trust-ranked negative seed strategy produced near-balanced outcome
+Stage 7,full_high_pagerank_negative,full competitive high_pagerank,final_negative_cascade_size_mean,25.233333333333334,PageRank-ranked negative seed strategy produced near-balanced outcome
+Stage 7,full_high_negative_ratio_negative,full competitive high_negative_ratio,final_negative_cascade_size_mean,25.1,Negative-ratio-ranked negative seed strategy produced near-balanced outcome
+Stage 7,ablation,no_edge_weight,final_negative_cascade_size_mean,27.7,Removing edge weights produced largest tested shift among ablations
+Stage 7,ablation,no_edge_weight,final_positive_cascade_size_mean,28.1,Positive cascade also increased under no-edge-weight ablation
+Stage 7,ablation,full_model,final_negative_cascade_size_mean,25.0,Full model remained near-balanced in ablation suite
+Stage 7,ablation,full_model,final_positive_cascade_size_mean,25.2,Full model remained near-balanced in ablation suite
+Stage 7,sensitivity,parameter_grid,final_negative_cascade_size_mean_min,5.0,Minimum mean negative cascade size across tested parameter grid
+Stage 7,sensitivity,parameter_grid,final_negative_cascade_size_mean_max,26.6,Maximum mean negative cascade size across tested parameter grid
+Stage 7,sensitivity,parameter_grid,final_positive_cascade_size_mean_min,5.0,Minimum mean positive cascade size across tested parameter grid
+Stage 7,sensitivity,parameter_grid,final_positive_cascade_size_mean_max,26.0,Maximum mean positive cascade size across tested parameter grid
+Stage 7,edge_normalization,max_normalization,final_negative_cascade_size_mean,13.402777777777779,Max-normalized primary edge weighting result
+Stage 7,edge_normalization,log_normalization,final_negative_cascade_size_mean,13.761111111111111,Log-normalized comparison result
+Stage 7,edge_normalization,max_normalization,final_positive_cascade_size_mean,13.419444444444444,Max-normalized primary competitive result
+Stage 7,edge_normalization,log_normalization,final_positive_cascade_size_mean,13.769444444444444,Log-normalized comparison result
+Stage 8,GCN_baseline,test split,negative_class_f1,0.0,GCN failed to detect minority negative class in March 2023 hold-out set
+Stage 8,GCN_baseline,test split,macro_f1,0.45559164733178653,Macro F1 captured imbalance failure across positive and negative classes
+Stage 8,GCN_baseline,test split,weighted_f1,0.7625296272593727,Weighted F1 was high because majority positive class dominated
+Stage 8,EvolveGCN_style,test split,negative_class_f1,0.0,EvolveGCN-style model also failed to detect minority negative class
+Stage 8,EvolveGCN_style,test split,macro_f1,0.45559164733178653,Macro F1 was unchanged between the two models
+Stage 8,EvolveGCN_style,test split,weighted_f1,0.7625296272593727,Weighted F1 was unchanged between the two models
+Stage 8,both_models,March 2023 target_distribution,negative_samples,2871,March 2023 held-out target contained 2,871 negative samples
+Stage 8,both_models,March 2023 target_distribution,positive_samples,14727,March 2023 held-out target contained 14,727 positive samples
+Stage 8,both_models,March 2023 target_distribution,negative_percentage,16.31,Negative samples were 16.31% of March target
+Stage 8,both_models,March 2023 target_distribution,positive_percentage,83.69,Positive samples were 83.69% of March target
+Stage 8,both_models,test predictions,identical_predictions,True,GCN and EvolveGCN produced identical test predictions and metrics

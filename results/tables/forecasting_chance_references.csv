@@ -1,0 +1,7 @@
+metric,reference,assumption
+balanced_accuracy,0.5,independent no-information predictions
+ROC_AUC,0.5,independent scores with both classes
+MCC,0.0,independent nondegenerate predictions; constants convention zero
+class_0_PR_AUC,0.5292239015580961,mean test class-0 prevalence across weeks
+Brier_score,0.25,constant .5 forecast
+macro_F1,NA,depends on predicted class allocation and prevalence; no universal .5 reference

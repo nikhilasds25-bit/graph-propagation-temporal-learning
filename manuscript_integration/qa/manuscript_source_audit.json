@@ -1,0 +1,49 @@
+{
+  "protected_files_unchanged": true,
+  "protected_file_count": 1066,
+  "primary_main_tex_unchanged": true,
+  "title_preserved": true,
+  "author_preserved": true,
+  "date_preserved": true,
+  "bibliography_byte_identical": true,
+  "undefined_source_references": [],
+  "uncited_figures_or_tables": [],
+  "figure_count": 17,
+  "figure_files_present": true,
+  "figure_source_data_present": true,
+  "no_keywords": true,
+  "abstract_words": 193,
+  "abstract_length_170_220": true,
+  "duplicate_references_heading_absent": true,
+  "language_occurrences_for_review": {
+    "original": [
+      "imply mutual directed reachability. \\resultfigure{original_WCC_bowtie_readable.png}{Bow-tie regions of the literal-matching 17,598-user WCC. Logarithmic node-",
+      "ral features without graph aggregation. The \\emph{original GRU} uses a direct six-feature GRU on strictly earlier structural-feature sequences with a separate",
+      "5032, 0.5213] & 0.2497\\newline [0.2492, 0.2503]\\\\ Original GRU & Eligible weeks & 0.4487\\newline [0.4176, 0.4760] & 0.5055\\newline [0.5005, 0.5109] & 0.0124\\n"
+    ],
+    "earlier": [
+      "receding eligible week is used for validation and earlier eligible weeks for training, subject to an eight-week minimum training history. Scaling and class w",
+      "al GRU} uses a direct six-feature GRU on strictly earlier structural-feature sequences with a separate six-candidate validation grid. The \\emph{aligned GRU} ",
+      "3. Non-tie weekly operational labels and strictly earlier structural inputs; cold-start user-weeks excluded by eligibility.\\\\ \\bottomrule\\end{tabular} \\end{t"
+    ],
+    "previous implementation": [],
+    "corrected": [
+      "ts/tables/} and \\texttt{results/figures/reviewer\\_corrected/}. These linked files are part of the local evidence record; the manifests alone do not embed every"
+    ],
+    "revision": [],
+    "first implementation": [],
+    "Overleaf archive": [],
+    "EvolveGCN": [],
+    "epidemic threshold": [
+      "iagnostic. The assumptions needed to establish an epidemic threshold for this finite-horizon, competitive, absorbing process are not validated. Self-loops cannot create",
+      "re. Process assumptions needed for an established epidemic threshold are unvalidated. \\item Forecasting uses only 15 test weeks, repeated users, and potentially depende"
+    ],
+    "negative dominance": [],
+    "trust score": [],
+    "recovery probability": [],
+    "weakly strongly connected": []
+  },
+  "forecast_rows": 27,
+  "all_27_forecast_rows_match_canonical": true,
+  "funding_exact": true
+}

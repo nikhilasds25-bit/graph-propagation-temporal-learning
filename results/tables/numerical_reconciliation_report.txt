@@ -1,0 +1,4 @@
+Normalized pair coverage = 109217/109366 = 99.86376022%.
+99.8638% implies denominator approximately 109365.956433; compare with exact unique supplied-pair count above. Raw rows are not a pair denominator.
+Lexical agreement: 80937/85495 = 94.66869408%. Exact definition TextBlob(str(Tweet)).sentiment.polarity > 0; zero maps to Target 0. Target preserved. Saved aggregate counts compared independently.
+TextBlob version is recorded in software_versions; original notebook package version not saved, so historical-version equivalence cannot be guaranteed independently of count agreement. Lexical agreement is not validation of political affiliation, truth or human labels.

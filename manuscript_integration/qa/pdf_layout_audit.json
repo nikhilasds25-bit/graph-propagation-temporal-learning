@@ -1,0 +1,233 @@
+{
+  "page_count": 25,
+  "references_heading_count": 1,
+  "outside_page_characters": 0,
+  "unresolved_reference_markers": false,
+  "pages": [
+    {
+      "page": 1,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "Graph-Based Information Propagation and Temporal\nLearning in a Directed Indian Political Twitter Network\nNikhil A S\nMSc Data Science\nDigital University Kerala, Kerala, India\nnikhil",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 2,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "RQ3: Does graph aggregation improve weekly forecasting beyond structural features, Persistence,\nand historical orientation?\nWe combine population audits, typed interaction reconstr",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 3,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "Table 1: Working data and literal matching audit. Network-file rows and graph pairs have distinct units.\nQuantity Count Unit or definition\nWorking tweets 85,495 Tweet rows\nTweet-ta",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 4,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "Figure 1: User and directed-edge populations under literal and normalized matching, displayed in separate\npanels. These counts describe cohort selection; the normalized WCC is a ma",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 5,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "and ending 27 March 2023. Figure 3 displays tweet volume and Target-0 share on separate axes and\npanels. Forecastingfeatures use cumulativeinteractionsstrictly before the target Mo",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 6,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "Figure 4: Full-data lexical check. Left: negative, exact-zero, and positive polarity proportions within each\nTarget class. Right: nonzero polarity distributions, with zero excluded",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 7,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "source-side structural rankings; none measures observed credibility.\nFigure 6: Degreeandweighted-strengthCCDFsinthe17,598-useranalysisWCC.Positivevaluesareshownon\nlogarithmic axes.",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 8,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "permutations per layer. Joint degree/strength quartile strata retain coarse structural variation; tied\nboundaries and small strata make these approximate controls. Global shuffles ",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 9,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "Analyses cover pooled recorded, layer-aware, and reversed graphs, together with recorded/reversed\ngraphs for each typed layer. For each graph, up to 500 seeds are selected from eac",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 10,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "Figure 9: Static versus time-respecting descendant counts in the 60,219-account reconstructed endpoint uni-\nverse, by direction. Each point represents a sampled seed, with overlapp",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 11,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "6 Stochastic Propagation Model\n6.1 States and edge semantics\nSimulation takes place on the declared 17,598-user WCC, with susceptible state U, active states A\n0\nandA ,andabsorbingq",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 12,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "control simulation randomness. Eight configurations each use 2,000 paired runs in three directions,\ntotaling48,000savedruns. Thebalancedfullconfigurationhas25seednodesperclass,\u03b2 = ",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 13,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "Table 6: Recorded-direction secondary propagation on the 17,598-user WCC. Each row contains 2,000 runs\nwith quiescence probability 0.25 and a 25-step horizon. Intervals quantify Mo",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 14,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "0.1\n0.25\n0.4\n0.05 0.1 0.14 0.2\n\u03b20=\u03b21\nytilibaborp\necnecseiuQ\n5 seeds per class\nrange 0 to 0.03\n0.1\n0.25\n0.4\n0.05 0.1 0.14 0.2\n\u03b20=\u03b21\nytilibaborp\necnecseiuQ\n10 seeds per class\nrange 0",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 15,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "offered both classes is 40.4024%. This conditional fraction concerns very few adoptions and is distinct\nfrom both the exposed-node and non-seed-population fractions. Rare competiti",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 16,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "Seeds 10 / 40; Layer-aware\nminus recorded\nSeeds 10 / 40; Reversed\nminus recorded\nSeeds 40 / 10; Layer-aware\nminus recorded\nSeeds 40 / 10; Reversed\nminus recorded\nTarget-1 advantage",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 17,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "9 Leakage-Controlled Weekly Forecasting\n9.1 Prediction cohort and rolling-origin protocol\nWithineachMonday-startUTCweek,Target-0andTarget-1tweetcountsdetermineauser\u2019sdominant\nopera",
+      "contains_forecast_table": true
+    },
+    {
+      "page": 18,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "prevalence. Macro-F1 has no universal 0.5 reference. Persistence supplies a behavioral comparator in\nFigure 17, alongside metric-specific chance/prevalence lines.\n9.4 Graph-only pr",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 19,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "History-only logistic\nHistory + Structural MLP\nHistory + Reversed GAT\nHistory + Forward GAT\nTemporal GCN (GRU-over-GCN)\nAligned GRU\nGAT reversed\nGAT forward\nGraphSAGE\nStatic GCN\nOr",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 20,
+      "width": 841.89,
+      "height": 595.28,
+      "rotation": 90,
+      "characters_outside_page": 0,
+      "text_preview": "Table 7: Complete forecasting results with separate weekly cohorts and a monthly comparison task. Entries are saved means with 95% confidence intervals. No results\nare pooled acros",
+      "contains_forecast_table": true
+    },
+    {
+      "page": 21,
+      "width": 841.89,
+      "height": 595.28,
+      "rotation": 90,
+      "characters_outside_page": 0,
+      "text_preview": "Model Cohort Macro-F1 Balanced MCC Class-0 AP AUROC Brier score\naccuracy\nHistory-only logistic Eligible weeks 0.5529 0.5535 0.1069 0.5983 0.5677 0.2464\n[0.5433, 0.5635] [0.5438, 0.",
+      "contains_forecast_table": true
+    },
+    {
+      "page": 22,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "10 Discussion\n10.1 Restricted directed recurrence despite a large WCC\nThe 17,598-user WCC appears large, yet its largest SCC contains only 17 users and most accounts\nlie outside th",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 23,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "4. Time-respecting paths use reconstructed text-visible interactions. Missing handles, quotations,\ndeleted content, and invisible interactions limit completeness. High pair overlap",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 24,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "uses random base 42 and 2,000 paired runs per configuration/direction; temporal summaries use 2,000\nseed resamples; neural forecasting uses random seeds 42\u201351. The saved forecastin",
+      "contains_forecast_table": false
+    },
+    {
+      "page": 25,
+      "width": 595.28,
+      "height": 841.89,
+      "rotation": 0,
+      "characters_outside_page": 0,
+      "text_preview": "[6] William L. Hamilton, Rex Ying, and Jure Leskovec. Inductive representation learning on large graphs. In\nAdvances in Neural Information Processing Systems, volume 30, pages 1024",
+      "contains_forecast_table": false
+    }
+  ]
+}

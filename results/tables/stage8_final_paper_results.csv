@@ -1,0 +1,5 @@
+model,protocol,threshold,accuracy,balanced_accuracy,negative_precision,negative_recall,negative_f1,positive_precision,positive_recall,positive_f1,macro_f1,weighted_f1,pr_auc,tn,fp,fn,tp
+GCN_baseline,original_uncorrected,0.5,0.8368565,0.5000000,0.0,0.0,0.0,0.8368565,1.0,0.9111833,0.4555916,0.7625296,,0,2871,0,14727
+EvolveGCN_style,original_uncorrected,0.5,0.8368565,0.5000000,0.0,0.0,0.0,0.8368565,1.0,0.9111833,0.4555916,0.7625296,,0,2871,0,14727
+GCN_baseline,imbalance_corrected,0.4873,0.7858279,0.4978330,0.1551459,0.0703588,0.0968128,0.8362175,0.9253073,0.8785095,0.4876612,0.7509807,0.8370823,202,2669,1100,13627
+EvolveGCN_style,imbalance_corrected,0.5188,0.7466189,0.5007650,0.1646959,0.1358412,0.1488834,0.8370978,0.8656889,0.8511533,0.5000183,0.7365825,0.8364301,390,2481,1978,12749

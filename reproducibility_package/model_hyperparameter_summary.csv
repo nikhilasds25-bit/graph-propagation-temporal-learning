@@ -1,0 +1,76 @@
+source,Model,hidden,dropout,lr,weight_decay,Threshold,Selected_Grid_ID,Direction,Control,heads,Selected_C
+node_only_training_hyperparameters.csv,MLP,32.0,0.2,0.001,0.0001,0.5,1,NA,NA,NA,NA
+node_only_training_hyperparameters.csv,GRU,16.0,0.0,0.001,0.0,0.5,0,NA,NA,NA,NA
+node_only_training_hyperparameters.csv,GRU,32.0,0.5,0.0003,0.0,0.5,4,NA,NA,NA,NA
+node_only_training_hyperparameters.csv,MLP,16.0,0.0,0.001,0.0,0.5,0,NA,NA,NA,NA
+node_only_training_hyperparameters.csv,GRU,16.0,0.2,0.0003,0.0001,0.5,3,NA,NA,NA,NA
+node_only_training_hyperparameters.csv,GRU,64.0,0.5,0.001,0.0001,0.5,2,NA,NA,NA,NA
+node_only_training_hyperparameters.csv,MLP,16.0,0.2,0.0003,0.0001,0.5,3,NA,NA,NA,NA
+node_only_training_hyperparameters.csv,MLP,64.0,0.0,0.0003,0.0,0.5,5,NA,NA,NA,NA
+graph_model_hyperparameters.csv,Static GCN,16.0,0.0,0.001,0.0,0.5,0,forward,primary,2.0,NA
+graph_model_hyperparameters.csv,Static GCN,16.0,0.0,0.001,0.0,0.5,0,forward,feature_only,2.0,NA
+graph_model_hyperparameters.csv,Static GCN,16.0,0.0,0.001,0.0,0.5,0,forward,rewired,2.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,64.0,0.5,0.0003,0.0001,0.5,2,forward,primary,4.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,64.0,0.5,0.0003,0.0001,0.5,2,forward,feature_only,4.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,64.0,0.5,0.0003,0.0001,0.5,2,forward,rewired,4.0,NA
+graph_model_hyperparameters.csv,GAT,16.0,0.0,0.001,0.0,0.5,0,forward,primary,2.0,NA
+graph_model_hyperparameters.csv,GAT,16.0,0.0,0.001,0.0,0.5,0,forward,feature_only,2.0,NA
+graph_model_hyperparameters.csv,GAT,16.0,0.0,0.001,0.0,0.5,0,forward,rewired,2.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,64.0,0.5,0.0003,0.0001,0.5,2,reverse,primary,4.0,NA
+graph_model_hyperparameters.csv,GAT,16.0,0.0,0.001,0.0,0.5,0,reverse,primary,2.0,NA
+graph_model_hyperparameters.csv,GRU (aligned),16.0,0.0,0.001,0.0,0.5,0,forward,feature_only,2.0,NA
+graph_model_hyperparameters.csv,Temporal GCN,64.0,0.5,0.0003,0.0001,0.5,2,forward,primary,4.0,NA
+graph_model_hyperparameters.csv,Temporal GCN,64.0,0.5,0.0003,0.0001,0.5,2,forward,feature_only,4.0,NA
+graph_model_hyperparameters.csv,Temporal GCN,64.0,0.5,0.0003,0.0001,0.5,2,forward,rewired,4.0,NA
+graph_model_hyperparameters.csv,Static GCN,32.0,0.2,0.001,0.0001,0.5,1,forward,primary,4.0,NA
+graph_model_hyperparameters.csv,Static GCN,32.0,0.2,0.001,0.0001,0.5,1,forward,feature_only,4.0,NA
+graph_model_hyperparameters.csv,Static GCN,32.0,0.2,0.001,0.0001,0.5,1,forward,rewired,4.0,NA
+graph_model_hyperparameters.csv,Temporal GCN,32.0,0.2,0.001,0.0001,0.5,1,forward,primary,4.0,NA
+graph_model_hyperparameters.csv,Temporal GCN,32.0,0.2,0.001,0.0001,0.5,1,forward,feature_only,4.0,NA
+graph_model_hyperparameters.csv,Temporal GCN,32.0,0.2,0.001,0.0001,0.5,1,forward,rewired,4.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,16.0,0.0,0.001,0.0,0.5,0,reverse,primary,2.0,NA
+graph_model_hyperparameters.csv,GRU (aligned),64.0,0.5,0.0003,0.0001,0.5,2,forward,feature_only,4.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,16.0,0.0,0.001,0.0,0.5,0,forward,primary,2.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,16.0,0.0,0.001,0.0,0.5,0,forward,feature_only,2.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,16.0,0.0,0.001,0.0,0.5,0,forward,rewired,2.0,NA
+graph_model_hyperparameters.csv,GAT,64.0,0.5,0.0003,0.0001,0.5,2,forward,primary,4.0,NA
+graph_model_hyperparameters.csv,GAT,64.0,0.5,0.0003,0.0001,0.5,2,forward,feature_only,4.0,NA
+graph_model_hyperparameters.csv,GAT,64.0,0.5,0.0003,0.0001,0.5,2,forward,rewired,4.0,NA
+graph_model_hyperparameters.csv,GAT,32.0,0.2,0.001,0.0001,0.5,1,forward,primary,4.0,NA
+graph_model_hyperparameters.csv,GAT,32.0,0.2,0.001,0.0001,0.5,1,forward,feature_only,4.0,NA
+graph_model_hyperparameters.csv,GAT,32.0,0.2,0.001,0.0001,0.5,1,forward,rewired,4.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,32.0,0.2,0.001,0.0001,0.5,1,forward,primary,4.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,32.0,0.2,0.001,0.0001,0.5,1,forward,feature_only,4.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,32.0,0.2,0.001,0.0001,0.5,1,forward,rewired,4.0,NA
+graph_model_hyperparameters.csv,Temporal GCN,16.0,0.0,0.001,0.0,0.5,0,forward,primary,2.0,NA
+graph_model_hyperparameters.csv,Temporal GCN,16.0,0.0,0.001,0.0,0.5,0,forward,feature_only,2.0,NA
+graph_model_hyperparameters.csv,Temporal GCN,16.0,0.0,0.001,0.0,0.5,0,forward,rewired,2.0,NA
+graph_model_hyperparameters.csv,GAT,32.0,0.2,0.001,0.0001,0.5,1,reverse,primary,4.0,NA
+graph_model_hyperparameters.csv,GAT,64.0,0.5,0.0003,0.0001,0.5,2,reverse,primary,4.0,NA
+graph_model_hyperparameters.csv,GRU (aligned),32.0,0.2,0.001,0.0001,0.5,1,forward,feature_only,4.0,NA
+graph_model_hyperparameters.csv,GraphSAGE,32.0,0.2,0.001,0.0001,0.5,1,reverse,primary,4.0,NA
+graph_direction_ablation_hyperparameters.csv,GraphSAGE,64.0,0.5,0.0003,0.0001,0.5,2,reverse,feature_only,4.0,NA
+graph_direction_ablation_hyperparameters.csv,GraphSAGE,64.0,0.5,0.0003,0.0001,0.5,2,reverse,rewired,4.0,NA
+graph_direction_ablation_hyperparameters.csv,GraphSAGE,16.0,0.0,0.001,0.0,0.5,0,reverse,feature_only,2.0,NA
+graph_direction_ablation_hyperparameters.csv,GraphSAGE,16.0,0.0,0.001,0.0,0.5,0,reverse,rewired,2.0,NA
+graph_direction_ablation_hyperparameters.csv,GAT,16.0,0.0,0.001,0.0,0.5,0,reverse,feature_only,2.0,NA
+graph_direction_ablation_hyperparameters.csv,GAT,16.0,0.0,0.001,0.0,0.5,0,reverse,rewired,2.0,NA
+graph_direction_ablation_hyperparameters.csv,GAT,32.0,0.2,0.001,0.0001,0.5,1,reverse,feature_only,4.0,NA
+graph_direction_ablation_hyperparameters.csv,GAT,32.0,0.2,0.001,0.0001,0.5,1,reverse,rewired,4.0,NA
+graph_direction_ablation_hyperparameters.csv,GAT,64.0,0.5,0.0003,0.0001,0.5,2,reverse,feature_only,4.0,NA
+graph_direction_ablation_hyperparameters.csv,GAT,64.0,0.5,0.0003,0.0001,0.5,2,reverse,rewired,4.0,NA
+graph_direction_ablation_hyperparameters.csv,GraphSAGE,32.0,0.2,0.001,0.0001,0.5,1,reverse,feature_only,4.0,NA
+graph_direction_ablation_hyperparameters.csv,GraphSAGE,32.0,0.2,0.001,0.0001,0.5,1,reverse,rewired,4.0,NA
+history_graph_hyperparameters.csv,History Logistic,NA,NA,NA,NA,0.5,-1,NA,NA,NA,0.01
+history_graph_hyperparameters.csv,History + Structural MLP,32.0,0.2,0.001,0.0001,0.5,1,NA,NA,4.0,NA
+history_graph_hyperparameters.csv,History + Reversed GAT,32.0,0.2,0.001,0.0001,0.5,1,NA,NA,4.0,NA
+history_graph_hyperparameters.csv,History + Forward GAT,32.0,0.2,0.001,0.0001,0.5,1,NA,NA,4.0,NA
+history_graph_hyperparameters.csv,History Logistic,NA,NA,NA,NA,0.5,-1,NA,NA,NA,0.1
+history_graph_hyperparameters.csv,History + Structural MLP,16.0,0.0,0.001,0.0,0.5,0,NA,NA,2.0,NA
+history_graph_hyperparameters.csv,History + Reversed GAT,16.0,0.0,0.001,0.0,0.5,0,NA,NA,2.0,NA
+history_graph_hyperparameters.csv,History + Forward GAT,16.0,0.0,0.001,0.0,0.5,0,NA,NA,2.0,NA
+history_graph_hyperparameters.csv,History Logistic,NA,NA,NA,NA,0.5,-1,NA,NA,NA,10.0
+history_graph_hyperparameters.csv,History Logistic,NA,NA,NA,NA,0.5,-1,NA,NA,NA,1.0
+history_graph_hyperparameters.csv,History + Structural MLP,64.0,0.5,0.0003,0.0001,0.5,2,NA,NA,4.0,NA
+history_graph_hyperparameters.csv,History + Reversed GAT,64.0,0.5,0.0003,0.0001,0.5,2,NA,NA,4.0,NA
+history_graph_hyperparameters.csv,History + Forward GAT,64.0,0.5,0.0003,0.0001,0.5,2,NA,NA,4.0,NA

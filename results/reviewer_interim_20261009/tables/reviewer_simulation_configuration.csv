@@ -1,0 +1,9 @@
+configuration,beta_0,beta_1,seeds_0,seeds_1,full_modifiers,runs,recovery,max_steps,seed
+baseline_beta_005,0.05,0.05,25,25,False,2000,0.25,25,42
+symmetric_baseline,0.14,0.14,25,25,False,2000,0.25,25,42
+baseline_beta_030,0.3,0.3,25,25,False,2000,0.25,25,42
+full_balanced,0.14,0.14,25,25,True,2000,0.25,25,42
+Target_0_advantage,0.28,0.14,25,25,True,2000,0.25,25,42
+Target_1_advantage,0.14,0.28,25,25,True,2000,0.25,25,42
+asymmetric_40_10,0.14,0.14,40,10,True,2000,0.25,25,42
+asymmetric_10_40,0.14,0.14,10,40,True,2000,0.25,25,42

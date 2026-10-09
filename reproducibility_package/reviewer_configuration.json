@@ -1,0 +1,13 @@
+{
+  "seed": 42,
+  "permutations_per_layer_null": 2000,
+  "temporal_seeds_per_stratum": 500,
+  "bootstrap_draws": 2000,
+  "simulation_runs_per_cell": 2000,
+  "simulation_max_steps": 25,
+  "recovery": 0.25,
+  "primary_layer_aware_direction": "reverse retweet; retain mention and inferred reply",
+  "username_normalization": "strip whitespace; remove ONE leading @; casefold",
+  "writes": "exclusive new outputs; no manuscript/model/raw edits",
+  "equivalence_margin": null
+}

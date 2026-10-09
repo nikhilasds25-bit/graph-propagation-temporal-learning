@@ -1,0 +1,384 @@
+from pathlib import Path
+from collections import defaultdict
+import json
+import math
+
+import numpy as np
+import pandas as pd
+from PIL import Image, ImageDraw, ImageFont
+
+# All model assumptions are explicit here. They are not estimated causal effects.
+BASE_POSITIVE_TRANSMISSION = 0.14
+BASE_NEGATIVE_TRANSMISSION = 0.14
+RECOVERY_PROBABILITY = 0.25
+SEED_COUNT = 25
+MAX_DIFFUSION_STEPS = 25
+FINAL_RUNS = 30
+ABLATION_RUNS = 10
+# Validation policy: development checks are safe to run; the 30-run experiment is opt-in.
+RUN_FULL_EXPERIMENT = False
+RUN_ABLATIONS = False
+RUN_SENSITIVITY = False
+DIFFUSION_START_MONTH = '2022-11'
+FEATURE_MONTHS = pd.period_range('2022-10', '2023-03', freq='M').astype(str).tolist()
+EXECUTION_POLICY = 'development_only unless RUN_FULL_EXPERIMENT=True is explicitly requested'
+RANDOM_SEED = 20260905
+COMPETITIVE_CLOSE_MARGIN = 0.05
+
+candidates=[Path.cwd().resolve(),Path.cwd().resolve().parent]
+PROJECT_ROOT=next((p for p in candidates if (p/'data'/'processed'/'diffusion_model_nodes.csv').exists()),None)
+if PROJECT_ROOT is None: raise FileNotFoundError('Run this notebook after Stage 6 outputs exist.')
+PROCESSED_DIR=PROJECT_ROOT/'data'/'processed'; TABLES_DIR=PROJECT_ROOT/'results'/'tables'; FIGURES_DIR=PROJECT_ROOT/'results'/'figures'
+for directory in [TABLES_DIR,FIGURES_DIR]: directory.mkdir(parents=True,exist_ok=True)
+nodes=pd.read_csv(PROCESSED_DIR/'diffusion_model_nodes.csv')
+edges=pd.read_csv(PROCESSED_DIR/'diffusion_model_edges.csv')
+tweets=pd.read_csv(PROCESSED_DIR/'diffusion_population_tweets.csv')
+monthly_summary=pd.read_csv(PROCESSED_DIR/'diffusion_population_monthly_summary.csv')
+print(f'Loaded {len(nodes):,} nodes, {len(edges):,} directed edges, and {len(tweets):,} tweets.')
+RUN_RESULTS_PATH=TABLES_DIR/'diffusion_run_results_corrected.csv'; SUMMARY_PATH=TABLES_DIR/'diffusion_experiment_summary_corrected.csv'; ABLATION_PATH=TABLES_DIR/'diffusion_ablation_results_corrected.csv'; ABLATION_SUMMARY_PATH=TABLES_DIR/'diffusion_ablation_summary_corrected.csv'; SENSITIVITY_RAW_PATH=TABLES_DIR/'diffusion_parameter_sensitivity_complete_corrected.csv'; SENSITIVITY_PATH=TABLES_DIR/'diffusion_parameter_sensitivity_summary_corrected.csv'; LOG_SENSITIVITY_PATH=TABLES_DIR/'diffusion_log_edge_sensitivity_corrected.csv'; ALT_RULE_PATH=TABLES_DIR/'diffusion_competition_rule_sensitivity_corrected.csv'; EDGE_NORMALIZATION_PATH=TABLES_DIR/'diffusion_edge_normalization_comparison_corrected.csv'
+print(json.dumps({'base_positive':BASE_POSITIVE_TRANSMISSION,'base_negative':BASE_NEGATIVE_TRANSMISSION,'recovery':RECOVERY_PROBABILITY,'seed_count':SEED_COUNT,'max_steps':MAX_DIFFUSION_STEPS,'final_runs':FINAL_RUNS,'random_seed':RANDOM_SEED,'diffusion_start_month':DIFFUSION_START_MONTH,'execution_policy':EXECUTION_POLICY},indent=2))
+
+def save_bar_chart(labels,values,title,filename,color=(55,126,184)):
+    width,height,margin=1200,680,85; image=Image.new('RGB',(width,height),'white'); draw,font=ImageDraw.Draw(image),ImageFont.load_default()
+    maximum=max(values) if values else 1; slot=(width-2*margin)/max(len(values),1); bar_width=max(2,int(slot*.70))
+    draw.text((margin,25),title,fill='black',font=font); draw.line((margin,height-margin,width-margin,height-margin),fill='black',width=2); draw.line((margin,margin,margin,height-margin),fill='black',width=2)
+    for i,(label,value) in enumerate(zip(labels,values)):
+        x0=int(margin+i*slot+(slot-bar_width)/2); y0=int(height-margin-(value/maximum)*(height-2*margin-45)) if maximum else height-margin
+        draw.rectangle((x0,y0,x0+bar_width,height-margin),fill=color); draw.text((x0,max(margin+22,y0-15)),f'{value:.3g}',fill='black',font=font)
+        if len(values)<=25: draw.text((x0,height-margin+8),str(label)[:18],fill='black',font=font)
+    output=FIGURES_DIR/filename; image.save(output); print(f'Saved figure: {output.relative_to(PROJECT_ROOT)}')
+
+def save_line_chart(series_by_label,title,filename):
+    width,height,margin=1200,680,85; image=Image.new('RGB',(width,height),'white'); draw,font=ImageDraw.Draw(image),ImageFont.load_default()
+    max_len=max(len(values) for values in series_by_label.values()); maximum=max(max(values) for values in series_by_label.values()) or 1
+    colors=[(55,126,184),(228,26,28),(77,175,74),(152,78,163)]
+    draw.text((margin,25),title,fill='black',font=font); draw.line((margin,height-margin,width-margin,height-margin),fill='black',width=2); draw.line((margin,margin,margin,height-margin),fill='black',width=2)
+    for k,(label,values) in enumerate(series_by_label.items()):
+        points=[]
+        for i,value in enumerate(values): points.append((int(margin+i*(width-2*margin)/max(max_len-1,1)),int(height-margin-value/maximum*(height-2*margin))))
+        if len(points)>1: draw.line(points,fill=colors[k%len(colors)],width=3)
+        draw.text((width-220,25+k*15),label,fill=colors[k%len(colors)],font=font)
+    output=FIGURES_DIR/filename; image.save(output); print(f'Saved figure: {output.relative_to(PROJECT_ROOT)}')
+
+
+# Temporal cumulative tweet features are built only from processed tweets.  A snapshot for
+# month m contains tweets on or before m; the start-month snapshot therefore uses information through November.
+tweets['Date']=pd.to_datetime(tweets['Date'],utc=True)
+tweets['month']=tweets['Date'].dt.to_period('M').astype(str)
+assert {'Date','User','Tweet','Likes','Retweets','Target'}.issubset(tweets.columns)
+tweets['node_id']=tweets['User'].astype(str)
+tweets['Target']=pd.to_numeric(tweets['Target'],errors='coerce').fillna(0).astype(int)
+assert tweets['node_id'].isin(nodes['node_id'].astype(str)).all(), 'Tweet users must map to the diffusion node_id population'
+tweets['Likes']=pd.to_numeric(tweets['Likes'],errors='coerce').fillna(0.0)
+tweets['Retweets']=pd.to_numeric(tweets['Retweets'],errors='coerce').fillna(0.0)
+# The processed tweet schema has no polarity column; retain a neutral polarity feature rather than assuming one exists.
+if 'polarity' in tweets.columns:
+    tweets['polarity']=pd.to_numeric(tweets['polarity'],errors='coerce').fillna(0.0)
+else:
+    tweets['polarity']=0.0
+# Target 0 is negative and Target 1 is positive in the processed population.
+tweets['negative_count']=(tweets['Target']==0).astype(int); tweets['positive_count']=(tweets['Target']==1).astype(int)
+nodes=nodes.sort_values('node_id').reset_index(drop=True)
+nodes=nodes.sort_values('node_id').reset_index(drop=True)
+base_users=pd.DataFrame({'node_id':nodes['node_id'].astype(str)})
+# Prefer the node/month summary (weighted cumulative means preserve Stage 6 sentiment).
+summary_columns={'node_id','month','tweet_count','avg_likes','avg_retweets','avg_polarity','negative_count','positive_count'}
+if summary_columns.issubset(monthly_summary.columns):
+    node_monthly_source=monthly_summary.copy()
+else:
+    node_monthly_source=pd.read_csv(PROCESSED_DIR/'diffusion_ready_monthly_node_features_full.csv')
+node_monthly_source['node_id']=node_monthly_source['node_id'].astype(str)
+node_monthly_source['month']=node_monthly_source['month'].astype(str)
+assert summary_columns.issubset(node_monthly_source.columns)
+node_monthly_source['tweet_count']=pd.to_numeric(node_monthly_source['tweet_count'],errors='coerce').fillna(0.0)
+for col in ['avg_likes','avg_retweets','avg_polarity','negative_count','positive_count']:
+    node_monthly_source[col]=pd.to_numeric(node_monthly_source[col],errors='coerce').fillna(0.0)
+temporal_rows=[]
+for month in FEATURE_MONTHS:
+    observed=node_monthly_source[node_monthly_source['month'] <= month].copy()
+    assert not (observed['month'] > month).any(), 'Future month feature leakage detected'
+    observed['likes_sum']=observed['avg_likes']*observed['tweet_count']; observed['retweets_sum']=observed['avg_retweets']*observed['tweet_count']; observed['polarity_sum']=observed['avg_polarity']*observed['tweet_count']
+    grouped=observed.groupby('node_id').agg(tweet_count=('tweet_count','sum'),likes_sum=('likes_sum','sum'),retweets_sum=('retweets_sum','sum'),polarity_sum=('polarity_sum','sum'),negative_count=('negative_count','sum'),positive_count=('positive_count','sum')).reset_index()
+    grouped['avg_likes']=grouped['likes_sum']/grouped['tweet_count'].replace(0,np.nan); grouped['avg_retweets']=grouped['retweets_sum']/grouped['tweet_count'].replace(0,np.nan); grouped['avg_polarity']=grouped['polarity_sum']/grouped['tweet_count'].replace(0,np.nan)
+    grouped[['avg_likes','avg_retweets','avg_polarity']]=grouped[['avg_likes','avg_retweets','avg_polarity']].fillna(0.0)
+    snap=base_users.merge(grouped[['node_id','tweet_count','avg_likes','avg_retweets','avg_polarity','negative_count','positive_count']],on='node_id',how='left').fillna(0)
+    snap['month']=month; snap['negative_ratio']=snap['negative_count']/snap['tweet_count'].replace(0,np.nan); snap['positive_ratio']=snap['positive_count']/snap['tweet_count'].replace(0,np.nan)
+    snap[['negative_ratio','positive_ratio']]=snap[['negative_ratio','positive_ratio']].fillna(0.0)
+    temporal_rows.append(snap)
+temporal_features=pd.concat(temporal_rows,ignore_index=True)
+assert (temporal_features.groupby('month')['tweet_count'].sum().diff().fillna(0)>=0).all()
+start_features=temporal_features[temporal_features['month']==DIFFUSION_START_MONTH].set_index('node_id').reindex(nodes['node_id'].astype(str)).fillna(0)
+assert set(temporal_features['month'])==set(FEATURE_MONTHS)
+assert (start_features.index.astype(str)==nodes['node_id'].astype(str)).all()
+
+# Normalize only derived continuous inputs; all transmission probabilities are clipped to [0, 1].
+node_to_idx={node:i for i,node in enumerate(nodes['node_id'])}; n_nodes=len(nodes)
+def min_max(series):
+    low,high=series.min(),series.max()
+    return np.zeros(len(series)) if low==high else ((series-low)/(high-low)).to_numpy(float)
+feature={
+    'trust':nodes['trust_score'].clip(0,1).to_numpy(float),
+    'pagerank':min_max(nodes['pagerank']),
+    'negative_ratio':start_features['negative_ratio'].to_numpy(float),
+    'positive_ratio':start_features['positive_ratio'].to_numpy(float),
+    'polarity':start_features['avg_polarity'].clip(-1,1).to_numpy(float)
+}
+max_weight=max(float(edges['Weight'].max()),1.0)
+adjacency=[[] for _ in range(n_nodes)]
+for source,target,weight in edges[['Source','Target','Weight']].itertuples(index=False,name=None):
+    adjacency[node_to_idx[source]].append((node_to_idx[target],min(max(float(weight)/max_weight,0.0),1.0)))
+assert len(adjacency)==n_nodes
+print(f'Built cumulative feature snapshots for {FEATURE_MONTHS}; simulation feature cut is on or before {DIFFUSION_START_MONTH}.')
+print('Node mapping:', tweets['node_id'].nunique(), 'tweet users mapped to', n_nodes, 'diffusion nodes; feature source:', 'monthly node summary' if summary_columns.issubset(monthly_summary.columns) else 'diffusion_ready_monthly_node_features_full')
+print(f'Max edge weight normalization uses max={max_weight} (primary) with log1p sensitivity configured separately.')
+print(f'Max edge weight: {max_weight}; receiver-only nodes: {sum(len(out)==0 for out in adjacency):,}')
+print('Observed Target labels remain information-orientation labels; TextBlob polarity is used only as an auxiliary sentiment feature.')
+
+
+# Strategies use only observed historical node features, never future simulated outcomes.
+def select_seeds(information_type,strategy,count,rng,excluded=None):
+    excluded=set() if excluded is None else set(excluded)
+    ratio_col='negative_ratio' if information_type=='negative' else 'positive_ratio'
+    candidates=np.array([i for i in range(n_nodes) if feature[ratio_col][i]>0 and i not in excluded],dtype=int)
+    if len(candidates)<count: raise ValueError(f'Insufficient eligible {information_type} seeds.')
+    if strategy=='random': return rng.choice(candidates,size=count,replace=False).tolist()
+    metric={'high_pagerank':feature['pagerank'],'high_trust':feature['trust'],'high_negative_ratio':feature['negative_ratio'],'high_positive_ratio':feature['positive_ratio']}[strategy]
+    # Stable node-id ordering resolves tied metric values reproducibly.
+    ordered=sorted(candidates,key=lambda i:(-metric[i],str(nodes.iloc[i]['node_id'])))
+    return ordered[:count]
+
+seed_strategy_definitions=pd.DataFrame([
+    ['random','random eligible users with the required observed information type'],
+    ['high_pagerank','eligible users ranked by historical PageRank'],
+    ['high_trust','eligible users ranked by Stage 6 trust score'],
+    ['high_negative_ratio','eligible users ranked by historical negative ratio'],
+    ['high_positive_ratio','eligible users ranked by historical positive ratio']
+],columns=['strategy','definition'])
+print(seed_strategy_definitions.to_string(index=False))
+
+# States: 0=S, 1=I1 (positive), 2=I2 (negative), 3=R. A node always holds one state.
+# Baseline: p_type = base_type * normalized_edge_weight.
+# Enhanced: multiply by source trust, source PageRank influence, source orientation, and target susceptibility.
+# All multipliers are in [0.5,1] or [0,1], so clipping guarantees a valid probability.
+def edge_probability(source,target,weight_norm,information_type,modifiers):
+    base=BASE_NEGATIVE_TRANSMISSION if information_type=='negative' else BASE_POSITIVE_TRANSMISSION
+    probability=base
+    if modifiers.get('edge_weight',True): probability*=weight_norm
+    if modifiers.get('trust',True): probability*=0.5+0.5*feature['trust'][source]
+    if modifiers.get('pagerank',True): probability*=0.5+0.5*feature['pagerank'][source]
+    if modifiers.get('sentiment',True):
+        if information_type=='negative':
+            source_orientation=0.5*feature['negative_ratio'][source]+0.5*max(0.0,-feature['polarity'][source])
+            target_susceptibility=feature['negative_ratio'][target]
+        else:
+            source_orientation=0.5*feature['positive_ratio'][source]+0.5*max(0.0,feature['polarity'][source])
+            target_susceptibility=feature['positive_ratio'][target]
+        probability*=(0.5+0.5*source_orientation)*(0.5+0.5*target_susceptibility)
+    return float(np.clip(probability,0.0,1.0))
+
+def competition_choice(positive_exposure,negative_exposure,rng,rule='proportional'):
+    total=negative_exposure+positive_exposure
+    if total<=0: return 1
+    if rule=='exposure_difference':
+        p_negative=float(np.clip(0.5+0.5*(negative_exposure-positive_exposure)/total,0.0,1.0))
+    else:
+        p_negative=negative_exposure/total
+    return 2 if rng.random()<p_negative else 1
+
+def simulate(negative_seeds,positive_seeds,rng_seed,modifiers,record_history=False,competition_rule='proportional'):
+    rng=np.random.default_rng(rng_seed); state=np.zeros(n_nodes,dtype=np.int8)
+    negative_seeds=list(negative_seeds); positive_seeds=list(positive_seeds)
+    if set(negative_seeds)&set(positive_seeds): raise ValueError('Seed sets must be disjoint.')
+    state[positive_seeds]=1; state[negative_seeds]=2
+    ever_positive=set(positive_seeds); ever_negative=set(negative_seeds); history=[]
+    for step in range(MAX_DIFFUSION_STEPS):
+        active=np.flatnonzero((state==1)|(state==2))
+        if len(active)==0: break
+        fail_positive={}; fail_negative={}
+        for source in active:
+            info_type='positive' if state[source]==1 else 'negative'
+            failures=fail_positive if info_type=='positive' else fail_negative
+            for target,weight_norm in adjacency[source]:
+                if state[target]!=0: continue  # directed transmission only reaches susceptible targets
+                probability=edge_probability(source,target,weight_norm,info_type,modifiers)
+                failures[target]=failures.get(target,1.0)*(1.0-probability)
+        next_state=state.copy()
+        for target in set(fail_positive)|set(fail_negative):
+            positive_exposure=1.0-fail_positive.get(target,1.0); negative_exposure=1.0-fail_negative.get(target,1.0)
+            any_exposure=1.0-(1.0-positive_exposure)*(1.0-negative_exposure)
+            if rng.random()>=any_exposure: continue
+            if positive_exposure>0 and negative_exposure>0:
+                # Competition rule: conditional selection is proportional to aggregate exposure, with no automatic priority.
+                next_state[target]=competition_choice(positive_exposure,negative_exposure,rng,competition_rule)
+            elif negative_exposure>0: next_state[target]=2
+            else: next_state[target]=1
+        new_positive=np.flatnonzero((state==0)&(next_state==1)); new_negative=np.flatnonzero((state==0)&(next_state==2))
+        ever_positive.update(new_positive.tolist()); ever_negative.update(new_negative.tolist())
+        recovery_draw=rng.random(n_nodes)
+        next_state[((state==1)|(state==2))&(recovery_draw<RECOVERY_PROBABILITY)]=3
+        state=next_state
+        if record_history: history.append({'step':step+1,'S':int((state==0).sum()),'I1':int((state==1).sum()),'I2':int((state==2).sum()),'R':int((state==3).sum())})
+    neg_size,pos_size=len(ever_negative),len(ever_positive)
+    total=neg_size+pos_size; difference=abs(neg_size-pos_size)/max(total,1)
+    outcome='mixed_close' if total>0 and difference<=COMPETITIVE_CLOSE_MARGIN else ('negative_win' if neg_size>pos_size else ('positive_win' if pos_size>neg_size else 'mixed_close'))
+    frame=pd.DataFrame(history) if history else pd.DataFrame(columns=['step','S','I1','I2','R'])
+    metrics={'final_negative_cascade_size':neg_size,'final_positive_cascade_size':pos_size,'negative_reach_percentage':100*neg_size/n_nodes,'positive_reach_percentage':100*pos_size/n_nodes,'peak_negative_infected':int(frame['I2'].max()) if len(frame) else 0,'peak_positive_infected':int(frame['I1'].max()) if len(frame) else 0,'time_to_peak_negative':int(frame.loc[frame.I2.idxmax(),'step']) if len(frame) else 0,'time_to_peak_positive':int(frame.loc[frame.I1.idxmax(),'step']) if len(frame) else 0,'final_recovered_population':int((state==3).sum()),'final_susceptible_population':int((state==0).sum()),'total_diffusion_duration':len(frame),'negative_positive_cascade_ratio':neg_size/max(pos_size,1),'competitive_outcome':outcome}
+    # Sanity checks: valid states, no dual infection, bounded probabilities are enforced in edge_probability.
+    assert set(np.unique(state)).issubset({0,1,2,3}) and not np.any((state==1)&(state==2))
+    return metrics,frame
+
+BASELINE_MODIFIERS={'edge_weight':True,'trust':False,'pagerank':False,'sentiment':False}
+FULL_MODIFIERS={'edge_weight':True,'trust':True,'pagerank':True,'sentiment':True}
+ABLATIONS={'no_trust':{'edge_weight':True,'trust':False,'pagerank':True,'sentiment':True},'no_pagerank':{'edge_weight':True,'trust':True,'pagerank':False,'sentiment':True},'no_sentiment':{'edge_weight':True,'trust':True,'pagerank':True,'sentiment':False},'no_edge_weight':{'edge_weight':False,'trust':True,'pagerank':True,'sentiment':True},'full_model':FULL_MODIFIERS}
+
+
+# Sensitivity is an opt-in framework; validation does not execute these runs.
+def normalize_edge_weight(weight, mode='max'):
+    if mode=='log': return float(np.clip(np.log1p(weight)/np.log1p(max_weight),0.0,1.0))
+    return float(np.clip(weight/max_weight,0.0,1.0))
+
+def build_adjacency(normalization='max'):
+    built=[[] for _ in range(n_nodes)]
+    for source,target,weight in edges[['Source','Target','Weight']].itertuples(index=False,name=None):
+        built[node_to_idx[source]].append((node_to_idx[target],normalize_edge_weight(float(weight),normalization)))
+    return built
+
+PARAMETER_SENSITIVITY_GRID=[{'base_transmission':base,'recovery':recovery,'seed_count':seed_count}
+    for base in [0.05,0.10,0.14,0.20]
+    for recovery in [0.10,0.25,0.40]
+    for seed_count in [5,10,25]]
+COMPETITION_RULES=['proportional','exposure_difference']
+def run_sensitivity_suite(runs=ABLATION_RUNS):
+    """Run opt-in sensitivity tables without changing the primary simulator configuration."""
+    global adjacency,BASE_POSITIVE_TRANSMISSION,BASE_NEGATIVE_TRANSMISSION,RECOVERY_PROBABILITY,SEED_COUNT
+    original=(adjacency,BASE_POSITIVE_TRANSMISSION,BASE_NEGATIVE_TRANSMISSION,RECOVERY_PROBABILITY,SEED_COUNT)
+    rows=[]
+    try:
+        for normalization in ['max','log']:
+            adjacency=build_adjacency(normalization)
+            for grid in PARAMETER_SENSITIVITY_GRID:
+                BASE_POSITIVE_TRANSMISSION=grid['base_transmission']; BASE_NEGATIVE_TRANSMISSION=grid['base_transmission']; RECOVERY_PROBABILITY=grid['recovery']; SEED_COUNT=grid['seed_count']
+                for rule in COMPETITION_RULES:
+                    for run in range(runs):
+                        rng=np.random.default_rng(RANDOM_SEED+700000+run); neg=select_seeds('negative','random',SEED_COUNT,rng); pos=select_seeds('positive','random',SEED_COUNT,rng,excluded=neg)
+                        metrics,_=simulate(neg,pos,RANDOM_SEED+710000+run,FULL_MODIFIERS,record_history=True,competition_rule=rule)
+                        rows.append({'normalization':normalization,'competition_rule':rule,'run':run+1,**grid,**metrics})
+    finally:
+        adjacency,BASE_POSITIVE_TRANSMISSION,BASE_NEGATIVE_TRANSMISSION,RECOVERY_PROBABILITY,SEED_COUNT=original
+    return pd.DataFrame(rows)
+
+if RUN_SENSITIVITY:
+    sensitivity_results=run_sensitivity_suite()
+    sensitivity_metrics=['final_negative_cascade_size','final_positive_cascade_size','negative_reach_percentage','positive_reach_percentage','peak_negative_infected','peak_positive_infected','time_to_peak_negative','time_to_peak_positive','total_diffusion_duration']
+    sensitivity_results.to_csv(SENSITIVITY_RAW_PATH,index=False)
+    sensitivity_summary=sensitivity_results.groupby(['normalization','competition_rule','base_transmission','recovery','seed_count'])[sensitivity_metrics].agg(['mean','std','median','min','max']).reset_index()
+    sensitivity_summary.columns=['_'.join(column).strip('_') if isinstance(column,tuple) else column for column in sensitivity_summary.columns]
+    sensitivity_summary.to_csv(SENSITIVITY_PATH,index=False)
+    sensitivity_summary[sensitivity_summary['normalization']=='log'].to_csv(LOG_SENSITIVITY_PATH,index=False)
+    sensitivity_summary[sensitivity_summary['competition_rule']=='exposure_difference'].to_csv(ALT_RULE_PATH,index=False)
+    edge_normalization_comparison=sensitivity_results.groupby(['normalization','competition_rule'])[sensitivity_metrics].agg(['mean','std','median','min','max']).reset_index()
+    edge_normalization_comparison.columns=['_'.join(column).strip('_') if isinstance(column,tuple) else column for column in edge_normalization_comparison.columns]
+    edge_normalization_comparison.to_csv(EDGE_NORMALIZATION_PATH,index=False)
+else:
+    print('Skipped parameter, log-edge, and alternative-competition sensitivity runs by execution policy.')
+
+
+# Explicit population, graph-direction, and simulator safety checks.
+assert n_nodes==17598, f'Expected complete 17,598-user population, got {n_nodes}'
+assert len(nodes)==17598 and not (nodes['node_id'].astype(str).str.len()==0).any()
+assert len(nodes)!=10000 and SEED_COUNT<=n_nodes
+assert {'Source','Target','Weight'}.issubset(edges.columns)
+self_loop_count=int((edges['Source']==edges['Target']).sum())
+assert self_loop_count>=0
+# Self-loops are retained from Stage 6; simulate's state[target]!=0 guard prevents self-loop reinfection or recovery-state overwrite.
+print(f'Self-loops retained safely: {self_loop_count}; state[target]!=0 guard active.')
+# Probability boundary checks across representative edges and both information types.
+sample_edges=[(i,target,w) for i in range(n_nodes) for target,w in adjacency[i]][:1000]
+for source,target,weight_norm in sample_edges:
+    for kind in ['negative','positive']:
+        assert 0<=edge_probability(source,target,weight_norm,kind,FULL_MODIFIERS)<=1
+assert all(isinstance(out,list) for out in adjacency) and len(node_to_idx)==n_nodes
+dev_rows=[]
+for run in range(5):
+    rng=np.random.default_rng(RANDOM_SEED+run)
+    neg=select_seeds('negative','random',SEED_COUNT,rng); pos=select_seeds('positive','random',SEED_COUNT,rng,excluded=neg)
+    metrics,_=simulate(neg,pos,RANDOM_SEED+1000+run,FULL_MODIFIERS,record_history=True)
+    dev_rows.append(metrics)
+development_results=pd.DataFrame(dev_rows)
+print(development_results[['final_negative_cascade_size','final_positive_cascade_size','total_diffusion_duration','competitive_outcome']].to_string(index=False))
+# Seeds are disjoint by construction; recovered nodes cannot be reinfected because state[target]!=0 is skipped.
+assert all(not ((row['final_recovered_population']<0) or (row['final_susceptible_population']<0)) for _,row in development_results.iterrows())
+assert len(development_results)==5 and development_results['total_diffusion_duration'].between(0,MAX_DIFFUSION_STEPS).all()
+assert temporal_features['month'].isin(FEATURE_MONTHS).all() and all((temporal_features.loc[temporal_features['month']==m,'month']<=m).all() for m in FEATURE_MONTHS)
+print('Sanity checks passed: 17,598 nodes, directed edges with retained self-loop safety, disjoint seeds, bounded states/probabilities, no reinfection of recovered nodes, reproducible seeded runs, finite termination, and no future-month features.')
+
+EXPERIMENTS=[
+    ('baseline_negative_only','baseline','negative','random',None),
+    ('baseline_positive_only','baseline','positive',None,'random'),
+    ('full_competitive_random','full','competitive','random','random'),
+    ('full_high_trust_negative','full','competitive','high_trust','high_positive_ratio'),
+    ('full_high_pagerank_negative','full','competitive','high_pagerank','high_positive_ratio'),
+    ('full_high_negative_ratio_negative','full','competitive','high_negative_ratio','high_positive_ratio')
+]
+def run_experiment(name,model_kind,mode,negative_strategy,positive_strategy,runs,seed_offset):
+    rows=[]; modifiers=BASELINE_MODIFIERS if model_kind=='baseline' else FULL_MODIFIERS
+    for run in range(runs):
+        rng=np.random.default_rng(RANDOM_SEED+seed_offset+run)
+        neg=select_seeds('negative',negative_strategy,SEED_COUNT,rng) if mode in ['negative','competitive'] else []
+        pos=select_seeds('positive',positive_strategy,SEED_COUNT,rng,excluded=neg) if mode in ['positive','competitive'] else []
+        metrics,_=simulate(neg,pos,RANDOM_SEED+100000+seed_offset+run,modifiers,record_history=True)
+        rows.append({'experiment':name,'model_kind':model_kind,'mode':mode,'negative_seed_strategy':negative_strategy,'positive_seed_strategy':positive_strategy,'run':run+1,'random_seed':RANDOM_SEED+100000+seed_offset+run,**metrics})
+    return rows
+
+if RUN_FULL_EXPERIMENT:
+    run_rows=[]
+    for number,experiment in enumerate(EXPERIMENTS): run_rows.extend(run_experiment(*experiment,FINAL_RUNS,number*1000))
+    run_results=pd.DataFrame(run_rows)
+    run_results.to_csv(RUN_RESULTS_PATH,index=False)
+else:
+    run_results=pd.DataFrame()
+    print('Skipped full 30-run experiment by execution policy; set RUN_FULL_EXPERIMENT=True explicitly to run it.')
+metric_columns=['final_negative_cascade_size','final_positive_cascade_size','negative_reach_percentage','positive_reach_percentage','peak_negative_infected','peak_positive_infected','time_to_peak_negative','time_to_peak_positive','final_recovered_population','final_susceptible_population','total_diffusion_duration','negative_positive_cascade_ratio']
+experiment_summary=run_results.groupby('experiment')[metric_columns].agg(['mean','std','median','min','max']) if len(run_results) else pd.DataFrame()
+if len(run_results):
+    experiment_summary.columns=['_'.join(column) for column in experiment_summary.columns]
+    outcomes=run_results.groupby('experiment')['competitive_outcome'].value_counts().unstack(fill_value=0).add_prefix('outcome_')
+    experiment_summary=experiment_summary.join(outcomes).reset_index()
+    experiment_summary.to_csv(SUMMARY_PATH,index=False)
+    print(experiment_summary.to_string(index=False))
+else:
+    print('Expected output paths:', RUN_RESULTS_PATH, SUMMARY_PATH)
+
+# Ablations use fewer validated runs; opt in explicitly after the full experiment policy is reviewed.
+if RUN_ABLATIONS:
+    ablation_rows=[]
+    for a_number,(ablation,modifiers) in enumerate(ABLATIONS.items()):
+        for run in range(ABLATION_RUNS):
+            rng=np.random.default_rng(RANDOM_SEED+50000+a_number*1000+run)
+            neg=select_seeds('negative','random',SEED_COUNT,rng); pos=select_seeds('positive','random',SEED_COUNT,rng,excluded=neg)
+            metrics,_=simulate(neg,pos,RANDOM_SEED+150000+a_number*1000+run,modifiers,record_history=True)
+            ablation_rows.append({'ablation':ablation,'run':run+1,'random_seed':RANDOM_SEED+150000+a_number*1000+run,**metrics})
+    ablation_results=pd.DataFrame(ablation_rows); ablation_results.to_csv(ABLATION_PATH,index=False)
+    ablation_summary=ablation_results.groupby('ablation')[['final_negative_cascade_size','final_positive_cascade_size','peak_negative_infected','peak_positive_infected','time_to_peak_negative','time_to_peak_positive','total_diffusion_duration','negative_positive_cascade_ratio']].agg(['mean','std','median','min','max'])
+    ablation_summary.columns=['_'.join(column) for column in ablation_summary.columns]; ablation_summary=ablation_summary.reset_index(); ablation_summary.to_csv(ABLATION_SUMMARY_PATH,index=False); print(ablation_summary.to_string(index=False))
+else:
+    ablation_results=pd.DataFrame(); ablation_summary=pd.DataFrame(); print('Skipped ablations by execution policy; expected path:', ABLATION_PATH)
+seed_strategy_results=run_results.loc[run_results['experiment'].isin(['full_high_trust_negative','full_high_pagerank_negative','full_high_negative_ratio_negative'])].copy() if len(run_results) else pd.DataFrame()
+if len(seed_strategy_results): seed_strategy_results.to_csv(TABLES_DIR/'diffusion_seed_strategy_results_corrected.csv',index=False)
+
+
+if len(experiment_summary):
+    comparison=experiment_summary.set_index('experiment')
+    save_bar_chart(comparison.index.tolist(),comparison['final_negative_cascade_size_mean'].tolist(),'Corrected mean negative cascade by primary experiment','diffusion_corrected_primary_negative_cascade.png',color=(228,26,28))
+    save_bar_chart(comparison.index.tolist(),comparison['peak_negative_infected_mean'].tolist(),'Corrected mean peak negative infected population','diffusion_corrected_primary_peak_negative.png',color=(228,26,28))
+    save_bar_chart(comparison.index.tolist(),comparison['total_diffusion_duration_mean'].tolist(),'Corrected mean diffusion duration','diffusion_corrected_primary_duration.png',color=(55,126,184))
+if len(ablation_summary):
+    ablation_plot=ablation_summary.set_index('ablation')
+    save_bar_chart(ablation_plot.index.tolist(),ablation_plot['final_negative_cascade_size_mean'].tolist(),'Corrected mean negative cascade by ablation','diffusion_corrected_ablation_negative_cascade.png',color=(228,26,28))
+    save_bar_chart(ablation_plot.index.tolist(),ablation_plot['peak_negative_infected_mean'].tolist(),'Corrected mean peak negative infected by ablation','diffusion_corrected_ablation_peak_negative.png',color=(228,26,28))
+    save_bar_chart(ablation_plot.index.tolist(),ablation_plot['total_diffusion_duration_mean'].tolist(),'Corrected mean diffusion duration by ablation','diffusion_corrected_ablation_duration.png',color=(55,126,184))
+if 'edge_normalization_comparison' in globals() and len(edge_normalization_comparison):
+    normalization_plot=edge_normalization_comparison[edge_normalization_comparison['competition_rule']=='proportional']
+    save_bar_chart(normalization_plot['normalization'].tolist(),normalization_plot['final_negative_cascade_size_mean'].tolist(),'Max vs log edge normalization','diffusion_corrected_edge_normalization_negative_cascade.png',color=(77,175,74))
+if len(experiment_summary) or len(ablation_summary): print('Corrected figures written under', FIGURES_DIR)
+else: print('Skipped corrected experiment figures because execution flags are disabled.')

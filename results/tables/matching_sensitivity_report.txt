@@ -1,0 +1,5 @@
+      rule  unique_tweet_users  unique_network_users  matched_users  induced_directed_edges  weak_components  isolates  largest_WCC_nodes  largest_WCC_edges  largest_SCC_nodes  self_loops  tweets_in_largest_WCC
+     exact               58093                 60532          36614                   30774            18081     17375              17598              29715                 17         102                  37115
+normalized               58092                 60346          36615                   30889            18045     17333              17636              29825                 17         109                  37181
+Main WCC membership identical after normalizing old membership: False.
+Exact matching preserves literal strings. Normalization trims whitespace, removes ONE leading @, casefolds. All matched users are added before edges, preserving isolates. Directed edges count unique pairs, not rows; duplicate weights do not affect connectivity. Largest-component ties break lexically. No original WCC files replaced. Display uses most frequent spelling with lexical tie break.

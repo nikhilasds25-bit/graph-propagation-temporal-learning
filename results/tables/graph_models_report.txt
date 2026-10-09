@@ -1,0 +1,303 @@
+{
+  "best_by_macro_F1": "Persistence",
+  "best_by_class_0_PR_AUC": "Persistence",
+  "best_by_balanced_accuracy": "Persistence",
+  "best_graph_by_macro_F1": "GAT (reversed)",
+  "best_static_graph_by_macro_F1": "GAT (reversed)",
+  "best_node_only_by_macro_F1": "Persistence",
+  "graph_message_passing_nominal_positive_macro_F1_CI": true,
+  "temporal_vs_best_static_nominal_positive_macro_F1_CI": false,
+  "graph_models_exceeding_class_0_prevalence_all_weeks": [
+    "GAT (reversed)"
+  ],
+  "primary_graph_fits": 600,
+  "reversed_direction_fits": 300,
+  "matched_and_null_control_fits": 1800,
+  "aligned_GRU_fits": 150,
+  "test_weeks": [
+    "2022-12-19",
+    "2022-12-26",
+    "2023-01-02",
+    "2023-01-09",
+    "2023-01-16",
+    "2023-01-23",
+    "2023-01-30",
+    "2023-02-06",
+    "2023-02-13",
+    "2023-02-20",
+    "2023-02-27",
+    "2023-03-06",
+    "2023-03-13",
+    "2023-03-20",
+    "2023-03-27"
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "epochs_capped_fits": 114
+}
+
+Summary of principal means and intervals:
+               Model            Metric     Mean  SD_Over_Seed_Means  Mean_Within_Week_Seed_SD  SD_Over_Week_Means  Bootstrap_95_Lower  Bootstrap_95_Upper  Seed_Mean_95_Lower  Seed_Mean_95_Upper  Test_Weeks  Seeds  Bootstrap_Draws
+            Majority balanced_accuracy 0.500000                 NaN                       NaN            0.000000            0.500000            0.500000                 NaN                 NaN          15      1            10000
+            Majority          macro_F1 0.345986                 NaN                       NaN            0.007821            0.342035            0.349765                 NaN                 NaN          15      1            10000
+            Majority    class_0_PR_AUC 0.529224                 NaN                       NaN            0.018276            0.520062            0.538087                 NaN                 NaN          15      1            10000
+         Persistence balanced_accuracy 0.540267                 NaN                       NaN            0.021263            0.529331            0.550177                 NaN                 NaN          15      1            10000
+         Persistence          macro_F1 0.539581                 NaN                       NaN            0.021982            0.528241            0.549771                 NaN                 NaN          15      1            10000
+         Persistence    class_0_PR_AUC 0.557477                 NaN                       NaN            0.024148            0.544942            0.568835                 NaN                 NaN          15      1            10000
+ Logistic Regression balanced_accuracy 0.512093                 NaN                       NaN            0.020605            0.501136            0.521548                 NaN                 NaN          15      1            10000
+ Logistic Regression          macro_F1 0.474184                 NaN                       NaN            0.017893            0.465109            0.482796                 NaN                 NaN          15      1            10000
+ Logistic Regression    class_0_PR_AUC 0.552906                 NaN                       NaN            0.027602            0.539562            0.566806                 NaN                 NaN          15      1            10000
+                 MLP balanced_accuracy 0.506559            0.003851                  0.012063            0.014365            0.498933            0.514197            0.504388            0.508940          15     10            10000
+                 MLP          macro_F1 0.452211            0.024868                  0.043296            0.041572            0.425567            0.476384            0.438389            0.467598          15     10            10000
+                 MLP    class_0_PR_AUC 0.549403            0.003948                  0.012442            0.027786            0.535777            0.563876            0.547068            0.551757          15     10            10000
+       GRU (aligned) balanced_accuracy 0.509146            0.004191                  0.013803            0.013595            0.501848            0.516699            0.506563            0.511419          15     10            10000
+       GRU (aligned)          macro_F1 0.487591            0.006035                  0.025638            0.017690            0.477016            0.497637            0.484182            0.491314          15     10            10000
+       GRU (aligned)    class_0_PR_AUC 0.548378            0.005271                  0.012803            0.029405            0.533881            0.563755            0.545204            0.551337          15     10            10000
+          Static GCN balanced_accuracy 0.501185            0.004198                  0.012635            0.009236            0.495250            0.506660            0.498611            0.503679          15     10            10000
+          Static GCN          macro_F1 0.479843            0.018987                  0.040309            0.011578            0.464681            0.492983            0.468243            0.490786          15     10            10000
+          Static GCN    class_0_PR_AUC 0.537914            0.004937                  0.014844            0.022630            0.525775            0.549784            0.534892            0.540674          15     10            10000
+           GraphSAGE balanced_accuracy 0.505368            0.004133                  0.013284            0.009916            0.499444            0.511199            0.502837            0.507704          15     10            10000
+           GraphSAGE          macro_F1 0.466464            0.013965                  0.036091            0.025726            0.450122            0.481670            0.458214            0.474590          15     10            10000
+           GraphSAGE    class_0_PR_AUC 0.545014            0.004916                  0.014175            0.026764            0.531599            0.558869            0.541913            0.547695          15     10            10000
+                 GAT balanced_accuracy 0.508390            0.001188                  0.009860            0.010937            0.502977            0.514202            0.507684            0.509066          15     10            10000
+                 GAT          macro_F1 0.475426            0.018596                  0.037770            0.032199            0.453927            0.493783            0.464824            0.486477          15     10            10000
+                 GAT    class_0_PR_AUC 0.550284            0.001456                  0.008961            0.023663            0.538775            0.562296            0.549432            0.551123          15     10            10000
+        Temporal GCN balanced_accuracy 0.505134            0.005916                  0.012829            0.011547            0.498218            0.512343            0.501637            0.508594          15     10            10000
+        Temporal GCN          macro_F1 0.489591            0.007142                  0.018868            0.017905            0.479290            0.499791            0.485354            0.493775          15     10            10000
+        Temporal GCN    class_0_PR_AUC 0.545785            0.004441                  0.011286            0.023297            0.534117            0.557738            0.543064            0.548252          15     10            10000
+GraphSAGE (reversed) balanced_accuracy 0.500579            0.003949                  0.014988            0.004589            0.496392            0.504670            0.498401            0.502976          15     10            10000
+GraphSAGE (reversed)          macro_F1 0.469605            0.033560                  0.055673            0.013492            0.445160            0.489242            0.448530            0.487067          15     10            10000
+GraphSAGE (reversed)    class_0_PR_AUC 0.530673            0.004158                  0.015082            0.020114            0.519908            0.540744            0.528421            0.533267          15     10            10000
+      GAT (reversed) balanced_accuracy 0.505818            0.005472                  0.015070            0.006222            0.500417            0.510624            0.502446            0.508820          15     10            10000
+      GAT (reversed)          macro_F1 0.494267            0.007942                  0.021715            0.010250            0.485620            0.501120            0.489287            0.498566          15     10            10000
+      GAT (reversed)    class_0_PR_AUC 0.541390            0.004527                  0.017008            0.019379            0.530977            0.551425            0.538547            0.543902          15     10            10000
+
+Requested paired comparisons:
+       Model_A        Model_B            Metric  Mean_A_Minus_B  Paired_Bootstrap_95_Lower  Paired_Bootstrap_95_Upper  A_Better_Weeks  A_Worse_Weeks  Paired_Weeks  Consistently_Better_All_Weeks  Nominal_Positive_CI  Bootstrap_Draws
+GAT (reversed)    Persistence          macro_F1       -0.045314                  -0.055062                  -0.034904               0             15            15                          False                False            10000
+GAT (reversed)    Persistence    class_0_PR_AUC       -0.016086                  -0.022369                  -0.009251               1             14            15                          False                False            10000
+GAT (reversed)    Persistence balanced_accuracy       -0.034448                  -0.043742                  -0.024340               1             14            15                          False                False            10000
+GAT (reversed)    Persistence               MCC       -0.069127                  -0.087352                  -0.049340               1             14            15                          False                False            10000
+GAT (reversed)            MLP          macro_F1        0.042056                   0.021143                   0.063971              12              3            15                          False                 True            10000
+GAT (reversed)            MLP    class_0_PR_AUC       -0.008013                  -0.018052                   0.001724               6              9            15                          False                False            10000
+GAT (reversed)            MLP balanced_accuracy       -0.000741                  -0.008943                   0.007276               8              7            15                          False                False            10000
+GAT (reversed)            MLP               MCC       -0.003810                  -0.022553                   0.014492               8              7            15                          False                False            10000
+  Temporal GCN  GRU (aligned)          macro_F1        0.002000                  -0.003317                   0.006844              10              5            15                          False                False            10000
+  Temporal GCN  GRU (aligned)    class_0_PR_AUC       -0.002592                  -0.009945                   0.003970               6              9            15                          False                False            10000
+  Temporal GCN  GRU (aligned) balanced_accuracy       -0.004012                  -0.009333                   0.000526               6              9            15                          False                False            10000
+  Temporal GCN  GRU (aligned)               MCC       -0.009035                  -0.021054                   0.001174               6              9            15                          False                False            10000
+  Temporal GCN GAT (reversed)          macro_F1       -0.004676                  -0.015885                   0.006922               6              9            15                          False                False            10000
+  Temporal GCN GAT (reversed)    class_0_PR_AUC        0.004395                  -0.004162                   0.013603               8              7            15                          False                False            10000
+  Temporal GCN GAT (reversed) balanced_accuracy       -0.000684                  -0.007940                   0.006813               8              7            15                          False                False            10000
+  Temporal GCN GAT (reversed)               MCC       -0.001302                  -0.016576                   0.014365               8              7            15                          False                False            10000
+
+All graph contribution ablations:
+             Model_A                           Model_B            Metric  Mean_A_Minus_B  Paired_Bootstrap_95_Lower  Paired_Bootstrap_95_Upper  A_Better_Weeks  A_Worse_Weeks  Paired_Weeks  Consistently_Better_All_Weeks  Nominal_Positive_CI  Bootstrap_Draws          Graph_Model      Control                           Control_Architecture  Control_Mean  Graph_Mean
+          Static GCN           Static GCN feature_only          macro_F1        0.017715                   0.008904                   0.025968              12              3            15                          False                 True            10000           Static GCN feature_only       same model/parameters; identity messages      0.462128    0.479843
+          Static GCN           Static GCN feature_only    class_0_PR_AUC       -0.012016                  -0.020050                  -0.004262               3             12            15                          False                False            10000           Static GCN feature_only       same model/parameters; identity messages      0.549930    0.537914
+          Static GCN           Static GCN feature_only balanced_accuracy       -0.005926                  -0.010647                  -0.001138               4             11            15                          False                False            10000           Static GCN feature_only       same model/parameters; identity messages      0.507110    0.501185
+          Static GCN           Static GCN feature_only               MCC       -0.014313                  -0.025813                  -0.002907               3             12            15                          False                False            10000           Static GCN feature_only       same model/parameters; identity messages      0.017041    0.002728
+          Static GCN                Static GCN rewired          macro_F1       -0.009896                  -0.017029                  -0.002388               4             11            15                          False                False            10000           Static GCN      rewired same model/parameters; event-endpoint rewiring      0.489738    0.479843
+          Static GCN                Static GCN rewired    class_0_PR_AUC       -0.011778                  -0.017426                  -0.006686               3             12            15                          False                False            10000           Static GCN      rewired same model/parameters; event-endpoint rewiring      0.549691    0.537914
+          Static GCN                Static GCN rewired balanced_accuracy       -0.003102                  -0.006775                   0.000336               6              9            15                          False                False            10000           Static GCN      rewired same model/parameters; event-endpoint rewiring      0.504287    0.501185
+          Static GCN                Static GCN rewired               MCC       -0.006179                  -0.013888                   0.000888               7              8            15                          False                False            10000           Static GCN      rewired same model/parameters; event-endpoint rewiring      0.008907    0.002728
+           GraphSAGE            GraphSAGE feature_only          macro_F1        0.006111                  -0.000859                   0.013737              10              5            15                          False                False            10000            GraphSAGE feature_only       same model/parameters; identity messages      0.460353    0.466464
+           GraphSAGE            GraphSAGE feature_only    class_0_PR_AUC       -0.000843                  -0.005425                   0.002832               7              8            15                          False                False            10000            GraphSAGE feature_only       same model/parameters; identity messages      0.545858    0.545014
+           GraphSAGE            GraphSAGE feature_only balanced_accuracy       -0.000968                  -0.003509                   0.001485               6              9            15                          False                False            10000            GraphSAGE feature_only       same model/parameters; identity messages      0.506336    0.505368
+           GraphSAGE            GraphSAGE feature_only               MCC       -0.001589                  -0.006750                   0.003750               6              9            15                          False                False            10000            GraphSAGE feature_only       same model/parameters; identity messages      0.014757    0.013168
+           GraphSAGE                 GraphSAGE rewired          macro_F1       -0.001291                  -0.005201                   0.002168               7              8            15                          False                False            10000            GraphSAGE      rewired same model/parameters; event-endpoint rewiring      0.467755    0.466464
+           GraphSAGE                 GraphSAGE rewired    class_0_PR_AUC       -0.001411                  -0.004248                   0.001216               6              9            15                          False                False            10000            GraphSAGE      rewired same model/parameters; event-endpoint rewiring      0.546425    0.545014
+           GraphSAGE                 GraphSAGE rewired balanced_accuracy       -0.002072                  -0.004201                   0.000022               5             10            15                          False                False            10000            GraphSAGE      rewired same model/parameters; event-endpoint rewiring      0.507440    0.505368
+           GraphSAGE                 GraphSAGE rewired               MCC       -0.005439                  -0.010634                  -0.000313               4             11            15                          False                False            10000            GraphSAGE      rewired same model/parameters; event-endpoint rewiring      0.018607    0.013168
+                 GAT                  GAT feature_only          macro_F1        0.004767                  -0.001224                   0.009959              10              5            15                          False                False            10000                  GAT feature_only       same model/parameters; identity messages      0.470660    0.475426
+                 GAT                  GAT feature_only    class_0_PR_AUC       -0.001534                  -0.007230                   0.004752               5             10            15                          False                False            10000                  GAT feature_only       same model/parameters; identity messages      0.551818    0.550284
+                 GAT                  GAT feature_only balanced_accuracy        0.000991                  -0.003141                   0.005539               7              8            15                          False                False            10000                  GAT feature_only       same model/parameters; identity messages      0.507399    0.508390
+                 GAT                  GAT feature_only               MCC        0.000777                  -0.009201                   0.011691               7              8            15                          False                False            10000                  GAT feature_only       same model/parameters; identity messages      0.016580    0.017357
+                 GAT                       GAT rewired          macro_F1        0.002224                  -0.007571                   0.010091              10              5            15                          False                False            10000                  GAT      rewired same model/parameters; event-endpoint rewiring      0.473203    0.475426
+                 GAT                       GAT rewired    class_0_PR_AUC        0.003950                  -0.002708                   0.009834              10              5            15                          False                False            10000                  GAT      rewired same model/parameters; event-endpoint rewiring      0.546334    0.550284
+                 GAT                       GAT rewired balanced_accuracy        0.003626                  -0.000678                   0.007674              10              5            15                          False                False            10000                  GAT      rewired same model/parameters; event-endpoint rewiring      0.504764    0.508390
+                 GAT                       GAT rewired               MCC        0.006904                  -0.002639                   0.015945               9              6            15                          False                False            10000                  GAT      rewired same model/parameters; event-endpoint rewiring      0.010453    0.017357
+        Temporal GCN         Temporal GCN feature_only          macro_F1        0.004333                  -0.000260                   0.008310              11              4            15                          False                False            10000         Temporal GCN feature_only       same model/parameters; identity messages      0.485258    0.489591
+        Temporal GCN         Temporal GCN feature_only    class_0_PR_AUC       -0.002634                  -0.007852                   0.003027               5             10            15                          False                False            10000         Temporal GCN feature_only       same model/parameters; identity messages      0.548420    0.545785
+        Temporal GCN         Temporal GCN feature_only balanced_accuracy       -0.003393                  -0.007987                   0.000470               4             11            15                          False                False            10000         Temporal GCN feature_only       same model/parameters; identity messages      0.508527    0.505134
+        Temporal GCN         Temporal GCN feature_only               MCC       -0.007968                  -0.018337                   0.000547               4             11            15                          False                False            10000         Temporal GCN feature_only       same model/parameters; identity messages      0.018509    0.010541
+        Temporal GCN              Temporal GCN rewired          macro_F1       -0.001721                  -0.009645                   0.004937               9              6            15                          False                False            10000         Temporal GCN      rewired same model/parameters; event-endpoint rewiring      0.491312    0.489591
+        Temporal GCN              Temporal GCN rewired    class_0_PR_AUC       -0.005820                  -0.012136                  -0.000202               5             10            15                          False                False            10000         Temporal GCN      rewired same model/parameters; event-endpoint rewiring      0.551605    0.545785
+        Temporal GCN              Temporal GCN rewired balanced_accuracy       -0.005247                  -0.011277                  -0.000079               6              9            15                          False                False            10000         Temporal GCN      rewired same model/parameters; event-endpoint rewiring      0.510382    0.505134
+        Temporal GCN              Temporal GCN rewired               MCC       -0.011142                  -0.023496                  -0.000520               6              9            15                          False                False            10000         Temporal GCN      rewired same model/parameters; event-endpoint rewiring      0.021683    0.010541
+GraphSAGE (reversed) GraphSAGE (reversed) feature_only          macro_F1        0.010026                  -0.001353                   0.020468              11              4            15                          False                False            10000 GraphSAGE (reversed) feature_only       same model/parameters; identity messages      0.459580    0.469605
+GraphSAGE (reversed) GraphSAGE (reversed) feature_only    class_0_PR_AUC       -0.014274                  -0.022319                  -0.006504               3             12            15                          False                False            10000 GraphSAGE (reversed) feature_only       same model/parameters; identity messages      0.544947    0.530673
+GraphSAGE (reversed) GraphSAGE (reversed) feature_only balanced_accuracy       -0.004833                  -0.010460                   0.000689               4             11            15                          False                False            10000 GraphSAGE (reversed) feature_only       same model/parameters; identity messages      0.505412    0.500579
+GraphSAGE (reversed) GraphSAGE (reversed) feature_only               MCC       -0.011097                  -0.024523                   0.001494               5             10            15                          False                False            10000 GraphSAGE (reversed) feature_only       same model/parameters; identity messages      0.012908    0.001811
+GraphSAGE (reversed)      GraphSAGE (reversed) rewired          macro_F1       -0.000593                  -0.012356                   0.010833               8              7            15                          False                False            10000 GraphSAGE (reversed)      rewired same model/parameters; event-endpoint rewiring      0.470199    0.469605
+GraphSAGE (reversed)      GraphSAGE (reversed) rewired    class_0_PR_AUC       -0.016579                  -0.024889                  -0.008929               3             12            15                          False                False            10000 GraphSAGE (reversed)      rewired same model/parameters; event-endpoint rewiring      0.547253    0.530673
+GraphSAGE (reversed)      GraphSAGE (reversed) rewired balanced_accuracy       -0.006550                  -0.011725                  -0.001789               4             11            15                          False                False            10000 GraphSAGE (reversed)      rewired same model/parameters; event-endpoint rewiring      0.507129    0.500579
+GraphSAGE (reversed)      GraphSAGE (reversed) rewired               MCC       -0.016489                  -0.028483                  -0.005959               2             13            15                          False                False            10000 GraphSAGE (reversed)      rewired same model/parameters; event-endpoint rewiring      0.018300    0.001811
+      GAT (reversed)       GAT (reversed) feature_only          macro_F1        0.023092                   0.013483                   0.034190              14              1            15                          False                 True            10000       GAT (reversed) feature_only       same model/parameters; identity messages      0.471175    0.494267
+      GAT (reversed)       GAT (reversed) feature_only    class_0_PR_AUC       -0.009956                  -0.020267                   0.000263               4             11            15                          False                False            10000       GAT (reversed) feature_only       same model/parameters; identity messages      0.551347    0.541390
+      GAT (reversed)       GAT (reversed) feature_only balanced_accuracy       -0.000782                  -0.007714                   0.006356               6              9            15                          False                False            10000       GAT (reversed) feature_only       same model/parameters; identity messages      0.506601    0.505818
+      GAT (reversed)       GAT (reversed) feature_only               MCC       -0.002964                  -0.018514                   0.012904               6              9            15                          False                False            10000       GAT (reversed) feature_only       same model/parameters; identity messages      0.014807    0.011843
+      GAT (reversed)            GAT (reversed) rewired          macro_F1        0.023182                   0.015437                   0.031158              14              1            15                          False                 True            10000       GAT (reversed)      rewired same model/parameters; event-endpoint rewiring      0.471085    0.494267
+      GAT (reversed)            GAT (reversed) rewired    class_0_PR_AUC       -0.003245                  -0.011197                   0.004052               7              8            15                          False                False            10000       GAT (reversed)      rewired same model/parameters; event-endpoint rewiring      0.544635    0.541390
+      GAT (reversed)            GAT (reversed) rewired balanced_accuracy        0.004734                  -0.001293                   0.010556               9              6            15                          False                False            10000       GAT (reversed)      rewired same model/parameters; event-endpoint rewiring      0.501084    0.505818
+      GAT (reversed)            GAT (reversed) rewired               MCC        0.008865                  -0.004383                   0.021530               9              6            15                          False                False            10000       GAT (reversed)      rewired same model/parameters; event-endpoint rewiring      0.002978    0.011843
+
+Direction controls:
+             Model_A              Model_B            Metric  Mean_A_Minus_B  Paired_Bootstrap_95_Lower  Paired_Bootstrap_95_Upper  A_Better_Weeks  A_Worse_Weeks  Paired_Weeks  Consistently_Better_All_Weeks  Nominal_Positive_CI  Bootstrap_Draws        Model                                       Forward_Message  Reverse_Message                                                                  Method
+  Static GCN forward   Static GCN reverse          macro_F1        0.000000                   0.000000                   0.000000               0              0            15                          False                False            10000   Static GCN Source -> Target (receiving Target aggregates Source) Target -> Source      algebraic invariance; same symmetric adjacency, no redundant refit
+  Static GCN forward   Static GCN reverse    class_0_PR_AUC        0.000000                   0.000000                   0.000000               0              0            15                          False                False            10000   Static GCN Source -> Target (receiving Target aggregates Source) Target -> Source      algebraic invariance; same symmetric adjacency, no redundant refit
+  Static GCN forward   Static GCN reverse balanced_accuracy        0.000000                   0.000000                   0.000000               0              0            15                          False                False            10000   Static GCN Source -> Target (receiving Target aggregates Source) Target -> Source      algebraic invariance; same symmetric adjacency, no redundant refit
+  Static GCN forward   Static GCN reverse               MCC        0.000000                   0.000000                   0.000000               0              0            15                          False                False            10000   Static GCN Source -> Target (receiving Target aggregates Source) Target -> Source      algebraic invariance; same symmetric adjacency, no redundant refit
+   GraphSAGE forward    GraphSAGE reverse          macro_F1       -0.003141                  -0.017411                   0.011263               8              7            15                          False                False            10000    GraphSAGE Source -> Target (receiving Target aggregates Source) Target -> Source independent reverse-direction validation tuning and ten-seed retraining
+   GraphSAGE forward    GraphSAGE reverse    class_0_PR_AUC        0.014341                   0.007669                   0.021286              13              2            15                          False                 True            10000    GraphSAGE Source -> Target (receiving Target aggregates Source) Target -> Source independent reverse-direction validation tuning and ten-seed retraining
+   GraphSAGE forward    GraphSAGE reverse balanced_accuracy        0.004789                  -0.000130                   0.009463              11              4            15                          False                False            10000    GraphSAGE Source -> Target (receiving Target aggregates Source) Target -> Source independent reverse-direction validation tuning and ten-seed retraining
+   GraphSAGE forward    GraphSAGE reverse               MCC        0.011357                   0.000131                   0.022333              11              4            15                          False                 True            10000    GraphSAGE Source -> Target (receiving Target aggregates Source) Target -> Source independent reverse-direction validation tuning and ten-seed retraining
+         GAT forward          GAT reverse          macro_F1       -0.018840                  -0.035030                  -0.001797               4             11            15                          False                False            10000          GAT Source -> Target (receiving Target aggregates Source) Target -> Source independent reverse-direction validation tuning and ten-seed retraining
+         GAT forward          GAT reverse    class_0_PR_AUC        0.008894                   0.002025                   0.016146              11              4            15                          False                 True            10000          GAT Source -> Target (receiving Target aggregates Source) Target -> Source independent reverse-direction validation tuning and ten-seed retraining
+         GAT forward          GAT reverse balanced_accuracy        0.002572                  -0.003369                   0.009530               7              8            15                          False                False            10000          GAT Source -> Target (receiving Target aggregates Source) Target -> Source independent reverse-direction validation tuning and ten-seed retraining
+         GAT forward          GAT reverse               MCC        0.005514                  -0.007299                   0.020131               7              8            15                          False                False            10000          GAT Source -> Target (receiving Target aggregates Source) Target -> Source independent reverse-direction validation tuning and ten-seed retraining
+Temporal GCN forward Temporal GCN reverse          macro_F1        0.000000                   0.000000                   0.000000               0              0            15                          False                False            10000 Temporal GCN Source -> Target (receiving Target aggregates Source) Target -> Source      algebraic invariance; same symmetric adjacency, no redundant refit
+Temporal GCN forward Temporal GCN reverse    class_0_PR_AUC        0.000000                   0.000000                   0.000000               0              0            15                          False                False            10000 Temporal GCN Source -> Target (receiving Target aggregates Source) Target -> Source      algebraic invariance; same symmetric adjacency, no redundant refit
+Temporal GCN forward Temporal GCN reverse balanced_accuracy        0.000000                   0.000000                   0.000000               0              0            15                          False                False            10000 Temporal GCN Source -> Target (receiving Target aggregates Source) Target -> Source      algebraic invariance; same symmetric adjacency, no redundant refit
+Temporal GCN forward Temporal GCN reverse               MCC        0.000000                   0.000000                   0.000000               0              0            15                          False                False            10000 Temporal GCN Source -> Target (receiving Target aggregates Source) Target -> Source      algebraic invariance; same symmetric adjacency, no redundant refit
+
+Conservative interpretation:
+Graph message passing for the descriptively strongest graph model (GAT (reversed)) has a positive nominal paired macro-F1 interval versus its matched feature-only control.
+Temporal GCN has no established positive macro-F1 improvement versus the best static graph model.
+No superiority claim is made for intervals including zero. Nominal intervals are exploratory and do not adjust temporal dependence or multiple model comparisons.
+
+Explicit primary questions (macro-F1 unless specified):
+1. Any graph model versus Persistence:
+Static GCN - Persistence: delta=-0.059738, CI=[-0.072080,-0.047416], wins=0/15; negative nominal paired difference.
+GraphSAGE - Persistence: delta=-0.073117, CI=[-0.089411,-0.056474], wins=0/15; negative nominal paired difference.
+GAT - Persistence: delta=-0.064154, CI=[-0.084039,-0.044971], wins=1/15; negative nominal paired difference.
+Temporal GCN - Persistence: delta=-0.049990, CI=[-0.064587,-0.032924], wins=2/15; negative nominal paired difference.
+GraphSAGE (reversed) - Persistence: delta=-0.069975, CI=[-0.080491,-0.058324], wins=0/15; negative nominal paired difference.
+GAT (reversed) - Persistence: delta=-0.045314, CI=[-0.055062,-0.034904], wins=0/15; negative nominal paired difference.
+2. Does static GCN beat MLP? Static GCN - MLP: delta=0.027632, CI=[0.009998,0.046865], wins=12/15; positive nominal paired improvement.
+3. GraphSAGE/GAT versus GCN:
+GraphSAGE - Static GCN: delta=-0.013379, CI=[-0.023910,-0.002759], wins=6/15; negative nominal paired difference.
+GAT - Static GCN: delta=-0.004416, CI=[-0.016650,0.007936], wins=7/15; inconclusive interval including zero.
+GraphSAGE (reversed) - Static GCN: delta=-0.010237, CI=[-0.016134,-0.003304], wins=2/15; negative nominal paired difference.
+GAT (reversed) - Static GCN: delta=0.014424, CI=[0.005467,0.022151], wins=13/15; positive nominal paired improvement.
+4. Temporal graph model versus strongest static graph model: Temporal GCN - GAT (reversed): delta=-0.004676, CI=[-0.015885,0.006922], wins=6/15; inconclusive interval including zero.
+5. Temporal GCN versus aligned GRU: Temporal GCN - GRU (aligned): delta=0.002000, CI=[-0.003317,0.006844], wins=10/15; inconclusive interval including zero. No actual EvolveGCN result is claimed.
+6. Graph models versus class-0 prevalence AP:
+Static GCN - No-skill: delta=0.008690, CI=[0.003066,0.013650], wins=12/15; positive nominal paired improvement.
+GraphSAGE - No-skill: delta=0.015791, CI=[0.008590,0.023047], wins=13/15; positive nominal paired improvement.
+GAT - No-skill: delta=0.021061, CI=[0.012730,0.029264], wins=13/15; positive nominal paired improvement.
+Temporal GCN - No-skill: delta=0.016561, CI=[0.007460,0.026190], wins=12/15; positive nominal paired improvement.
+GraphSAGE (reversed) - No-skill: delta=0.001449, CI=[-0.001768,0.004996], wins=7/15; inconclusive interval including zero.
+GAT (reversed) - No-skill: delta=0.012166, CI=[0.009627,0.014575], wins=15/15; positive nominal paired improvement.
+7. Direction impact: GCN/temporal GCN are invariant by construction. Independently trained directed-model differences:
+GraphSAGE forward - GraphSAGE reverse: delta=-0.003141, CI=[-0.017411,0.011263], wins=8/15; inconclusive interval including zero.
+GAT forward - GAT reverse: delta=-0.018840, CI=[-0.035030,-0.001797], wins=4/15; negative nominal paired difference.
+
+Exact assumptions and limitations:
+1. Target is the dataset binary orientation label, not verified sentiment. Exactly the original 15 origins, seeds 42-51, and eligible user-week labels are retained. Labels from the target week are used only for held-out evaluation.
+2. For EACH training, validation and test sample week t, graph construction uses only snapshot weeks w with w+7 days <= t. Historical feature row t has an exclusive event cutoff t. No target-week topology is used even for training-label examples.
+3. Static graphs are cumulative historical weighted directed interactions. Temporal graphs are the sequence of completed weekly weighted snapshots; every step uses cumulative structural feature row w+7 days, available at completion of week w. The last sequence step is week t-7 days for both aligned GRU and temporal GCN.
+4. Existing legacy GRU used feature row weeks strictly less than t and consequently older information. It is preserved and separately labelled legacy lagged. A newly trained aligned projected GRU uses the same sequence, scaling and latest completed-week cutoff as temporal GCN; fair temporal comparisons use it.
+5. Historical user mappings are dense, sorted per cutoff, and contain only users already appearing in prior interactions. They extend as new users become known; no learned ID embeddings exist. A user retains identity across recurrent steps by username. Before first known appearance no sequence row exists; inactive historical nodes remain with cumulative features and identity self messages in otherwise empty weekly neighborhoods.
+6. Static GCN implements one exact message-passing layer with S=D^-1/2 ((A+A.T)/2 + I) D^-1/2, learned projection, ReLU and dense classifier. A[target,source] receives original Source -> Target messages. Symmetrization discards orientation; reversal is algebraically identical with unchanged features and is checked directly.
+7. GraphSAGE uses a one-hop weighted incoming-neighbor mean concatenated with own features, a learned linear projection/ReLU/dropout and dense classifier. This is a weighted mean variant without a post-layer L2 normalization. Reverse variant retrains with outgoing original neighbors as incoming messages.
+8. GAT uses one directed additive multihead attention layer, learned source/receiver coefficients, LeakyReLU(0.2), log interaction Weight as an attention prior, ELU and dense classifier. It includes self messages, samples at most 16 non-self neighbors deterministically by seed 42/cutoff/node/direction, and masks padding. This weighted sampled variant is not exhaustive full-neighborhood GAT.
+9. Temporal GCN applies a one-hop symmetrically normalized weekly convolution, learned projection/ReLU and a GRU over each historical user sequence. GCN parameters are fixed across sequence steps; node hidden states evolve. It is NOT EvolveGCN-H/O or a faithful parameter-evolving implementation.
+10. Input scaling fits only the six structural feature rows of supervised TRAINING user-weeks. The frozen mean/std transforms all context neighbors and sequence steps. Graph averaging uses centered/scaled features exactly, including normalized row masses; padding remains zero. No orientation-label-history predictor is used in any primary graph model.
+11. Training loss uses N/(2*N_class) weights computed only from training labels. Validation macro-F1 selects one of three predeclared fractional-grid configurations using tuning seed 42. Each of ten final seeds independently reinitializes; validation early stopping restores earliest best epoch. Max 30 epochs, patience 4, Adam, batch 1024, no chronological sample shuffle, deterministic CPU operations. Fixed class-1 threshold 0.5 matches MLP/GRU/LR.
+12. Primary forward graph fits total 600; independently tuned/retrained reversed GraphSAGE/GAT add 300. Symmetric GCN and temporal GCN direction controls use proven identical adjacency, not redundant fits. Aligned GRU adds 150. Both ablations are run for ALL six trained graph variants, adding 1800 fits, so strongest-model reporting does not decide which controls are trained. Extra reversed ablation records are saved separately, preserving the initial graph metrics and hyperparameter tables.
+13. Feature-only controls preserve model architecture, selected graph hyperparameters, scaler, seed, loss and training procedure but replace messages by identity/self features. Static GCN control is exactly a node-only MLP; GraphSAGE duplicates self features in the neighbor slot; GAT restricts attention to self; temporal GCN becomes a projected node-feature GRU. Existing MLP is additionally reported. Independent early stopping may choose different epochs across controls.
+14. Rewiring expands integer edge weights into events, permutes destinations within each available forward graph using fixed seed 42-derived values, then reaggregates. Node features and labels are held fixed; forward weighted in/out strengths are preserved, while distinct-neighbor degrees, self loops and connectivity need not be. The reverse-direction ablations reuse this forward-oriented rewired message graph, so they do NOT preserve reverse-message in/out strengths; they are an orientation-changing topology null. Forward controls are an event-endpoint null, not an exact simple-graph degree-preserving rewire.
+15. Metrics use both classes and designate class 0 as detection class regardless of observed majority. PR-AUC is average precision with P(class 0)=1-P(class 1); ROC AUC and Brier use P(class 1). Each seed/week records test class-0 prevalence and its no-skill average-precision reference.
+16. Overall neural intervals jointly resample seeds and paired weeks with 10000 draws, seed 42. Paired differences average seeds within each week then resample identical 15 weeks; users and seeds are not treated as independent weeks. Those paired CIs condition on seed averages and assume exchangeable weeks, ignoring temporal autocorrelation. Reported positive CIs are nominal, without multiple-comparison correction.
+17. Best models by test mean are descriptive rankings, not validation-selected deployment decisions. Consistency means a positive paired difference greater than 1e-12 in ALL 15 weeks. Superiority is not asserted when the paired CI includes zero; even positive nominal CIs do not establish generalization beyond this selected cohort.
+18. Static models see cumulative topology; temporal model sees weekly topology plus cumulative features. Temporal-versus-static differences therefore include representation/architecture differences, not an isolated causal effect of evolution. Modest one-hop architectures, restricted grids, epoch caps, one fixed topology-null realization, sampling and label/graph extraction uncertainty limit negative and positive conclusions.
+19. All prior raw files, graph/node baselines, old GCN/EvolveGCN checkpoints and outputs are protected by SHA-256. New checkpoints and reports use exclusive creation. Model subprocesses are independent CPU computation jobs. No old experimental result is replaced.
+
+Primary methodological references:
+{
+  "GCN": "https://arxiv.org/abs/1609.02907",
+  "GraphSAGE": "https://arxiv.org/abs/1706.02216",
+  "GAT": "https://arxiv.org/abs/1710.10903",
+  "EvolveGCN distinction": "https://ojs.aaai.org/index.php/AAAI/article/view/5984"
+}
+
+Leakage audit:
+{
+  "all_assertions_passed": true,
+  "identical_test_weeks": true,
+  "graph_snapshot_ends_before_prediction": true,
+  "feature_events_strictly_prior": true,
+  "aligned_temporal_cutoffs": true,
+  "historical_node_mapping_only": true,
+  "training_precedes_validation_precedes_test": true,
+  "training_only_scalers_and_weights": true,
+  "validation_only_hyperparameters_and_early_stopping": true,
+  "threshold_fixed": 0.5,
+  "no_Target_derived_predictors": true,
+  "raw_and_old_outputs_unchanged": true,
+  "config": {
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "grid": [
+      {
+        "hidden": 16,
+        "dropout": 0.0,
+        "lr": 0.001,
+        "weight_decay": 0.0,
+        "heads": 2
+      },
+      {
+        "hidden": 32,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "weight_decay": 0.0001,
+        "heads": 4
+      },
+      {
+        "hidden": 64,
+        "dropout": 0.5,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "heads": 4
+      }
+    ],
+    "fanout": 16,
+    "batch": 1024,
+    "max_epochs": 30,
+    "patience": 4,
+    "threshold": 0.5,
+    "graph_layers": 1,
+    "temporal": "weekly GCN -> projection ReLU -> GRU; fixed GCN weights",
+    "features": [
+      "in_degree",
+      "out_degree",
+      "in_strength",
+      "out_strength",
+      "PageRank",
+      "reverse_PageRank"
+    ],
+    "torch": "2.14.0+cpu",
+    "workers": 2
+  }
+}

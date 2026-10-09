@@ -1,0 +1,137 @@
+[
+  {
+    "model": "Majority",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Persistence",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Logistic Regression",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "MLP",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Original GRU",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Static GCN",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "GraphSAGE",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "GAT forward",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "GAT reversed",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Aligned GRU",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Temporal GCN / GRU-over-GCN",
+    "cohort": "All eligible: active, non-tie weekly label, historical graph features available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "History + Forward GAT",
+    "cohort": "All eligible",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "History + Reversed GAT",
+    "cohort": "All eligible",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "History + Structural MLP",
+    "cohort": "All eligible",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "History Logistic",
+    "cohort": "All eligible",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Persistence",
+    "cohort": "All eligible",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Reversed GAT (no history)",
+    "cohort": "All eligible",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "History + Forward GAT",
+    "cohort": "History available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "History + Reversed GAT",
+    "cohort": "History available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "History + Structural MLP",
+    "cohort": "History available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "History Logistic",
+    "cohort": "History available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Persistence",
+    "cohort": "History available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "Reversed GAT (no history)",
+    "cohort": "History available",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "GCN_baseline",
+    "cohort": "Original monthly node task: original_uncorrected",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "EvolveGCN_style",
+    "cohort": "Original monthly node task: original_uncorrected",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "GCN_baseline",
+    "cohort": "Original monthly node task: imbalance_corrected",
+    "saved_mean_and_interval_strings_present": true
+  },
+  {
+    "model": "EvolveGCN_style",
+    "cohort": "Original monthly node task: imbalance_corrected",
+    "saved_mean_and_interval_strings_present": true
+  }
+]

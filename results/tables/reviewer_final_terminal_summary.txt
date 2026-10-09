@@ -1,0 +1,13 @@
+Normalized matching changed main WCC: TRUE (17,598 -> 17,636 users; 29,715 -> 29,825 edges).
+Pair coverage: 109217/109366 = 99.86376022%; reconstructed-pair precision 99.99816882%.
+Lexical agreement: 80937/85495 = 94.66869408% (94.67% rounded).
+Typed events: retweet 16; inferred reply 41,024; mention 88,564.
+Direction: author -> referenced account is supported by reconstruction; reverse RT is plausible, mention/reply information flow unverified.
+High-out-strength mean temporal/static ratio: recorded 0.748735; layer-aware 0.523778; stratum-specific, static sinks excluded.
+Balanced full recorded: secondary 0.269500; amplification 0.005390; baseline secondary 2.503500.
+Contested non-seed fraction: 0.00058964 (0.058964%); actual competition resolutions/run 0.075500.
+Spectral radius loop-sensitive 20.000000 -> 9.043208; reversed invariant; beta diagnostic 0.425000 -> 0.939932.
+Forecasting: graph-only near chance; Persistence/history models modestly above chance; practical materiality not established by a predeclared margin.
+Claims MUST change: matching invariance, verified information direction, broad retweet/homophily inference, seed-inclusive amplification, strong competition, validated epidemic threshold, conflated GRUs/cohorts, broad graph-forecasting superiority.
+Unavailable: native metadata, actual contagion/adoption, original spectral definition/manuscript, acquisition provenance, licence/DOI.
+Exact paths for all new results: see results/tables/reproducibility_manifest.csv and reproducibility_package/table_manifest.csv / figure_manifest.csv.

@@ -1,0 +1,12 @@
+\begin{table}[htbp]\centering\small
+\caption{Recorded-direction secondary propagation on the 17,598-user WCC. Each row contains 2,000 runs with quiescence probability 0.25 and a 25-step horizon. Intervals quantify Monte Carlo uncertainty conditional on the graph and configuration.}\label{tab:simulation}
+\begin{tabularx}{\textwidth}{@{}Xccp{3.4cm}r@{}}\toprule Configuration & $\beta_0/\beta_1$ & Seeds 0/1 & Secondary mean [95\% CI] & Amplification\\\midrule
+Edge-only, low transmission & 0.05 / 0.05 & 25 / 25 & 0.9090 [0.8643, 0.9537] & 0.01818\\
+Edge-only, balanced & 0.14 / 0.14 & 25 / 25 & 2.5035 [2.4232, 2.5838] & 0.05007\\
+Edge-only, high transmission & 0.30 / 0.30 & 25 / 25 & 5.1485 [5.0183, 5.2787] & 0.10297\\
+Full, balanced & 0.14 / 0.14 & 25 / 25 & 0.2695 [0.2465, 0.2925] & 0.00539\\
+Full, Target-0 advantage & 0.28 / 0.14 & 25 / 25 & 0.4185 [0.3886, 0.4484] & 0.00837\\
+Full, Target-1 advantage & 0.14 / 0.28 & 25 / 25 & 0.4260 [0.3968, 0.4552] & 0.00852\\
+Full, asymmetric allocation & 0.14 / 0.14 & 40 / 10 & 0.2735 [0.2504, 0.2966] & 0.00547\\
+Full, asymmetric allocation & 0.14 / 0.14 & 10 / 40 & 0.2705 [0.2468, 0.2942] & 0.00541\\
+\bottomrule\end{tabularx}\end{table}

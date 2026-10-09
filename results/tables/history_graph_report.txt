@@ -1,0 +1,116 @@
+{
+  "best_by_macro_F1": "History Logistic",
+  "best_by_class_0_PR_AUC": "History + Structural MLP",
+  "best_by_balanced_accuracy": "History + Structural MLP",
+  "models_with_positive_macro_F1_CIs_and_Holm_vs_Persistence": [],
+  "incremental_graph_macro_F1_ordinary_lower": -0.04440241252435939,
+  "incremental_graph_positive_macro_F1_all_intervals_and_Holm": false,
+  "fits": 600,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "test_weeks": [
+    "2022-12-19",
+    "2022-12-26",
+    "2023-01-02",
+    "2023-01-09",
+    "2023-01-16",
+    "2023-01-23",
+    "2023-01-30",
+    "2023-02-06",
+    "2023-02-13",
+    "2023-02-20",
+    "2023-02-27",
+    "2023-03-06",
+    "2023-03-13",
+    "2023-03-20",
+    "2023-03-27"
+  ],
+  "eligible_test_user_weeks": 12126,
+  "no_history_test_user_weeks": 1148,
+  "epochs_capped_fits": 2
+}
+
+Principal means (all eligible):
+      Cohort                     Model            Metric     Mean  Ordinary_95_Lower  Ordinary_95_Upper  SD_Over_Week_Means  SD_Over_Seed_Means  Test_Weeks  Seeds  Bootstrap_Draws                   Inference_Unit
+All eligible     History + Forward GAT balanced_accuracy 0.548615           0.541256           0.556481            0.015403        2.402318e-03          15     10            10000 week; seeds averaged within week
+All eligible     History + Forward GAT          macro_F1 0.543870           0.536129           0.552061            0.016079        1.952451e-03          15     10            10000 week; seeds averaged within week
+All eligible     History + Forward GAT               MCC 0.098121           0.083323           0.113920            0.030992        5.130786e-03          15     10            10000 week; seeds averaged within week
+All eligible     History + Forward GAT    class_0_PR_AUC 0.596245           0.586251           0.605816            0.020125        3.151222e-03          15     10            10000 week; seeds averaged within week
+All eligible    History + Reversed GAT balanced_accuracy 0.525525           0.519692           0.531630            0.012260        1.018019e-02          15     10            10000 week; seeds averaged within week
+All eligible    History + Reversed GAT          macro_F1 0.518369           0.510809           0.526041            0.015616        1.374674e-02          15     10            10000 week; seeds averaged within week
+All eligible    History + Reversed GAT               MCC 0.051976           0.040479           0.063915            0.024076        2.003147e-02          15     10            10000 week; seeds averaged within week
+All eligible    History + Reversed GAT    class_0_PR_AUC 0.562389           0.548874           0.575827            0.027449        1.109948e-02          15     10            10000 week; seeds averaged within week
+All eligible  History + Structural MLP balanced_accuracy 0.553552           0.545349           0.562455            0.017456        1.470062e-03          15     10            10000 week; seeds averaged within week
+All eligible  History + Structural MLP          macro_F1 0.549597           0.541289           0.558613            0.017578        2.616156e-03          15     10            10000 week; seeds averaged within week
+All eligible  History + Structural MLP               MCC 0.107778           0.091246           0.125722            0.035151        2.970057e-03          15     10            10000 week; seeds averaged within week
+All eligible  History + Structural MLP    class_0_PR_AUC 0.600131           0.588895           0.610407            0.021934        2.833481e-03          15     10            10000 week; seeds averaged within week
+All eligible          History Logistic balanced_accuracy 0.553480           0.543763           0.564028            0.021041        1.170278e-16          15     10            10000 week; seeds averaged within week
+All eligible          History Logistic          macro_F1 0.552903           0.543256           0.563492            0.021030        0.000000e+00          15     10            10000 week; seeds averaged within week
+All eligible          History Logistic               MCC 0.106880           0.087485           0.128059            0.042082        0.000000e+00          15     10            10000 week; seeds averaged within week
+All eligible          History Logistic    class_0_PR_AUC 0.598325           0.586067           0.608832            0.023223        1.170278e-16          15     10            10000 week; seeds averaged within week
+All eligible               Persistence balanced_accuracy 0.540267           0.529331           0.550177            0.021263                 NaN          15      1            10000 week; seeds averaged within week
+All eligible               Persistence          macro_F1 0.539581           0.528241           0.549771            0.021982                 NaN          15      1            10000 week; seeds averaged within week
+All eligible               Persistence               MCC 0.080970           0.058955           0.100878            0.042726                 NaN          15      1            10000 week; seeds averaged within week
+All eligible               Persistence    class_0_PR_AUC 0.557477           0.544942           0.568835            0.024148                 NaN          15      1            10000 week; seeds averaged within week
+All eligible Reversed GAT (no history) balanced_accuracy 0.505818           0.502794           0.508862            0.006222        5.471996e-03          15     10            10000 week; seeds averaged within week
+All eligible Reversed GAT (no history)          macro_F1 0.494267           0.489118           0.499116            0.010250        7.942007e-03          15     10            10000 week; seeds averaged within week
+All eligible Reversed GAT (no history)               MCC 0.011843           0.005678           0.018191            0.012792        1.144084e-02          15     10            10000 week; seeds averaged within week
+All eligible Reversed GAT (no history)    class_0_PR_AUC 0.541390           0.531737           0.550771            0.019379        4.527086e-03          15     10            10000 week; seeds averaged within week
+
+Primary paired questions (macro-F1):
+History Logistic minus Persistence: delta=0.013322; ordinary95=[0.002206,0.024246]; block395=[0.004267,0.018613], block495=[0.004484,0.019260]; Holm p=0.15271; positive across all checks=False.
+History + Structural MLP minus Persistence: delta=0.010017; ordinary95=[0.003215,0.017017]; block395=[0.005615,0.013793], block495=[0.005542,0.013954]; Holm p=0.0880127; positive across all checks=False.
+History + Reversed GAT minus Persistence: delta=-0.021212; ordinary95=[-0.034043,-0.008837]; block395=[-0.026952,-0.014585], block495=[-0.026845,-0.013663]; Holm p=0.0356445; positive across all checks=False.
+History + Reversed GAT minus History + Structural MLP: delta=-0.031228; ordinary95=[-0.044402,-0.020761]; block395=[-0.037451,-0.022112], block495=[-0.037227,-0.023164]; Holm p=0.0012207; positive across all checks=False.
+History + Reversed GAT minus Reversed GAT (no history): delta=0.024102; ordinary95=[0.016429,0.031593]; block395=[0.020031,0.030892], block495=[0.020256,0.030212]; Holm p=0.00219727; positive across all checks=True.
+
+Central question by metric and cohort:
+All eligible, macro_F1: delta=-0.031228; ordinary95=[-0.044402,-0.020761]; block395=[-0.037451,-0.022112], block495=[-0.037227,-0.023164]; Holm p=0.0012207; positive across all checks=False.
+All eligible, class_0_PR_AUC: delta=-0.037741; ordinary95=[-0.048281,-0.028388]; block395=[-0.046717,-0.026923], block495=[-0.046987,-0.026900]; Holm p=0.0012207; positive across all checks=False.
+All eligible, balanced_accuracy: delta=-0.028027; ordinary95=[-0.038485,-0.018819]; block395=[-0.033332,-0.021369], block495=[-0.033476,-0.021625]; Holm p=0.0012207; positive across all checks=False.
+All eligible, MCC: delta=-0.055802; ordinary95=[-0.076474,-0.037376]; block395=[-0.066406,-0.042901], block495=[-0.066604,-0.043220]; Holm p=0.0012207; positive across all checks=False.
+History available, macro_F1: delta=-0.035227; ordinary95=[-0.048101,-0.024233]; block395=[-0.042149,-0.026516], block495=[-0.041950,-0.027197]; Holm p=0.0012207; positive across all checks=False.
+History available, class_0_PR_AUC: delta=-0.039313; ordinary95=[-0.050561,-0.029113]; block395=[-0.049570,-0.028178], block495=[-0.049633,-0.027824]; Holm p=0.0012207; positive across all checks=False.
+History available, balanced_accuracy: delta=-0.028845; ordinary95=[-0.039304,-0.018943]; block395=[-0.035158,-0.022585], block495=[-0.035189,-0.022579]; Holm p=0.00170898; positive across all checks=False.
+History available, MCC: delta=-0.056848; ordinary95=[-0.077545,-0.037251]; block395=[-0.069749,-0.044518], block495=[-0.069848,-0.044521]; Holm p=0.00170898; positive across all checks=False.
+
+Conservative interpretation:
+Graph message passing does not establish a robust positive macro-F1 increment beyond historical labels and structural features under all predeclared checks.
+Historical-only logistic robustly improves over Persistence on macro-F1: False. History + MLP robustly improves over Persistence: False.
+No superiority claim is based on an uncorrected p-value. Statistical support is metric-specific and conditional on the stated dependence assumptions.
+
+Exact assumptions and limitations:
+1. Target is the dataset binary orientation label, not verified sentiment. Labels and eligible users are unchanged; tied historical labels are ignored. Primary evaluation retains users lacking prior valid labels.
+2. History is computed from ALL valid earlier weekly labels, including the first dataset week, not merely supervised training rows. Previous_Label is the latest non-tied label; class rates count valid weekly labels equally, not tweets. Histories for every receiver AND sampled context neighbor use label week < that sample prediction week.
+3. A valid label from week w is available at Monday w+7 days. The feature row named t contains interactions strictly before t; its window boundary equals t, while actual last interaction time is <t. The historical graph uses completed snapshots through t-7 days, cumulative across weeks. No target-week adjacency or ratios enter features.
+4. For each origin, missing Previous_Label=0, availability=0 and count=0. Missing class rates use the TRAINING target-label prevalence and its complement. Missing recency uses max observed training-row recency+1 (or 1 if none); all observed recencies are capped at that value. Raw missing rates/recency remain NA in the provenance table and are imputed separately per origin.
+5. Each origin scaler fits only imputed supervised TRAINING rows. The same imputation values and frozen 12-feature scaler apply to graph context nodes. History-only logistic has its own training-only six-feature scaler. Training preprocessing is fitted once per origin, rather than separately for each older training-row date.
+6. Same 15 expanding origins and validation weeks, seeds42-51, and fixed class-1 threshold0.5. Class weights N/(2*N_class) use training labels only. No labels from validation/test fit defaults, scalers or class weights. Hyperparameter and early-epoch selection use validation labels only.
+7. History + Structural MLP is the exact self-only version of the history GAT classifier: identical 12 inputs, shared parameter shapes and initialization, multihead linear projection, ELU, dense/ReLU/dropout classifier. One self attention weight equals1, so its prediction is a node-only MLP. Unused attention parameters do not add label/graph predictors. It is not the earlier standalone MLP architecture.
+8. The critical neural pair shares one configuration per origin, chosen by the mean of their seed42 validation macro-F1 over the same predeclared three configurations. This common policy freezes architecture width/dropout/lr/decay/heads for both, rather than selecting different backbones. Every final seed independently retrains and early-stops. Forward GAT uses that same configuration as a secondary direction control.
+9. Directed weighted GAT samples at most16 non-self neighbors plus self using the previous deterministic seed42/cutoff/direction/local-node hash; its attention adds log Weight. Reversed messages receive original outgoing neighbors. Here node rows are sorted before case normalization, unlike the previous graph experiment, so neighbor slot order and high-degree sampled subsets can differ from the existing no-history GAT. Every selected pair/weight is verified against raw prior interactions. Attention and classifier are one hop; sampling is fixed across training seeds. Known users only, no ID embeddings or future node identities. Comparisons to old no-history GAT also include this sampling and tuning-policy change; they do not isolate adding label history.
+10. Logistic C is chosen separately from .01,.1,1,10,100 on validation macro-F1, tie favoring smallerC. Deterministic lbfgs, max3000iterations, repeated seeds produce the same convex-fit result. Neural training uses deterministic CPU Adam, batch1024 chronological rows, max30epochs and patience4; each seed restores earliest best validation epoch.
+11. Sensitivity analysis excludes no-history users from held-out evaluation only; training and validation, fitted defaults, hyperparameters and models remain identical to primary runs. Persistence and existing no-history reversed GAT predictions are reused without alteration and evaluated on exactly the same subset. This sensitivity is not a separately refitted history-only cohort experiment.
+12. PR-AUC is average precision, class0 probability=1-p1. Brier and ROC use p1. Weekly no-skill class0 AP equals that cohort weekly prevalence. Means weight each test week equally rather than pooling users; ten seed scores are averaged within each week.
+13. Ordinary paired percentile bootstrap uses10000 shared week resamples, seed42. Moving-block variants use overlapping non-circular consecutive blocks of length3 and4, concatenate independently drawn blocks and truncate to15 observations. No wraparound. All compared models share indices; intervals condition on seed averages and do not resample users or refit models.
+14. Two-sided paired mean sign-flip tests enumerate all32768 independent week sign assignments. Holm correction covers all20 predeclared pair/metric tests as one primary family at alpha.05; sensitivity has its own separate20-test exploratory family. Forward/reverse control is exploratory and excluded from these families. No significance claim uses uncorrected p alone.
+15. Week sign-flip inference assumes independent exchangeable/symmetric null differences; serial dependence can invalidate that assumption. Block bootstrap is a robustness check, not a cure for only15 weeks, nonstationarity or the sign-flip p-value assumptions. Block length choices are predeclared, not selected by favorable intervals. All intervals are unadjusted percentile CIs; Holm adjusts p-values, not CIs.
+16. A positive incremental claim requires positive mean, ordinary and both block lower bounds above0, and Holm-adjusted p<.05. If ordinary CI includes0, graph message passing does not establish incremental value. Other metrics may disagree; a macro-F1 change is not general improvement or causal proof.
+17. Best-model rankings use descriptive test means; they do not select a deployed model. Primary model comparisons were frozen before test aggregation. Structural extraction uncertainty, cohort exclusions, small tuning grid, one-hop sampled topology, class-weighted probability calibration and epoch caps limit generalization.
+18. All existing data, outputs, notebooks and source files (including old checkpoints and bytecode) are protected by SHA256. New files use exclusive creation; Python runs with -B so prior bytecode is not rewritten. New experiment sources are separate, old model results unchanged.
+
+Method references:
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.permutation_test.html
+https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html
+https://arch.readthedocs.io/en/latest/bootstrap/generated/arch.bootstrap.MovingBlockBootstrap.html
+

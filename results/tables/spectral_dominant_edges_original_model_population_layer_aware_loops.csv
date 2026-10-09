@@ -1,0 +1,2 @@
+population,direction,self_loops_retained,source,target,weight,right_eigenvector_contribution
+original_model_population,layer_aware,True,ictcimpact,ictcimpact,20.0,20.0

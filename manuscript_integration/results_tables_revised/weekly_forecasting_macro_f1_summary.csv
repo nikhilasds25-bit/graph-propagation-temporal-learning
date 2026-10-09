@@ -1,0 +1,10 @@
+Model,Mean_Macro_F1
+Majority,0.346
+Persistence,0.5396
+Logistic regression,0.4742
+MLP,0.4522
+GRU,0.4487
+Reversed GAT,0.4943
+History-only logistic,0.5529
+History + structural MLP,0.5496
+History + reversed GAT,0.5184

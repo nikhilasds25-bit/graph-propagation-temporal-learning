@@ -1,0 +1,13 @@
+figure_name,stage,purpose,key_message
+01_monthly_negative_activity.png,Stage 1-6,Monthly activity,Observed temporal negative activity patterns used to validate the diffusion data stream
+network_degree_summary.png,Stage 1-6,Network structure,Directed graph degree summary across the full diffusion population
+diffusion_population_target_distribution.png,Stage 1-6,Target distribution,Positive/negative target distribution in the processed network data
+diffusion_ready_trust_score_distribution.png,Stage 1-6,Trust feature,Distribution of trust scores across the diffusion population
+diffusion_ready_pagerank_distribution.png,Stage 1-6,Influence feature,PageRank distribution across the network population
+diffusion_corrected_primary_negative_cascade.png,Stage 7,Primary competition result,Primary competitive configuration remained near-balanced between positive and negative cascades
+diffusion_corrected_ablation_negative_cascade.png,Stage 7,Ablation comparison,Removing edge weights produced the largest tested change among the ablations
+diffusion_corrected_edge_normalization_negative_cascade.png,Stage 7,Normalization sensitivity,Max and log edge normalization produced broadly similar patterns
+02_model_comparison.png,Stage 8,Model comparison,GCN and EvolveGCN results were compared on the March test period
+03_evolvegcn_confusion_matrix.png,Stage 8,Confusion matrix,Both models collapsed to the majority positive class
+stage8_final_paper_confusion_matrices.png,Stage 8,Final corrected confusion matrices,March 2023 held-out confusion matrices after training-only class weighting and February threshold selection
+stage8_final_paper_model_comparison.png,Stage 8,Final corrected model comparison,Macro F1, negative F1, balanced accuracy, and PR-AUC on the March 2023 held-out period

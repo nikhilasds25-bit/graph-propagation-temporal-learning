@@ -1,0 +1,33 @@
+Metric-specific supplement to history_graph_report.txt. Original report and figures are retained.
+
+Highest descriptive mean macro_F1: History Logistic, 0.552903.
+Highest descriptive mean class_0_PR_AUC: History + Structural MLP, 0.600131.
+Highest descriptive mean balanced_accuracy: History + Structural MLP, 0.553552.
+Highest descriptive mean MCC: History + Structural MLP, 0.107778.
+
+Predeclared primary comparisons, all eligible:
+History Logistic minus Persistence, macro_F1: delta=0.013322, Holm p=0.15271; no directional conclusion across all checks.
+History Logistic minus Persistence, class_0_PR_AUC: delta=0.040849, Holm p=0.0012207; positive across all interval/corrected-test checks.
+History Logistic minus Persistence, balanced_accuracy: delta=0.013213, Holm p=0.15271; no directional conclusion across all checks.
+History Logistic minus Persistence, MCC: delta=0.025909, Holm p=0.15271; no directional conclusion across all checks.
+History + Structural MLP minus Persistence, macro_F1: delta=0.010017, Holm p=0.0880127; no directional conclusion across all checks.
+History + Structural MLP minus Persistence, class_0_PR_AUC: delta=0.042654, Holm p=0.0012207; positive across all interval/corrected-test checks.
+History + Structural MLP minus Persistence, balanced_accuracy: delta=0.013285, Holm p=0.0305176; positive across all interval/corrected-test checks.
+History + Structural MLP minus Persistence, MCC: delta=0.026808, Holm p=0.0305176; positive across all interval/corrected-test checks.
+History + Reversed GAT minus Persistence, macro_F1: delta=-0.021212, Holm p=0.0356445; negative across all interval/corrected-test checks.
+History + Reversed GAT minus Persistence, class_0_PR_AUC: delta=0.004912, Holm p=0.362305; no directional conclusion across all checks.
+History + Reversed GAT minus Persistence, balanced_accuracy: delta=-0.014741, Holm p=0.15271; no directional conclusion across all checks.
+History + Reversed GAT minus Persistence, MCC: delta=-0.028995, Holm p=0.15271; no directional conclusion across all checks.
+History + Reversed GAT minus History + Structural MLP, macro_F1: delta=-0.031228, Holm p=0.0012207; negative across all interval/corrected-test checks.
+History + Reversed GAT minus History + Structural MLP, class_0_PR_AUC: delta=-0.037741, Holm p=0.0012207; negative across all interval/corrected-test checks.
+History + Reversed GAT minus History + Structural MLP, balanced_accuracy: delta=-0.028027, Holm p=0.0012207; negative across all interval/corrected-test checks.
+History + Reversed GAT minus History + Structural MLP, MCC: delta=-0.055802, Holm p=0.0012207; negative across all interval/corrected-test checks.
+History + Reversed GAT minus Reversed GAT (no history), macro_F1: delta=0.024102, Holm p=0.00219727; positive across all interval/corrected-test checks.
+History + Reversed GAT minus Reversed GAT (no history), class_0_PR_AUC: delta=0.020999, Holm p=0.00872803; positive across all interval/corrected-test checks.
+History + Reversed GAT minus Reversed GAT (no history), balanced_accuracy: delta=0.019707, Holm p=0.0012207; positive across all interval/corrected-test checks.
+History + Reversed GAT minus Reversed GAT (no history), MCC: delta=0.040132, Holm p=0.0012207; positive across all interval/corrected-test checks.
+
+History-only logistic improves class-0 average precision over Persistence under the predeclared checks. History + Structural MLP improves class-0 average precision, balanced accuracy and MCC. Neither establishes corrected macro-F1 superiority over Persistence.
+The tested reversed graph-message model does not add incremental value beyond history/node features: it has negative paired effects across all four metrics, all three intervals and Holm tests. This finding is confined to this implementation/cohort, not a general claim that all graph methods fail.
+Forward GAT is a secondary direction control. Its higher descriptive mean than reversed GAT does not establish a primary corrected improvement over the matched MLP.
+Exact assumptions remain in the original report: 15 weeks, dependent-week caveats, evaluation-only history sensitivity, common neural tuning, sampled neighbors, and old-GAT sampling/tuning confounding.

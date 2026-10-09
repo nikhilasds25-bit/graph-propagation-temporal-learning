@@ -1,0 +1,5 @@
+Figure,PNG,SVG,PNG_DPI
+A,results\figures\node_only_rolling_macro_f1.png,results\figures\node_only_rolling_macro_f1.svg,400
+B,results\figures\node_only_rolling_class_0_pr_auc_publication.png,results\figures\node_only_rolling_class_0_pr_auc_publication.svg,400
+C,results\figures\node_only_rolling_balanced_accuracy_publication.png,results\figures\node_only_rolling_balanced_accuracy_publication.svg,400
+D,results\figures\node_only_comparison_forest.png,results\figures\node_only_comparison_forest.svg,400

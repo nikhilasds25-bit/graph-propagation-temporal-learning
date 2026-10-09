@@ -1,0 +1,30 @@
+{
+  "weekly_snapshots": 25,
+  "first_week": "2022-10-10",
+  "last_week": "2023-03-27",
+  "average_nodes_per_week": 4083.76,
+  "average_edges_per_week": 4994.4,
+  "empty_weeks": [],
+  "valid_interaction_events": 129604,
+  "rejected_events": 0,
+  "feature_rows": 802811,
+  "self_loop_events": 157,
+  "input_sha256": "b8619e4544bc99e6d32ca198e6212784be86742625a166b12f15744a967c6f82"
+}
+
+Exact assumptions and limitations:
+1. Timestamp parsing uses pandas mixed-format parsing with errors coerced and UTC conversion. Naive timestamps, if present, are assumed UTC. Invalid dates or blank endpoints are excluded and saved with reasons.
+2. Weeks begin Monday 00:00 UTC and end at the next Monday exclusive. Every week from first through last valid interaction is included. Boundary weeks can be partial. Empty weeks have header-only edge files.
+3. Snapshot nodes are endpoints active in that week; no globally fixed future node universe or inactive historical isolates is added. Source -> Target direction and canonical handle spelling are preserved and checked for case aliases.
+4. Each snapshot is a weighted DiGraph. Weight counts input interaction rows per directed pair across all types. Self loops are retained. Repeated input rows remain separate interaction events.
+5. Directed_Edges and degrees include self loops; each loop contributes one in-degree and one out-degree. Density is non-self directed edges / N(N-1), or zero for N<2. Reciprocity is reciprocated non-self directed edges / non-self directed edges, and NA when that denominator is zero.
+6. WCC and SCC sizes count nodes; empty graphs have size zero. Mean degree is directed edges / active nodes; mean strength is events / active nodes; both are zero for empty graphs.
+7. Feature Week_Start denotes the week to predict. Features use a cumulative historical graph containing timestamps strictly before that Monday. Its weights sum prior events; degree counts distinct historical neighbors. Current-week snapshot statistics are descriptive and must not be used to predict that same week.
+8. Feature rows include only users observed strictly before the prediction week, including historically inactive users. The first week has no feature rows. Newly appearing users have no prior feature row; cold-start handling is left to future model design. No future node identities are used.
+9. PageRank and reverse_PageRank are weight-aware on the prior cumulative graph and its edge reversal, alpha=0.85, tol=1e-10, max_iter=1000, uniform teleportation and dangling distribution. They are deterministic. Python/NumPy seeds are 42; no stochastic sampling is performed.
+10. No labels, sentiment values, tweet Target columns, future labels, or same-week target-derived features are read or created. Target here is solely the destination username in the interaction edge list.
+11. Interaction_Type distinctions inherit reconstruction uncertainty: replies are inferred from leading handles, RT patterns may be quoted, and native or invisible interactions may be absent. The supplied reconstruction is not a complete record of platform activity.
+12. Counts, per-week weights, component sizes, historical node availability, PageRank normalization, feature strength totals, and exact time cutoffs are validated. Files are created exclusively; collisions fail before any output writes. The input SHA-256 is verified unchanged.
+13. The four figure panels describe contemporaneous snapshots, not prediction features. No GCN, EvolveGCN, or other model is trained. No raw file is read or modified.
+
+All construction and serialized-output validations passed.

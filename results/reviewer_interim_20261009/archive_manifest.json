@@ -1,0 +1,167 @@
+[
+  {
+    "original_generated_path": "results\\tables\\competition_exposure_overlap.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\competition_exposure_overlap.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\competition_outcome_definition_comparison.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\competition_outcome_definition_comparison.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\direction_simulation_comparison.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\direction_simulation_comparison.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\layer_orientation_degree_strength_strata.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\layer_orientation_degree_strength_strata.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\layer_orientation_mixing.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\layer_orientation_mixing.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\layer_orientation_permutation_draws.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\layer_orientation_permutation_draws.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\layer_orientation_permutation_tests.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\layer_orientation_permutation_tests.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\reviewer_simulation_configuration.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\reviewer_simulation_configuration.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\secondary_reach_simulation_results.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\secondary_reach_simulation_results.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\secondary_reach_simulation_runs.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\secondary_reach_simulation_runs.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\reviewer_simulation_assumptions.txt",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\reviewer_simulation_assumptions.txt",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\tables\\layer_orientation_assumptions.txt",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\tables\\layer_orientation_assumptions.txt",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\competition_secondary_outcome.png",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\competition_secondary_outcome.png",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\competition_secondary_outcome.svg",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\competition_secondary_outcome.svg",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\competition_secondary_outcome_source.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\competition_secondary_outcome_source.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\layer_orientation_matrices.png",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\layer_orientation_matrices.png",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\layer_orientation_matrices.svg",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\layer_orientation_matrices.svg",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\layer_orientation_matrices_source.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\layer_orientation_matrices_source.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\layer_orientation_null_forest.png",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\layer_orientation_null_forest.png",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\layer_orientation_null_forest.svg",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\layer_orientation_null_forest.svg",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\layer_orientation_null_forest_source.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\layer_orientation_null_forest_source.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_amplification_distribution.png",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_amplification_distribution.png",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_amplification_distribution.svg",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_amplification_distribution.svg",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_amplification_distribution_source.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_amplification_distribution_source.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_contested_fraction.png",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_contested_fraction.png",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_contested_fraction.svg",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_contested_fraction.svg",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_contested_fraction_source.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_contested_fraction_source.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_direction_forest.png",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_direction_forest.png",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_direction_forest.svg",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_direction_forest.svg",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_direction_forest_source.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_direction_forest_source.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_secondary_reach_vs_beta.png",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_secondary_reach_vs_beta.png",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_secondary_reach_vs_beta.svg",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_secondary_reach_vs_beta.svg",
+    "status": "superseded validation draft; do not use scientifically"
+  },
+  {
+    "original_generated_path": "results\\figures\\reviewer_corrected\\simulation_secondary_reach_vs_beta_source.csv",
+    "retained_interim_path": "results\\reviewer_interim_20261009\\figures\\reviewer_corrected\\simulation_secondary_reach_vs_beta_source.csv",
+    "status": "superseded validation draft; do not use scientifically"
+  }
+]

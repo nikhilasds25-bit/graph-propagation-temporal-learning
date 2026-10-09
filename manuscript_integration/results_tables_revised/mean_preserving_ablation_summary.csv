@@ -1,0 +1,6 @@
+variant,mean_final_size,delta_vs_full,ci95_lo,ci95_hi
+Full model,321.45,0.0,0.0,0.0
+Weight shuffled,321.2,-0.25,-8.8,8.55
+Influence flattened,312.525,-8.925,-19.200625,0.6
+Orientation flattened,321.6,0.15,-8.45,8.47562499999999
+Orientation shuffled,318.525,-2.925,-11.1,5.975

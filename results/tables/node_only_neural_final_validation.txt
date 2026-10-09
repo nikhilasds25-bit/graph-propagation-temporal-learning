@@ -1,0 +1,1 @@
+Final validation passed: all 300 seeded test records and 180 validation trials independently checked; all four publication figures reviewed; fixed 0.5 threshold; original files hash-verified unchanged; pipeline rerun rejected existing output paths before writes. Final publication figure paths are listed in node_only_publication_figure_manifest.csv.

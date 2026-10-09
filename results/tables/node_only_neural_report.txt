@@ -1,0 +1,81 @@
+{
+  "test_weeks": [
+    "2022-12-19",
+    "2022-12-26",
+    "2023-01-02",
+    "2023-01-09",
+    "2023-01-16",
+    "2023-01-23",
+    "2023-01-30",
+    "2023-02-06",
+    "2023-02-13",
+    "2023-02-20",
+    "2023-02-27",
+    "2023-03-06",
+    "2023-03-13",
+    "2023-03-20",
+    "2023-03-27"
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "best_mean_models": {
+    "macro_F1": "Persistence",
+    "class_0_PR_AUC": "Persistence",
+    "balanced_accuracy": "Persistence"
+  },
+  "GRU_consistently_beats_Persistence_all_four_metrics": false
+}
+
+Selected paired comparisons:
+Model_A             Model_B            Metric  Mean_A_Minus_B  Paired_Bootstrap_95_Lower  Paired_Bootstrap_95_Upper  A_Better_Weeks  A_Worse_Weeks  Paired_Weeks  Consistently_Better_All_Weeks  Bootstrap_Draws
+    MLP Logistic Regression          macro_F1       -0.021973                  -0.042895                  -0.002711               6              9            15                          False            10000
+    MLP Logistic Regression    class_0_PR_AUC       -0.003503                  -0.007949                   0.001840               4             11            15                          False            10000
+    MLP Logistic Regression balanced_accuracy       -0.005533                  -0.012419                   0.001796               4             11            15                          False            10000
+    MLP Logistic Regression               MCC       -0.012850                  -0.029332                   0.004662               4             11            15                          False            10000
+    GRU         Persistence          macro_F1       -0.090875                  -0.108031                  -0.069018               1             14            15                          False            10000
+    GRU         Persistence    class_0_PR_AUC       -0.011067                  -0.021547                   0.000340               4             11            15                          False            10000
+    GRU         Persistence balanced_accuracy       -0.034781                  -0.046181                  -0.020852               2             13            15                          False            10000
+    GRU         Persistence               MCC       -0.068579                  -0.091130                  -0.040950               2             13            15                          False            10000
+    GRU Logistic Regression          macro_F1       -0.025478                  -0.038660                  -0.012400               3             12            15                          False            10000
+    GRU Logistic Regression    class_0_PR_AUC       -0.006496                  -0.011273                  -0.002078               5             10            15                          False            10000
+    GRU Logistic Regression balanced_accuracy       -0.006607                  -0.014489                   0.002048               6              9            15                          False            10000
+    GRU Logistic Regression               MCC       -0.016112                  -0.034202                   0.004093               5             10            15                          False            10000
+    MLP         Persistence          macro_F1       -0.087370                  -0.109075                  -0.065601               0             15            15                          False            10000
+    MLP         Persistence    class_0_PR_AUC       -0.008073                  -0.022003                   0.007210               5             10            15                          False            10000
+    MLP         Persistence balanced_accuracy       -0.033707                  -0.046578                  -0.019030               2             13            15                          False            10000
+    MLP         Persistence               MCC       -0.065317                  -0.092741                  -0.033724               2             13            15                          False            10000
+
+GRU versus MLP (temporal-history comparison with recency caveat):
+Model_A Model_B            Metric  Mean_A_Minus_B  Paired_Bootstrap_95_Lower  Paired_Bootstrap_95_Upper  A_Better_Weeks  A_Worse_Weeks  Paired_Weeks  Consistently_Better_All_Weeks  Bootstrap_Draws
+    GRU     MLP          macro_F1       -0.003505                  -0.026292                   0.020045               8              7            15                          False            10000
+    GRU     MLP    class_0_PR_AUC       -0.002993                  -0.009197                   0.002417               9              6            15                          False            10000
+    GRU     MLP balanced_accuracy       -0.001074                  -0.006940                   0.004672               6              9            15                          False            10000
+    GRU     MLP               MCC       -0.003262                  -0.017557                   0.010225               7              8            15                          False            10000
+
+Exact assumptions and limitations:
+1. Target remains the dataset binary orientation label, not verified sentiment. Exactly the saved 15 origins and the same eligible test users are used for all models; no future labels or identities become predictors.
+2. MLP uses the target-week feature row, whose events are strictly earlier than its Monday; GRU uses all available feature rows whose own Week_Start is strictly earlier than the target Monday. Each is cumulative historical structural data, not current-week graph data.
+3. The strict GRU row-week lag means its latest feature row is generally one week older than the MLP row. GRU-versus-MLP differences combine temporal representation and recency differences and cannot isolate a pure causal benefit of temporal modeling.
+4. GRU sequences begin at the first available historical feature row, preserve chronological order, use right zero padding after scaling, and use real sequence lengths to select the last real hidden state. Zero-length histories use a masked zero state and learned classifier intercept; no label history or adjacency is provided.
+5. MLP has two same-width Linear/ReLU/Dropout hidden layers and one logit. GRU has one recurrent layer and dropout on the final masked state before its classifier. Models use only six structural numeric features.
+6. The six predeclared configurations span all requested hidden sizes, dropout levels, learning rates and weight-decay choices but are a fractional grid, not an exhaustive 54-configuration search. Configuration selection uses seed 42 validation macro-F1 only, then is frozen across ten independent seed fits per origin.
+7. Each final seed reinitializes and trains independently; early stopping uses that seed validation macro-F1, restoring the earliest best epoch. Maximum 30 epochs, patience 4, batch size 1024, Adam, no chronological sample shuffle, CPU deterministic algorithms, seeds 42 through 51. Test scores never enter selection.
+8. The probability threshold is fixed at 0.5 for MLP, GRU and existing logistic regression. Training label weights are N/(2*N_class), applied to per-sample binary cross entropy. Validation/test labels do not determine class weights.
+9. MLP StandardScaler fits current feature rows of training samples only. GRU StandardScaler fits unique real feature rows referenced by training sequences only; padding is excluded. Held-out sequences are transformed with those frozen training statistics.
+10. Class-0 PR-AUC is average precision using 1-P(class 1); class-1 PR-AUC uses P(class 1). The test class-0 prevalence is stored for every model/seed/week. Existing metrics and thresholds are reused unchanged for classical comparisons.
+11. Neural summaries report mean and sample SD of each seed mean across 15 weeks, average within-week seed SD, and SD across week means. Overall neural percentile intervals resample both seeds and weeks with 10,000 draws; classical intervals resample weeks only. Seed-mean-only intervals are also reported.
+12. Paired comparisons average neural seeds within each test week then resample identical test weeks across models. Individual users and seed repeats are never treated as independent test weeks. These comparison CIs condition on the ten-seed average and omit residual seed uncertainty.
+13. Week-bootstrap intervals assume exchangeable weeks and do not correct temporal autocorrelation or repeated-user dependence. Pointwise figure bands resample seeds, not users. All intervals are descriptive, not proof of superiority.
+14. Consistent improvement means a strictly positive seed-averaged difference in every one of the 15 paired test weeks. Winners by a mean are descriptive; week win counts and paired intervals determine the qualified comparison narrative.
+15. The evaluated cohort excludes tied labels and missing graph-history users from the prior pipeline and conditions on current-week observed labels. No user-disjoint or full-population performance claim is made. Graph extraction and orientation-label validity limitations persist.
+16. No GNN, graph convolution, adjacency matrix or message passing is used. Original raw and baseline files are hash-protected. Trial checkpoints are new exclusive files and support resumption without overwriting completed trials.

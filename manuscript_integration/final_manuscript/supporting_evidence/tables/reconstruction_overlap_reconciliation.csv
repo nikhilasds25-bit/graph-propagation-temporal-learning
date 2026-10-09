@@ -1,0 +1,3 @@
+definition,raw_supplied_rows,unique_supplied_pairs,reconstructed_unique_pairs,overlap,precision_numerator,precision_denominator,precision_overlap,coverage_numerator,coverage_denominator,supplied_pair_coverage,covered_raw_rows,raw_row_denominator,raw_row_coverage,raw_row_definition
+literal_exact,109443,109443,109219,108937,108937,109219,0.9974180316611578,108937,109443,0.9953765887265518,108937,109443,0.9953765887265518,Every supplied row tested for pair membership; duplicates count repeatedly
+normalized,109443,109366,109219,109217,109217,109219,0.9999816881678096,109217,109366,0.9986376021798365,109294,109443,0.9986385607119688,Every supplied row tested for pair membership; duplicates count repeatedly

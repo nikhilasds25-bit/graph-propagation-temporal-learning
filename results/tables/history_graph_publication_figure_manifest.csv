@@ -1,0 +1,5 @@
+Figure,PNG,SVG,PNG_DPI
+A,results/figures/history_graph_rolling_macro_f1.png,results/figures/history_graph_rolling_macro_f1.svg,400
+B,results/figures/history_graph_rolling_class_0_pr_auc.png,results/figures/history_graph_rolling_class_0_pr_auc.svg,400
+C,results\figures\history_graph_incremental_forest_publication.png,results\figures\history_graph_incremental_forest_publication.svg,400
+D,results/figures/history_graph_weekly_incremental_difference.png,results/figures/history_graph_weekly_incremental_difference.svg,400

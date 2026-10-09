@@ -1,0 +1,10 @@
+All 300 fits (2 neural models x 10 seeds x 15 test weeks) and independent serialized-output checks passed.
+Persistence has the highest mean macro-F1, class-0 average precision and balanced accuracy among the five models.
+MLP does not beat logistic regression on macro-F1: paired mean difference -0.021973, 95% week-bootstrap CI [-0.042895,-0.002711], wins 6/15 weeks.
+GRU temporal history has no demonstrated improvement over MLP in this setup: macro-F1 difference -0.003505, CI [-0.026292,0.020045], wins 8/15; all four paired metric intervals include zero.
+GRU does not consistently beat Persistence: macro-F1 difference -0.090875, CI [-0.108031,-0.069018], wins 1/15; class-0 AP difference -0.011067, CI [-0.021547,0.000340], wins 4/15.
+MLP and GRU improve class-0 AP over prevalence on average: MLP +0.020179, CI [0.009708,0.031068], wins 12/15; GRU +0.017186, CI [0.010041,0.024751], wins 14/15. Neither wins every week.
+Interpretation limits: GRU uses feature row weeks strictly before prediction, so its freshest inputs are older than MLP inputs. Paired CIs condition on seed averages and treat weeks as exchangeable; they do not adjust temporal autocorrelation. Target is orientation, not verified sentiment.
+Fourteen final seed fits reached the 30-epoch cap. Across the 15 GRU test cohorts, 520 user-weeks had empty sequences and were retained with masked zero states.
+All original raw files and protected existing outputs remain unchanged. No GNN was trained.
+Corrected publication variants fix subtitle margins for Figures B and C; original versions remain unchanged.

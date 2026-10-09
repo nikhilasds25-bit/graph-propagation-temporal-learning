@@ -1,0 +1,5 @@
+Platform: Windows-11-10.0.26300-SP0
+Processor: AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD
+Logical CPUs: 16
+Python: 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]
+Analyses ran locally on CPU in the original project .venv. TextBlob dependencies installed only in new reproducibility_package/vendor; original environment files unchanged. Exact wall runtimes for initial API-invoked phases were not captured and are not invented. Future CLI invocations save exclusive phase runtime JSONs. Full-hash verification includes 4607 original project files excluding .venv/.git/__pycache__. Temporal graph case count 9, four seed strata, up to 500 seeds each; repeated seeds cached per graph. Simulations 8 configurations x 3 directions x 2000 paired runs = 48000 runs, finite horizon 25 steps. Permutations 3 layers x 2 nulls x 2000 = 12000. Bootstrap 2000 seed resamples per temporal summary. No GPU/model fitting. Source file paths/CPU metadata may disclose local details and should be reviewed before publication.

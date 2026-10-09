@@ -1,0 +1,111 @@
+{
+  "weekly_labelled_user_records_including_ties": 77247,
+  "valid_majority_label_records": 75747,
+  "ties": 1500,
+  "cold_start_excluded_user_weeks": 59455,
+  "cold_start_first_tweet_week": 55928,
+  "cold_start_previously_tweeted": 3527,
+  "dataset_eligible_records": 16292,
+  "rejected_tweet_rows": 0,
+  "rolling_test_weeks": 15,
+  "first_test_week": "2022-12-19 00:00:00+00:00",
+  "last_test_week": "2023-03-27 00:00:00+00:00",
+  "best_macro_f1_baseline": "Persistence",
+  "best_mean_macro_f1": 0.5395807242960446,
+  "best_class_0_ap_baseline": "Persistence",
+  "best_mean_class_0_ap": 0.557476670319953,
+  "logistic_macro_f1_above_majority_weeks": 15,
+  "logistic_class_0_ap_above_prevalence_weeks": 12,
+  "logistic_balanced_accuracy_above_half_weeks": 12,
+  "logistic_exceeds_all_three_no_skill_checks_every_week": false
+}
+
+Test-week class balance:
+               Week_Start  Evaluated_Users  Class_0_Count  Class_1_Count  Class_0_Share
+2022-12-19 00:00:00+00:00              599            313            286       0.522538
+2022-12-26 00:00:00+00:00              587            305            282       0.519591
+2023-01-02 00:00:00+00:00              625            336            289       0.537600
+2023-01-09 00:00:00+00:00              688            377            311       0.547965
+2023-01-16 00:00:00+00:00              809            395            414       0.488257
+2023-01-23 00:00:00+00:00              747            388            359       0.519411
+2023-01-30 00:00:00+00:00              745            389            356       0.522148
+2023-02-06 00:00:00+00:00              738            393            345       0.532520
+2023-02-13 00:00:00+00:00              879            466            413       0.530148
+2023-02-20 00:00:00+00:00              885            464            421       0.524294
+2023-02-27 00:00:00+00:00              960            503            457       0.523958
+2023-03-06 00:00:00+00:00             1038            535            503       0.515414
+2023-03-13 00:00:00+00:00              996            531            465       0.533133
+2023-03-20 00:00:00+00:00             1248            694            554       0.556090
+2023-03-27 00:00:00+00:00              582            329            253       0.565292
+
+Baseline aggregate metrics:
+              Model            Metric  Test_Weeks  Valid_Weeks     Mean      Std  Bootstrap_95_Lower  Bootstrap_95_Upper  Bootstrap_Draws  Seed
+           Majority balanced_accuracy          15           15 0.500000 0.000000            0.500000            0.500000            10000    42
+           Majority          macro_F1          15           15 0.345986 0.007821            0.342035            0.349765            10000    42
+           Majority    class_0_PR_AUC          15           15 0.529224 0.018276            0.520062            0.538087            10000    42
+        Persistence balanced_accuracy          15           15 0.540267 0.021263            0.529331            0.550177            10000    42
+        Persistence          macro_F1          15           15 0.539581 0.021982            0.528241            0.549771            10000    42
+        Persistence    class_0_PR_AUC          15           15 0.557477 0.024148            0.544942            0.568835            10000    42
+Logistic Regression balanced_accuracy          15           15 0.512093 0.020605            0.501136            0.521548            10000    42
+Logistic Regression          macro_F1          15           15 0.474184 0.017893            0.465109            0.482796            10000    42
+Logistic Regression    class_0_PR_AUC          15           15 0.552906 0.027602            0.539562            0.566806            10000    42
+
+Exact assumptions and limitations:
+1. Target is a dataset binary orientation label, not verified sentiment. Only Date, User, and Target are read from master_tweets for labels. Binary labels are majority votes within each UTC Monday-start week; ties remain NA and are excluded.
+2. Users are normalized by trimming whitespace and leading @ and casefolding. One capitalization alias in master_tweets is merged; handles are identifiers, not verified stable people.
+3. Dataset eligibility requires a non-tied current-week label and a same-Week_Start historical feature row. Only the six named structural features enter logistic regression. Counts, ratios, metadata, current edges, and labels are never predictor columns.
+4. The input feature cutoff is exclusive and equals the prediction Monday; actual most recent historical interaction timestamps are separately audited to be strictly earlier. Reconstructed edges are read only for provenance checks, never used as contemporaneous predictors.
+5. Cold_Start_Count counts valid-labelled user-weeks lacking graph history, not unique users. This includes first observed tweet weeks and users with earlier tweets but no prior graph interactions; both subsets are reported. Tie_Count includes all tied active user-weeks, independently of graph history.
+6. Active_Labelled_Users counts all valid labels; Users_With_Historical_Features counts active users with graph features, including ties; Evaluated_Users excludes ties and missing history. Wilson intervals and class shares use this eligible cohort, which can differ substantially from all labelled users.
+7. First and last observed collection weeks are marked partial. This is based on observed minimum/maximum dates, not independently confirmed collection coverage. Interior weeks are not assumed complete platform coverage. Weeks with no eligible users have undefined shares.
+8. Expanding rolling origins require at least eight eligible training weeks. Validation is the immediately previous eligible week; training is all earlier eligible weeks excluding validation; test is the next eligible week. Training must contain both classes. No random temporal split or training/validation refit is used.
+9. StandardScaler fits only training rows. Logistic Regression uses class_weight=balanced, lbfgs, max_iter=2000, seed=42. C in [0.01,0.1,1,10,100] is selected by validation macro-F1; smaller C breaks exact ties. Class-1 probability threshold is fixed at 0.5 and never tuned on test.
+10. Majority predicts the training majority (tie -> class 0), with training class prevalence as its probability. Persistence uses the most recent strictly prior non-tied user label, including prior validation labels and prior labels without graph features; missing prior labels fall back to training majority/prevalence. Persistence probabilities are hard 0/1 for observed labels, not calibrated confidence.
+11. Class 0 is designated the detection class as requested even when it is not empirically the minority in the selected cohort. Both class F1 scores are reported. ROC_AUC and Brier_score use class-1 probabilities. Class-0 PR-AUC uses 1-P(class 1).
+12. PR-AUC is sklearn average precision (step-weighted area), not trapezoidal integration. No-skill class-0 AP equals that test week class-0 prevalence. Undefined precision/recall/F1 uses zero_division=0; when a test week has only one class, balanced accuracy, MCC and discrimination AUC metrics are NA.
+13. Aggregate means weight test weeks equally; standard deviation is sample SD (ddof=1). Percentile 95% bootstrap intervals use 10,000 week resamples with seed 42, shared across models/metrics. Paired comparisons subtract metrics on identical test weeks; Brier improvement has negative difference.
+14. Week bootstrap intervals treat weeks as exchangeable and do not account for temporal autocorrelation, repeated users, changing cohort composition, or orientation-label validity. Wilson intervals similarly describe counts without correcting user dependence.
+15. Consistent no-skill improvement is defined strictly as improvement in every evaluated test week, separately for macro-F1 versus majority, class-0 AP versus prevalence, and balanced accuracy versus 0.5. Win counts and paired mean-difference intervals are reported; they are descriptive, not proof of generalization.
+16. Repeated users can appear across train/validation/test because the task predicts future activity for previously observed users. No user-disjoint generalization is claimed. Majority vote discards tweet-level variation; missing graph-history users and tied labels are not evaluated.
+17. Structural features inherit extraction uncertainties, inferred replies and missing invisible interactions. Prior labels are available to persistence only after their week has ended. No neural networks are trained, no GNN performance claims are made, and existing raw, graph, GCN/EvolveGCN outputs are not modified.
+
+Leakage audit:
+{
+  "all_assertions_passed": true,
+  "features": [
+    "in_degree",
+    "out_degree",
+    "in_strength",
+    "out_strength",
+    "PageRank",
+    "reverse_PageRank"
+  ],
+  "feature_event_timestamps_strictly_before_label_week": true,
+  "exclusive_feature_cutoff_equals_label_monday": true,
+  "historical_node_membership_verified_from_prior_interactions": true,
+  "training_strictly_before_validation_and_test": true,
+  "scaler_training_only_sample_count_and_means_verified": true,
+  "hyperparameters_selected_by_validation_macro_f1_only": true,
+  "threshold_fixed_a_priori": 0.5,
+  "test_weeks_chronological_and_paired": true,
+  "no_duplicate_user_week_records": true,
+  "no_same_week_target_features": true,
+  "raw_and_existing_input_sha256_unchanged": true,
+  "input_hashes": {
+    "data\\processed\\reconstructed_temporal_edges.csv": "b8619e4544bc99e6d32ca198e6212784be86742625a166b12f15744a967c6f82",
+    "data\\processed\\weekly_temporal_node_features.csv": "76908e12f03525cb099f9ca13128440ceefd4b77dad84ea85d6d61075ba28ee2",
+    "data\\raw\\master_tweets.csv": "bb19437507a51f52b785223e41a282af29e4647c4588f2d9e660ce87f0ebb4a9",
+    "data\\raw\\network_edges.csv": "429eb1bda7bcc887cbd6e724d56cca114d5d92b1e7c2c4a7df1101e8294ed019",
+    "results\\tables\\weekly_temporal_graph_summary.csv": "0948deacaa71e0d637321e2d93f10f9d82f262cf4d8c361717a2823a3931cae9"
+  },
+  "seed": 42,
+  "minimum_training_weeks": 8,
+  "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "bootstrap_draws": 10000
+}

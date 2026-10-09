@@ -1,0 +1,7 @@
+PASS: all 802811 historical node feature histories independently reconstructed by strict as-of joins.
+PASS: every sampled graph message/weight in both directions matches strictly prior raw interaction pairs and neighbor label cutoffs.
+PASS: 600 model checkpoints reproduce probabilities; all 1200 full/sensitivity metric records replayed.
+PASS: training-only defaults/scalers/weights, common validation-selected hyperparameters and threshold 0.5.
+PASS: all ordinary and block intervals replayed; exact p-values agree with SciPy; Holm 20-test families reproduced.
+PASS: four 400-DPI PNG/SVG pairs.
+PASS: all 3889 protected prior files remain byte-identical.
